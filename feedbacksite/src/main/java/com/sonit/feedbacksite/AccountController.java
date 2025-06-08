@@ -29,6 +29,36 @@ public class AccountController {
         if (accountRepository.existsByEmail(account.getEmail())) {
             return ResponseEntity.status(409).body("Account with this email already exists");
         }
+        // Username is required and cannot be empty
+        if (account.getUsername() == null || account.getUsername().isEmpty()) {
+            return ResponseEntity.status(400).body("Username cannot be empty");
+        }
+        // check if password has at least 8 characters
+        if (account.getPassword() == null || account.getPassword().length() < 8) {
+            return ResponseEntity.status(400).body("Password must be at least 8 characters long");
+        }
+
+        int numSpecialChars = 0;
+        int numDigits = 0;
+        int numUpperCase = 0;
+        int numLowerCase = 0;
+        for(int i=0; i<account.getPassword().length(); i++){
+            char c = account.getPassword().charAt(i);
+            if (Character.isDigit(c)) {
+                numDigits++;
+            } else if (Character.isUpperCase(c)) {
+                numUpperCase++;
+            } else if (Character.isLowerCase(c)) {
+                numLowerCase++;
+            } else if (!Character.isLetterOrDigit(c)) {
+                numSpecialChars++;
+            }
+        }
+        if (numSpecialChars < 1 || numDigits < 1 || numUpperCase < 1 || numLowerCase < 1) {
+            return ResponseEntity.status(400).body("Password must contain at least one digit, one uppercase letter, one lowercase letter, and one special character");
+        }
+
+        // Hash the valid password before saving
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setCreatedAt(LocalDateTime.now());
         return ResponseEntity.ok(accountRepository.save(account));
@@ -100,7 +130,31 @@ public class AccountController {
             existingAccount.setEmail(updatedAccount.getEmail());
         }
         if (updatedAccount.getPassword() != null) {
-            existingAccount.setPassword(passwordEncoder.encode(updatedAccount.getPassword()));
+            String newPassword = updatedAccount.getPassword();
+            // Password validation
+            if (newPassword.length() < 8) {
+                return ResponseEntity.status(400).body("Password must be at least 8 characters long");
+            }
+            int numSpecialChars = 0;
+            int numDigits = 0;
+            int numUpperCase = 0;
+            int numLowerCase = 0;
+            for (int i = 0; i < newPassword.length(); i++) {
+                char c = newPassword.charAt(i);
+                if (Character.isDigit(c)) {
+                    numDigits++;
+                } else if (Character.isUpperCase(c)) {
+                    numUpperCase++;
+                } else if (Character.isLowerCase(c)) {
+                    numLowerCase++;
+                } else if (!Character.isLetterOrDigit(c)) {
+                    numSpecialChars++;
+                }
+            }
+            if (numSpecialChars < 1 || numDigits < 1 || numUpperCase < 1 || numLowerCase < 1) {
+                return ResponseEntity.status(400).body("Password must contain at least one digit, one uppercase letter, one lowercase letter, and one special character");
+            }
+            existingAccount.setPassword(passwordEncoder.encode(newPassword));
         }
 
         // Save the updated account
