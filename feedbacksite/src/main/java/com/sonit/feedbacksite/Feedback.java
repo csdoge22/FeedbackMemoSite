@@ -1,5 +1,10 @@
 package com.sonit.feedbacksite;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.RetentionPolicy;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.OnDelete;
@@ -15,8 +20,27 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.Constraint;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.Payload;
 import jakarta.persistence.EnumType;
 
+@Documented
+@Constraint(validatedBy = AtLeastOnePresentValidator.class)
+@Target({ ElementType.TYPE })
+@Retention(RetentionPolicy.RUNTIME)
+@interface AtLeastOnePresent {
+    String message() default "Either subTab or tab must be present";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+}
+class AtLeastOnePresentValidator implements ConstraintValidator<AtLeastOnePresent, Feedback> {
+    @Override
+    public boolean isValid(Feedback feedback, ConstraintValidatorContext context) {
+        return feedback.getSubTab() != null || feedback.getTab() != null;
+    }
+}
 @Entity
 public class Feedback {
     public enum Priority {
@@ -30,11 +54,18 @@ public class Feedback {
     private String content = "Empty Content";
     @Enumerated(EnumType.STRING)
     private Priority priority;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "subtab_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private SubTab subTab;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "tab_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Tab tab;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -45,7 +76,9 @@ public class Feedback {
         super();
         this.id = id;
     }
-
+    public Tab getTab() {
+        return tab;
+    }
     public SubTab getSubTab() {
         return subTab;
     }
@@ -87,5 +120,8 @@ public class Feedback {
     }
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+    public void setTab(Tab tab) {
+        this.tab = tab;
     }
 }
