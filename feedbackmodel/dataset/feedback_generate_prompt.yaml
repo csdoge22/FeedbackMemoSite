@@ -1,0 +1,69 @@
+task: generate_feedback_dataset
+
+description: |
+  Produce a strictly formatted TSV dataset for a feedback prioritizer.
+
+constraints:
+  - Output MUST be plain TSV (tab-separated values) with real TAB characters (ASCII 0x09).
+  - Newlines (ASCII 0x0A) are allowed only between rows; no blank lines.
+  - Do NOT include any text before or after the TSV (no commentary, tags, or explanations).
+  - Do NOT include markdown, code fences, or example rows in the output.
+  - All characters MUST be ASCII. Do not emit non-ASCII characters.
+  - Use only the exact columns and order specified in output_format.columns.
+  - The file MUST contain EXACTLY N + 1 lines: 1 header row followed by N data rows.
+  - Each data row MUST have exactly five columns separated by real tabs.
+  - feedback_id MUST be consecutive integers starting at 0 (0..N-1).
+
+dataset_requirements:
+  - relevance: feedback should concern growth, skills, team dynamics, productivity, learning, or performance.
+  - diversity: vary tone, length, phrasing, and structure; include implicit and explicit feedback.
+  - balance: aim for an even mix of constructive vs critical, emotional vs neutral, actionable vs descriptive.
+  - realism: mimic workplace, academic, and team contexts.
+
+output_format:
+  type: TSV
+  columns:
+    - feedback_id
+    - feedback_text
+    - category
+    - source_context
+    - actionability_hint
+
+allowed_values:
+  category: [growth, team, skill, subject, productivity, communication]
+  source_context: [peer_review, manager_feedback, self_reflection, course_feedback]
+  actionability_hint: [actionable, partially_actionable, descriptive_only]
+
+generation_instructions: |
+  BEGIN TSV OUTPUT ON THE NEXT LINE. DO NOT WRITE ANYTHING BEFORE THE HEADER LINE.
+
+  OUTPUT MUST START IMMEDIATELY WITH THE FOLLOWING HEADER LINE (USE REAL TAB CHARACTERS):
+  feedback_id	feedback_text	category	source_context	actionability_hint
+  IMPORTANT: Do NOT emit the two-character sequence backslash + t ("\\t"). Use an actual TAB character (press the TAB key) between columns.
+
+  After the header, produce EXACTLY N data rows, one per line, using REAL TAB characters as separators.
+
+  For each data row i (0..N-1) emit columns:
+    - feedback_id: integer i
+    - feedback_text: exactly ONE sentence, ASCII only, containing no TABs or newlines
+    - category: one of the values in allowed_values.category
+    - source_context: one of the values in allowed_values.source_context
+    - actionability_hint: one of the values in allowed_values.actionability_hint
+
+  Formatting rules:
+    - Use REAL tabs only as column separators.
+    - No extra whitespace at line ends or between fields beyond single tabs.
+    - Do NOT include enumeration, bullets, or quote marks around fields.
+
+  Uniqueness and diversity (important):
+    - DO NOT repeat the exact same `feedback_text` more than once in the entire output.
+    - Vary phrasing, sentence structure, and vocabulary to maximize diversity across rows.
+    - Avoid producing formulaic or template-like sentences; small surface changes are not sufficient.
+    - Do NOT output identical rows across batches; each data row must be unique.
+
+  HARD FAILURE RULE:
+  If you cannot meet ALL constraints exactly, output exactly this single line and nothing else:
+  REFUSE: unable to generate a valid dataset under the given constraints.
+
+example_note: |
+  (Do NOT include this example in output.) The header must match exactly the header line above.

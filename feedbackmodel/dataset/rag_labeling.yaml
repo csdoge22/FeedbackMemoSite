@@ -1,0 +1,45 @@
+task: weak_priority_labeling
+description: |
+  Assign a weak priority label to feedback using semantic reasoning
+  and optional retrieved context. The label is not final and may be
+  overridden by a human.
+
+constraints:
+  - Output must be TSV
+  - Do NOT modify original feedback text
+  - Do NOT hallucinate facts
+  - Use retrieved context only if relevant
+
+priority_scale:
+  low:
+    description: Minor improvement, low urgency, minimal impact
+  medium:
+    description: Noticeable issue or improvement with moderate impact
+  high:
+    description: Critical issue, high urgency, or strong impact on outcomes
+
+output_format:
+  type: TSV
+  columns:
+    - feedback_id
+    - predicted_priority
+    - confidence_score
+    - reasoning
+    - label_source
+
+labeling_instructions: |
+  Use semantic meaning, urgency cues, emotional intensity, and actionability.
+  If similar feedback appears frequently in retrieved context, increase priority.
+  confidence_score must be between 0.0 and 1.0.
+  label_source must always be "weak_llm".
+
+example_input:
+  feedback_text: |
+    Team meetings often run too long and distract from actual work
+
+  retrieved_context:
+    - Several past feedback entries indicate meeting inefficiency reduced productivity
+    - High-priority issues previously linked to burnout and missed deadlines
+
+example_output: |
+  fb_001<TAB>high<TAB>0.74<TAB>Meeting inefficiency impacts productivity and has recurring negative outcomes<TAB>weak_llm
