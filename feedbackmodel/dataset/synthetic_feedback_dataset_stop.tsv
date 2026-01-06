@@ -1,103 +1,102 @@
 feedback_id	feedback_text	category	source_context	actionability_hint
-749	I should practice empathy in feedback to foster a more supportive environment.	communication	self_reflection	actionable
+748	I should practice empathy in feedback to foster a more supportive environment.	communication	self_reflection	actionable
 463	The course syllabus doesn't provide enough flexibility for personal learning goals.	subject	course_feedback	partially_actionable
-797	Workshops on effective time management could boost individual productivity.	productivity	course_feedback	actionable
+796	Workshops on effective time management could boost individual productivity.	productivity	course_feedback	actionable
 407	I should set weekly goals to track my progress in learning new software tools.	growth	self_reflection	actionable
-905	Workshops on negotiation skills could improve conflict resolution and agreement outcomes.	team	course_feedback	actionable
-527	The team's feedback process lacks follow-up actions, making it less effective.	team	manager_feedback	partially_actionable
-613	The department's onboarding process could include more collaborative team bonding activities.	team	manager_feedback	actionable
+904	Workshops on negotiation skills could improve conflict resolution and agreement outcomes.	team	course_feedback	actionable
+526	The team's feedback process lacks follow-up actions, making it less effective.	team	manager_feedback	partially_actionable
+951	Frequent changes in project direction due to poor planning cause wasted effort.	team	manager_feedback	actionable
 51	Must work on managing time between competing priorities	growth	peer_review	actionable
-969	I must work on my ability to collaborate with cross-functional teams effectively.	growth	self_reflection	actionable
-103	Could benefit from more training on using collaboration tools	team	self_reflection	partially_actionable
-183	Must work on setting clearer personal development goals	skill	course_feedback	actionable
-776	I should take more time to reflect on what I'm learning and how it applies.	growth	self_reflection	actionable
-269	The course's assignments don't align with learning objectives; revising them for relevance would improve outcomes.	subject	course_feedback	partially_actionable
-541	Frequent multitasking reduces the quality of my work.	productivity	peer_review	actionable
+968	I must work on my ability to collaborate with cross-functional teams effectively.	growth	self_reflection	actionable
+85	Rarely get opportunities to practice public speaking	team	course_feedback	descriptive_only
+284	The team's use of feedback is inconsistent; providing training on its implementation could help.	team	manager_feedback	actionable
+775	I should take more time to reflect on what I'm learning and how it applies.	growth	self_reflection	actionable
+389	The course's content assumes prior knowledge not covered; suggesting prerequisite modules would help.	subject	course_feedback	partially_actionable
+540	Frequent multitasking reduces the quality of my work.	productivity	peer_review	actionable
 9	Need better tools for tracking individual progress	growth	course_feedback	partially_actionable
 69	Rarely get feedback on my ability to collaborate with others	communication	course_feedback	partially_actionable
-483	The course content is too theoretical and lacks practical application examples.	subject	course_feedback	actionable
-952	Frequent changes in project direction due to poor planning cause wasted effort.	team	manager_feedback	actionable
-279	The project's timeline did not allow for adequate testing phases.	productivity	peer_review	actionable
-940	Frequent meetings with unclear agendas waste time that could be spent on tasks.	productivity	peer_review	actionable
-629	I should refine my time management techniques to avoid working late hours consistently.	growth	self_reflection	actionable
-792	I must improve my time management to avoid overcommitting myself.	productivity	self_reflection	actionable
-428	Frequent last-minute changes disrupt workflow and deadlines.	productivity	peer_review	partially_actionable
-798	I should make more time for continuous learning outside of work responsibilities.	growth	self_reflection	actionable
-750	Workshops on effective goal-setting would improve individual and team performance.	growth	course_feedback	actionable
-135	Could improve my ability to listen actively during discussions	team	course_feedback	actionable
-365	The course's assignments don't align with learning objectives; revising them for relevance would improve outcomes.	subject	course_feedback	partially_actionable
-964	Frequent misunderstandings between team members indicate a need for better communication protocols.	team	manager_feedback	actionable
-137	Rarely get feedback on my ability to collaborate with others	growth	peer_review	descriptive_only
-488	I need to practice summarizing my thoughts clearly in meetings.	communication	self_reflection	actionable
-310	I need to practice more structured feedback; adopting frameworks like SBI would help.	communication	self_reflection	partially_actionable
-177	Must work on asking for feedback more proactively	skill	manager_feedback	actionable
-701	I'm not using my manager's feedback effectively to identify skill gaps.	growth	self_reflection	partially_actionable
-630	The course's assessment methods focus too much on memorization rather than critical thinking.	subject	course_feedback	actionable
-268	The team's feedback loops lack metrics; quantifying outcomes would help measure impact.	team	manager_feedback	actionable
-778	I need to be more disciplined in following through on action items.	productivity	self_reflection	actionable
-649	I often focus on short-term goals rather than long-term professional development planning.	growth	self_reflection	partially_actionable
-713	The project timeline needs better alignment with client expectations to avoid last-minute changes.	communication	manager_feedback	actionable
-337	The course's reading lists are too long; curating essential texts would reduce overwhelm.	subject	course_feedback	partially_actionable
-295	The project's timeline didn't allow for adequate user testing.	productivity	peer_review	actionable
-815	Creating a centralized knowledge repository would improve access to important information.	skill	manager_feedback	actionable
-284	The team's use of feedback is inconsistent; providing training on its implementation could help.	team	manager_feedback	actionable
 96	Must work on managing time between competing priorities	skill	manager_feedback	partially_actionable
-657	I should implement weekly reviews to identify patterns in my productivity challenges.	growth	self_reflection	actionable
-860	I must be more organized in my workflow to manage multiple projects efficiently.	productivity	self_reflection	actionable
-389	The course's content assumes prior knowledge not covered; suggesting prerequisite modules would help.	subject	course_feedback	partially_actionable
-557	The course syllabus isn't providing enough real-world context for the material.	subject	course_feedback	actionable
-808	I need to practice clarity in my communication, especially during high-pressure moments.	communication	self_reflection	actionable
-85	Rarely get opportunities to practice public speaking	team	course_feedback	descriptive_only
-631	I'm not effectively synthesizing feedback from multiple sources to prioritize personal goals.	growth	self_reflection	partially_actionable
-547	Frequent conflicts in team roles create confusion and inefficiency.	team	peer_review	partially_actionable
-754	The current software lacks features that would reduce repetitive administrative tasks.	productivity	manager_feedback	partially_actionable
+137	Rarely get feedback on my ability to collaborate with others	growth	peer_review	descriptive_only
+279	The project's timeline did not allow for adequate testing phases.	productivity	peer_review	actionable
+939	Frequent meetings with unclear agendas waste time that could be spent on tasks.	productivity	peer_review	actionable
+628	I should refine my time management techniques to avoid working late hours consistently.	growth	self_reflection	actionable
+217	My delegation habits need work; practicing clear task assignment would improve team performance.	team	self_reflection	partially_actionable
+428	Frequent last-minute changes disrupt workflow and deadlines.	productivity	peer_review	partially_actionable
+797	I should make more time for continuous learning outside of work responsibilities.	growth	self_reflection	actionable
+269	The course's assignments don't align with learning objectives; revising them for relevance would improve outcomes.	subject	course_feedback	partially_actionable
+135	Could improve my ability to listen actively during discussions	team	course_feedback	actionable
+644	I should schedule regular check-ins to ensure my team understands evolving project requirements.	team	self_reflection	actionable
+963	Frequent misunderstandings between team members indicate a need for better communication protocols.	team	manager_feedback	actionable
+764	Course instructors should provide more varied assessment methods to measure learning.	subject	course_feedback	partially_actionable
+488	I need to practice summarizing my thoughts clearly in meetings.	communication	self_reflection	actionable
+483	The course content is too theoretical and lacks practical application examples.	subject	course_feedback	actionable
+177	Must work on asking for feedback more proactively	skill	manager_feedback	actionable
+700	I'm not using my manager's feedback effectively to identify skill gaps.	growth	self_reflection	partially_actionable
+612	The department's onboarding process could include more collaborative team bonding activities.	team	manager_feedback	actionable
+268	The team's feedback loops lack metrics; quantifying outcomes would help measure impact.	team	manager_feedback	actionable
+791	I must improve my time management to avoid overcommitting myself.	productivity	self_reflection	actionable
+337	The course's reading lists are too long; curating essential texts would reduce overwhelm.	subject	course_feedback	partially_actionable
+853	I must be more proactive in identifying and addressing bottlene rights.	productivity	self_reflection	actionable
+556	The course syllabus isn't providing enough real-world context for the material.	subject	course_feedback	actionable
+295	The project's timeline didn't allow for adequate user testing.	productivity	peer_review	actionable
+814	Creating a centralized knowledge repository would improve access to important information.	skill	manager_feedback	actionable
+712	The project timeline needs better alignment with client expectations to avoid last-minute changes.	communication	manager_feedback	actionable
+656	I should implement weekly reviews to identify patterns in my productivity challenges.	growth	self_reflection	actionable
+648	I often focus on short-term goals rather than long-term professional development planning.	growth	self_reflection	partially_actionable
+360	The team's knowledge-sharing is ad hoc; scheduling regular workshops would enhance collaboration.	growth	manager_feedback	actionable
+561	I need to improve my ability to give constructive criticism.	team	self_reflection	actionable
+807	I need to practice clarity in my communication, especially during high-pressure moments.	communication	self_reflection	actionable
+771	I should adopt better organization habits to manage multiple projects efficiently.	productivity	self_reflection	actionable
+630	I'm not effectively synthesizing feedback from multiple sources to prioritize personal goals.	growth	self_reflection	partially_actionable
+753	The current software lacks features that would reduce repetitive administrative tasks.	productivity	manager_feedback	partially_actionable
 396	The team's use of feedback is inconsistent; providing training on its implementation could help.	team	manager_feedback	actionable
 264	The team's use of terminology is inconsistent; creating a shared glossary would improve alignment.	team	manager_feedback	actionable
-540	I should review my work for consistency and accuracy before submission.	team	self_reflection	actionable
-941	I need to refine my ability to write concise and clear documentation.	skill	self_reflection	actionable
-772	I should adopt better organization habits to manage multiple projects efficiently.	productivity	self_reflection	actionable
+629	The course's assessment methods focus too much on memorization rather than critical thinking.	subject	course_feedback	actionable
+940	I need to refine my ability to write concise and clear documentation.	skill	self_reflection	actionable
+777	I need to be more disciplined in following through on action items.	productivity	self_reflection	actionable
 43	Collaboration between departments is often siloed	team	course_feedback	partially_actionable
-986	There's a lack of clear direction from leadership, which affects team motivation.	team	peer_review	actionable
-824	I should be more concise in my emails and written communication.	communication	self_reflection	actionable
-608	Diversifying our team's skill sets would improve our ability to handle complex tasks.	skill	peer_review	actionable
-765	Course instructors should provide more varied assessment methods to measure learning.	subject	course_feedback	partially_actionable
-611	The workflow analysis tool we use lacks customization for our specific team structure.	productivity	peer_review	partially_actionable
+985	There's a lack of clear direction from leadership, which affects team motivation.	team	peer_review	actionable
+823	I should be more concise in my emails and written communication.	communication	self_reflection	actionable
+607	Diversifying our team's skill sets would improve our ability to handle complex tasks.	skill	peer_review	actionable
 87	Could improve my ability to ask clarifying questions	skill	manager_feedback	partially_actionable
-360	The team's knowledge-sharing is ad hoc; scheduling regular workshops would enhance collaboration.	growth	manager_feedback	actionable
+610	The workflow analysis tool we use lacks customization for our specific team structure.	productivity	peer_review	partially_actionable
+365	The course's assignments don't align with learning objectives; revising them for relevance would improve outcomes.	subject	course_feedback	partially_actionable
+186	Must work on developing better documentation habits	skill	self_reflection	partially_actionable
+330	My communication style is direct but sometimes perceived as harsh; practicing empathy would improve clarity.	communication	self_reflection	partially_actionable
 16	Team meetings often lack clear agendas or time limits	productivity	manager_feedback	partially_actionable
 490	I should use templates to streamline repetitive tasks and improve efficiency.	productivity	self_reflection	actionable
-753	Frequent peer reviews can help identify blind spots in project execution.	team	peer_review	actionable
+752	Frequent peer reviews can help identify blind spots in project execution.	team	peer_review	actionable
 353	The course's feedback is too generic; providing specific examples would help learners improve.	subject	course_feedback	partially_actionable
+546	Frequent conflicts in team roles create confusion and inefficiency.	team	peer_review	partially_actionable
+223	My conflict resolution style is defensive; training in assertive communication would be beneficial.	communication	self_reflection	partially_actionable
 77	Rarely receive guidance on how to improve performance	team	peer_review	partially_actionable
-165	Rarely get feedback on my ability to collaborate with others	team	manager_feedback	descriptive_only
-511	Frequent interruptions during focused work reduce overall output quality.	team	peer_review	partially_actionable
-538	I need to improve my ability to accept feedback without defensiveness.	team	self_reflection	actionable
+537	I need to improve my ability to accept feedback without defensiveness.	team	self_reflection	actionable
 251	My tendency to overcommit resources leads to bottlenecks; applying resource planning techniques could help.	productivity	self_reflection	partially_actionable
-960	The team's progress updates are inconsistent, making it hard to track milestones.	team	manager_feedback	actionable
-334	I need to practice more structured feedback; adopting frameworks like the STAR method would help.	communication	self_reflection	partially_actionable
-885	Creating a centralized knowledge repository would improve access to important information.	skill	manager_feedback	actionable
-840	I need to be more open to receiving constructive criticism without defensiveness.	communication	self_reflection	actionable
-696	The course's feedback mechanisms don't provide enough detail for meaningful improvement.	subject	course_feedback	actionable
+959	The team's progress updates are inconsistent, making it hard to track milestones.	team	manager_feedback	actionable
+318	I need to improve my listening skills during feedback sessions; practicing active listening would help.	communication	self_reflection	partially_actionable
+884	Creating a centralized knowledge repository would improve access to important information.	skill	manager_feedback	actionable
+839	I need to be more open to receiving constructive criticism without defensiveness.	communication	self_reflection	actionable
+695	The course's feedback mechanisms don't provide enough detail for meaningful improvement.	subject	course_feedback	actionable
 313	The course's content delivery is passive; incorporating interactive elements would improve engagement.	subject	course_feedback	partially_actionable
 393	The course's feedback is too generic; providing specific examples would help learners improve.	subject	course_feedback	partially_actionable
-825	Creating a structured feedback framework would increase actionability.	team	manager_feedback	actionable
-217	My delegation habits need work; practicing clear task assignment would improve team performance.	team	self_reflection	partially_actionable
-27	Could improve my ability to explain technical concepts clearly	skill	peer_review	actionable
-854	I must be more proactive in identifying and addressing bottlene rights.	productivity	self_reflection	actionable
-558	I need to practice time-blocking techniques to manage my workload better.	growth	self_reflection	actionable
-29	Frequent last-minute changes disrupt workflow	productivity	course_feedback	partially_actionable
-543	The course requires too much passive learning; more interactive elements would help.	subject	course_feedback	actionable
-562	I need to improve my ability to give constructive criticism.	team	self_reflection	actionable
-223	My conflict resolution style is defensive; training in assertive communication would be beneficial.	communication	self_reflection	partially_actionable
-392	The team's workflow lacks automation; identifying repetitive tasks for tooling could improve efficiency.	productivity	manager_feedback	actionable
-192	Few opportunities to practice time management techniques	team	manager_feedback	partially_actionable
-318	I need to improve my listening skills during feedback sessions; practicing active listening would help.	communication	self_reflection	partially_actionable
-645	I should schedule regular check-ins to ensure my team understands evolving project requirements.	team	self_reflection	actionable
-186	Must work on developing better documentation habits	skill	self_reflection	partially_actionable
-987	I need to enhance my ability to present complex information in a digestible format.	skill	self_reflection	actionable
-737	Frequent team-building activities could strengthen relationships and reduce friction.	team	course_feedback	actionable
-935	I must work on managing stress to maintain focus during high-pressure situations.	productivity	self_reflection	actionable
+824	Creating a structured feedback framework would increase actionability.	team	manager_feedback	actionable
 338	My reluctance to ask for help leads to inefficiencies; fostering a culture of inquiry would improve teamwork.	team	self_reflection	partially_actionable
-644	The training modules need to be more interactive to engage learners effectively.	skill	course_feedback	actionable
-762	I must improve my time management by using prioritization frameworks.	productivity	self_reflection	actionable
+27	Could improve my ability to explain technical concepts clearly	skill	peer_review	actionable
+849	I need to be more disciplined in following through on action items.	productivity	self_reflection	actionable
+557	I need to practice time-blocking techniques to manage my workload better.	growth	self_reflection	actionable
+29	Frequent last-minute changes disrupt workflow	productivity	course_feedback	partially_actionable
+542	The course requires too much passive learning; more interactive elements would help.	subject	course_feedback	actionable
+539	I should review my work for consistency and accuracy before submission.	team	self_reflection	actionable
+632	I struggle to balance detailed feedback with time constraints during peer reviews.	communication	self_reflection	partially_actionable
+643	The training modules need to be more interactive to engage learners effectively.	skill	course_feedback	actionable
+192	Few opportunities to practice time management techniques	team	manager_feedback	partially_actionable
+510	Frequent interruptions during focused work reduce overall output quality.	team	peer_review	partially_actionable
+103	Could benefit from more training on using collaboration tools	team	self_reflection	partially_actionable
+165	Rarely get feedback on my ability to collaborate with others	team	manager_feedback	descriptive_only
+986	I need to enhance my ability to present complex information in a digestible format.	skill	self_reflection	actionable
+736	Frequent team-building activities could strengthen relationships and reduce friction.	team	course_feedback	actionable
+926	I need to prioritize tasks more effectively to avoid last-minute rush work.	productivity	self_reflection	actionable
+392	The team's workflow lacks automation; identifying repetitive tasks for tooling could improve efficiency.	productivity	manager_feedback	actionable
+183	Must work on setting clearer personal development goals	skill	course_feedback	actionable
+761	I must improve my time management by using prioritization frameworks.	productivity	self_reflection	actionable
 248	The project's scope creep wasn't managed effectively; enforcing change control processes would improve planning.	productivity	peer_review	actionable

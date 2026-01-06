@@ -234,6 +234,7 @@ if __name__ == "__main__":
     import sys
     import random
     from collections import defaultdict
+    import argparse
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--tsv-path", type=str, default="./dataset/synthetic_feedback_dataset.tsv",
@@ -241,13 +242,17 @@ if __name__ == "__main__":
     parser.add_argument("--train-ratio", type=float, default=0.8)
     parser.add_argument("--test-ratio", type=float, default=0.1)
     parser.add_argument("--stop-ratio", type=float, default=0.1)
+    parser.add_argument("--repair-mode", type=str, default="drop", choices=["drop", "remap"],
+                        help="What to do with invalid rows: drop them or remap to safe defaults")
     args = parser.parse_args()
 
     if not os.path.exists(args.tsv_path):
         print(f"Error: TSV file not found at {args.tsv_path}")
         sys.exit(1)
 
+    # -----------------------------
     # Load dataset
+    # -----------------------------
     with open(args.tsv_path, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f, delimiter="\t")
         rows = list(reader)
@@ -255,21 +260,97 @@ if __name__ == "__main__":
 
     total_rows = len(rows)
 
-    # Normalize text and reindex feedback_id
+    # -----------------------------
+    # Normalize text, canonicalize columns, reindex feedback_id
+    # -----------------------------
+    removed_count = 0
+    bad_rows = []
+
+    # print distributions BEFORE normalization
+    from collections import Counter
+    before_cat = Counter([r.get("category", "").strip() for r in rows])
+    before_src = Counter([r.get("source_context", "").strip() for r in rows])
+    before_hint = Counter([r.get("actionability_hint", "").strip() for r in rows])
+    print("Before normalization counts (category):", dict(before_cat))
+    print("Before normalization counts (source_context):", dict(before_src))
+    print("Before normalization counts (actionability_hint):", dict(before_hint))
+
+    normalized_rows = []
     for i, row in enumerate(rows):
-        text = row["feedback_text"]
+        # normalize feedback_text
+        text = row.get("feedback_text", "")
         safe_text = text.encode("ascii", "ignore").decode("ascii").replace("\t", " ").replace("\n", " ")
         row["feedback_text"] = safe_text
-        row["feedback_id"] = str(i)
 
+        # canonicalize categorical fields
+        cat = row.get("category", "").strip().lower()
+        src = row.get("source_context", "").strip().lower()
+        hint = row.get("actionability_hint", "").strip().lower()
+
+        # apply known mappings
+        cat = CATEGORY_MAP.get(cat, cat)
+        hint = ACTIONABILITY_MAP.get(hint, hint)
+
+        # normalize underscores/spaces
+        cat = cat.replace(" ", "_")
+        hint = hint.replace(" ", "_")
+        src = src.replace(" ", "_")
+
+        # repair or drop invalid rows
+        if cat not in CATEGORY_SET or src not in SOURCE_SET or hint not in ACTIONABILITY_SET:
+            if args.repair_mode == "drop":
+                removed_count += 1
+                bad_rows.append(row)
+                continue
+            elif args.repair_mode == "remap":
+                if cat not in CATEGORY_SET:
+                    cat = "subject"
+                if src not in SOURCE_SET:
+                    src = "self_reflection"
+                if hint not in ACTIONABILITY_SET:
+                    hint = "partially_actionable"
+
+        row["category"] = cat
+        row["source_context"] = src
+        row["actionability_hint"] = hint
+
+        row["feedback_id"] = str(len(normalized_rows))  # sequential ID
+        normalized_rows.append(row)
+
+    print(f"Removed or remapped {removed_count} invalid rows. Kept {len(normalized_rows)} valid rows.")
+    rows = normalized_rows
+    total_rows = len(rows)
+
+    # write bad rows for inspection
+    if removed_count > 0:
+        bad_path = os.path.splitext(args.tsv_path)[0] + "_bad_rows.tsv"
+        with open(bad_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=headers, delimiter="\t")
+            writer.writeheader()
+            writer.writerows(bad_rows)
+        print(f"Saved {removed_count} invalid rows to {bad_path}")
+
+    # -----------------------------
+    # Overwrite main TSV with cleaned dataset
+    # -----------------------------
+    with open(args.tsv_path, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=headers, delimiter="\t")
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"Main dataset TSV updated with normalized text, canonicalized columns, and reindexed IDs: {args.tsv_path}")
+
+    # -----------------------------
     # Delete old split files if they exist
+    # -----------------------------
     base = os.path.splitext(args.tsv_path)[0]
     for split_name in ["train", "test", "stop"]:
         split_file = f"{base}_{split_name}.tsv"
         if os.path.exists(split_file):
             os.remove(split_file)
 
-    # Stratify by composite key: category|source_context|actionability_hint
+    # -----------------------------
+    # Stratify by composite key and split
+    # -----------------------------
     groups = defaultdict(list)
     for row in rows:
         key = f"{row['category']}|{row['source_context']}|{row['actionability_hint']}"
@@ -278,7 +359,7 @@ if __name__ == "__main__":
     train_rows, test_rows, stop_rows = [], [], []
     random.seed(42)
 
-    for key, items in groups.items():
+    for items in groups.values():
         random.shuffle(items)
         n = len(items)
         n_train = int(round(n * args.train_ratio))
@@ -289,12 +370,14 @@ if __name__ == "__main__":
         test_rows.extend(items[n_train:n_train+n_test])
         stop_rows.extend(items[n_train+n_test:])
 
-    # Shuffle each split to avoid ordering artifacts
+    # Shuffle each split
     random.shuffle(train_rows)
     random.shuffle(test_rows)
     random.shuffle(stop_rows)
 
-    # Save function
+    # -----------------------------
+    # Save splits
+    # -----------------------------
     def save_split(split_rows, split_name):
         out_path = f"{base}_{split_name}.tsv"
         with open(out_path, "w", encoding="utf-8", newline="") as f:
@@ -307,5 +390,4 @@ if __name__ == "__main__":
     save_split(test_rows, "test")
     save_split(stop_rows, "stop")
 
-    print("\nDataset reindexed, normalized, and stratified split successfully.")
-
+    print("\nDataset fully normalized, canonicalized, reindexed, and stratified into train/test/stop successfully.")

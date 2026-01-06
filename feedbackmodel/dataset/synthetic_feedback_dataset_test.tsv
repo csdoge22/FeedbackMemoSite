@@ -1,97 +1,98 @@
 feedback_id	feedback_text	category	source_context	actionability_hint
-934	There's a lack of mentorship opportunities, which hinders skill development for new hires.	skill	manager_feedback	actionable
-717	Seeking mentorship has significantly improved my ability to navigate complex tasks.	growth	self_reflection	actionable
-836	I must be more organized in my workflow to manage multiple projects efficiently.	productivity	self_reflection	actionable
-329	The course's feedback is too generic; providing specific examples would help learners improve.	subject	course_feedback	partially_actionable
-937	I need to improve my ability to articulate technical concepts in simple terms.	skill	self_reflection	actionable
-970	Frequent shifts in project goals without proper communication lead to confusion.	team	manager_feedback	actionable
-730	Team members should be encouraged to share knowledge more openly.	skill	manager_feedback	actionable
-542	I'm not utilizing available resources to improve my skills.	growth	self_reflection	partially_actionable
-640	The course's peer review assignments could include more structured evaluation criteria.	team	course_feedback	actionable
-609	The peer review process feels rushed, leading to incomplete feedback that's not actionable.	team	manager_feedback	partially_actionable
-602	The project timeline needs clearer milestones to prevent scope creep and missed deadlines.	team	manager_feedback	actionable
-614	During code reviews, I often miss suggesting alternative solutions that might be more efficient.	skill	peer_review	partially_actionable
-44	Must work on adapting my communication style for different audiences	communication	manager_feedback	actionable
-800	I need to be more open to receiving constructive criticism without defensiveness.	communication	self_reflection	actionable
-11	Workload distribution feels uneven among team members	productivity	peer_review	partially_actionable
-829	Course instructors need to provide more personalized guidance for struggling students.	subject	course_feedback	partially_actionable
-894	I should focus on improving my ability to think strategically about long-term goals.	growth	self_reflection	actionable
-195	Could benefit from more structured onboarding for new projects	growth	peer_review	actionable
-549	The course material is too theory-heavy; more hands-on exercises would help.	subject	course_feedback	actionable
+405	I'm struggling with time management, which affects my productivity.	productivity	self_reflection	partially_actionable
 270	I need to improve my ability to give specific, actionable feedback; practicing frameworks like SBI would help.	communication	self_reflection	partially_actionable
-378	I need to practice more structured feedback; adopting frameworks like the STAR method would help.	communication	self_reflection	partially_actionable
-352	The team's collaboration lacks transparency; implementing shared dashboards would improve efficiency.	team	manager_feedback	actionable
-959	I should seek out workshops or training programs to strengthen my analytical skills.	growth	self_reflection	actionable
-581	The team's feedback is often delayed, which reduces its impact.	team	manager_feedback	partially_actionable
-791	Course workload needs adjustment to allow for more hands-on learning.	subject	course_feedback	partially_actionable
-492	I need to improve my ability to accept feedback and use it for growth.	team	self_reflection	actionable
-891	Creating a structured feedback framework would increase actionability.	team	manager_feedback	actionable
-642	The team needs clearer protocols for resolving conflicts that arise during collaborative tasks.	team	manager_feedback	actionable
-659	I'm not seeking sufficient mentorship to improve my leadership skills in team settings.	growth	self_reflection	partially_actionable
-106	Must work on accepting feedback without defensiveness	skill	course_feedback	partially_actionable
-242	The project's documentation is inconsistent; implementing standardized templates would improve clarity.	skill	peer_review	actionable
-404	We need structured peer feedback sessions to improve collaboration.	team	manager_feedback	actionable
+195	Could benefit from more structured onboarding for new projects	growth	peer_review	actionable
 322	My tendency to avoid difficult conversations hinders team growth; learning conflict resolution techniques would improve this.	team	self_reflection	partially_actionable
-274	My tendency to avoid difficult conversations hinders team growth; learning conflict resolution techniques would improve this.	team	self_reflection	partially_actionable
-419	Frequent changes to project scope make it hard to stay on track.	growth	peer_review	partially_actionable
-555	Frequent distractions during work hours reduce overall productivity.	productivity	peer_review	partially_actionable
-544	I need to practice summarizing my thoughts clearly in meetings.	communication	self_reflection	actionable
+494	I should prioritize tasks based on their impact and urgency.	productivity	self_reflection	actionable
+729	Team members should be encouraged to share knowledge more openly.	skill	manager_feedback	actionable
+33	Could benefit from more structured onboarding for new members	team	peer_review	actionable
+982	I should explore new tools or software that can streamline my daily workflow.	growth	self_reflection	actionable
+893	I should focus on improving my ability to think strategically about long-term goals.	growth	self_reflection	actionable
+933	There's a lack of mentorship opportunities, which hinders skill development for new hires.	skill	manager_feedback	actionable
+790	Course workload needs adjustment to allow for more hands-on learning.	subject	course_feedback	partially_actionable
+639	The course's peer review assignments could include more structured evaluation criteria.	team	course_feedback	actionable
+11	Workload distribution feels uneven among team members	productivity	peer_review	partially_actionable
+890	Creating a structured feedback framework would increase actionability.	team	manager_feedback	actionable
 261	The course's feedback is delivered too late; real-time evaluation tools could enhance learning.	subject	course_feedback	actionable
-369	The course's content assumes prior knowledge not covered; suggesting prerequisite modules would help.	subject	course_feedback	partially_actionable
-561	The team's feedback process lacks follow-up actions, making it less effective.	team	manager_feedback	partially_actionable
+581	I need to improve my ability to ask for help when needed.	team	self_reflection	actionable
+608	The peer review process feels rushed, leading to incomplete feedback that's not actionable.	team	manager_feedback	partially_actionable
+242	The project's documentation is inconsistent; implementing standardized templates would improve clarity.	skill	peer_review	actionable
+716	Seeking mentorship has significantly improved my ability to navigate complex tasks.	growth	self_reflection	actionable
+799	I need to be more open to receiving constructive criticism without defensiveness.	communication	self_reflection	actionable
+958	I should seek out workshops or training programs to strengthen my analytical skills.	growth	self_reflection	actionable
+969	Frequent shifts in project goals without proper communication lead to confusion.	team	manager_feedback	actionable
+44	Must work on adapting my communication style for different audiences	communication	manager_feedback	actionable
+541	I'm not utilizing available resources to improve my skills.	growth	self_reflection	partially_actionable
+828	Course instructors need to provide more personalized guidance for struggling students.	subject	course_feedback	partially_actionable
+580	The team's feedback is often delayed, which reduces its impact.	team	manager_feedback	partially_actionable
+352	The team's collaboration lacks transparency; implementing shared dashboards would improve efficiency.	team	manager_feedback	actionable
+708	I struggle with providing feedback that's both specific and constructive in time-sensitive situations.	team	self_reflection	partially_actionable
+641	The team needs clearer protocols for resolving conflicts that arise during collaborative tasks.	team	manager_feedback	actionable
+258	My feedback style is overly technical; simplifying language would make it more accessible.	communication	self_reflection	partially_actionable
+601	The project timeline needs clearer milestones to prevent scope creep and missed deadlines.	team	manager_feedback	actionable
+495	Frequent disagreements about project timelines slow down progress.	team	peer_review	partially_actionable
+492	I need to improve my ability to accept feedback and use it for growth.	team	self_reflection	actionable
+404	We need structured peer feedback sessions to improve collaboration.	team	manager_feedback	actionable
+309	The course's reading lists are too long; curating essential texts would reduce overwhelm.	subject	course_feedback	partially_actionable
+658	I'm not seeking sufficient mentorship to improve my leadership skills in team settings.	growth	self_reflection	partially_actionable
+829	I should be more accountable in meeting deadlines and follow-through.	productivity	self_reflection	actionable
+419	Frequent changes to project scope make it hard to stay on track.	growth	peer_review	partially_actionable
+554	Frequent distractions during work hours reduce overall productivity.	productivity	peer_review	partially_actionable
+543	I need to practice summarizing my thoughts clearly in meetings.	communication	self_reflection	actionable
+106	Must work on accepting feedback without defensiveness	skill	course_feedback	partially_actionable
+179	Limited understanding of how team dynamics impact productivity	team	self_reflection	actionable
+560	The team's feedback process lacks follow-up actions, making it less effective.	team	manager_feedback	partially_actionable
 117	Need more training on how to handle disagreements	growth	course_feedback	descriptive_only
 0	Need more mentorship opportunities to improve project management skills	skill	peer_review	actionable
-663	I should focus more on developing communication skills to improve team collaboration.	communication	self_reflection	actionable
-33	Could benefit from more structured onboarding for new members	team	peer_review	actionable
+662	I should focus more on developing communication skills to improve team collaboration.	communication	self_reflection	actionable
+683	The course content needs more diverse examples to cater to different learning styles.	subject	course_feedback	actionable
 42	Need better understanding of how to contribute effectively in meetings	skill	self_reflection	actionable
-582	I need to improve my ability to ask for help when needed.	team	self_reflection	actionable
+613	During code reviews, I often miss suggesting alternative solutions that might be more efficient.	skill	peer_review	partially_actionable
 275	The project's resource allocation was unbalanced; using workload balancing tools could improve efficiency.	productivity	peer_review	actionable
-861	Workshops on effective communication could improve team collaboration.	team	course_feedback	actionable
-648	The team's knowledge-sharing sessions could be more structured to cover relevant topics.	growth	manager_feedback	actionable
-367	The project's timeline didn't allow for adequate user testing.	productivity	peer_review	actionable
+860	Workshops on effective communication could improve team collaboration.	team	course_feedback	actionable
 502	I need to improve my ability to listen actively during team discussions.	team	self_reflection	actionable
+367	The project's timeline didn't allow for adequate user testing.	productivity	peer_review	actionable
+369	The course's content assumes prior knowledge not covered; suggesting prerequisite modules would help.	subject	course_feedback	partially_actionable
 151	Limited understanding of how team dynamics impact productivity	team	course_feedback	actionable
-372	The team's workflow lacks automation; identifying repetitive tasks for tooling could improve efficiency.	productivity	manager_feedback	actionable
-710	The course's assessment methods don't fully reflect real-world application skills.	subject	course_feedback	actionable
-962	The feedback I receive often lacks actionable steps for improvement.	communication	course_feedback	partially_actionable
+346	My tendency to avoid difficult conversations hinders team growth; learning conflict resolution techniques would improve this.	team	self_reflection	partially_actionable
+709	The course's assessment methods don't fully reflect real-world application skills.	subject	course_feedback	actionable
+961	The feedback I receive often lacks actionable steps for improvement.	communication	course_feedback	partially_actionable
 5	Group brainstorming sessions often lack clear direction	productivity	manager_feedback	partially_actionable
-494	I should prioritize tasks based on their impact and urgency.	productivity	self_reflection	actionable
-729	I should prioritize learning new technologies to stay competitive in my field.	growth	self_reflection	actionable
-536	I should use project management tools to organize my tasks more effectively.	productivity	self_reflection	actionable
+520	Frequent interruptions during meetings reduce focus and efficiency.	team	peer_review	partially_actionable
+728	I should prioritize learning new technologies to stay competitive in my field.	growth	self_reflection	actionable
+535	I should use project management tools to organize my tasks more effectively.	productivity	self_reflection	actionable
 300	The team's use of jargon hinders clarity; encouraging plain language would improve transparency.	team	manager_feedback	actionable
-495	Frequent disagreements about project timelines slow down progress.	team	peer_review	partially_actionable
-709	I struggle with providing feedback that's both specific and constructive in time-sensitive situations.	team	self_reflection	partially_actionable
-983	I should explore new tools or software that can streamline my daily workflow.	growth	self_reflection	actionable
-309	The course's reading lists are too long; curating essential texts would reduce overwhelm.	subject	course_feedback	partially_actionable
-258	My feedback style is overly technical; simplifying language would make it more accessible.	communication	self_reflection	partially_actionable
-954	The team's performance reviews are too generic and do not address individual areas for growth.	team	course_feedback	partially_actionable
-915	I should take online courses to deepen my knowledge of data analysis techniques.	growth	self_reflection	actionable
+936	I need to improve my ability to articulate technical concepts in simple terms.	skill	self_reflection	actionable
+673	The training program should include more opportunities for peer-to-peer learning.	skill	course_feedback	actionable
+505	I'm not utilizing available mentorship opportunities to improve my skills.	skill	self_reflection	partially_actionable
+953	The team's performance reviews are too generic and do not address individual areas for growth.	team	course_feedback	partially_actionable
+914	I should take online courses to deepen my knowledge of data analysis techniques.	growth	self_reflection	actionable
 62	Frequent interruptions disrupt my ability to focus	productivity	course_feedback	partially_actionable
 472	I need to practice being more concise in my communication.	communication	self_reflection	actionable
-794	I should practice more active listening in team discussions to contribute better.	communication	self_reflection	actionable
-993	I need to develop better time management strategies to handle my workload more efficiently.	productivity	self_reflection	actionable
-316	The team's knowledge-sharing is ad hoc; scheduling regular skill share sessions would improve efficiency.	growth	manager_feedback	actionable
-521	Frequent interruptions during meetings reduce focus and efficiency.	team	peer_review	partially_actionable
+793	I should practice more active listening in team discussions to contribute better.	communication	self_reflection	actionable
+992	I need to develop better time management strategies to handle my workload more efficiently.	productivity	self_reflection	actionable
+647	The team's knowledge-sharing sessions could be more structured to cover relevant topics.	growth	manager_feedback	actionable
+374	My communication style is direct but sometimes perceived as harsh; practicing empathy would improve clarity.	communication	self_reflection	partially_actionable
 95	Limited understanding of how team dynamics impact productivity	team	peer_review	actionable
-405	I'm struggling with time management, which affects my productivity.	productivity	self_reflection	partially_actionable
-963	I need to develop better time management strategies to handle my workload more efficiently.	productivity	self_reflection	actionable
-831	Course modules should be more interactive to increase student engagement.	subject	course_feedback	partially_actionable
-346	My tendency to avoid difficult conversations hinders team growth; learning conflict resolution techniques would improve this.	team	self_reflection	partially_actionable
+874	Course content needs more emphasis on critical thinking and application of concepts.	subject	course_feedback	partially_actionable
+960	I must improve my ability to stay calm under pressure during critical tasks.	productivity	self_reflection	actionable
+830	Course modules should be more interactive to increase student engagement.	subject	course_feedback	partially_actionable
+274	My tendency to avoid difficult conversations hinders team growth; learning conflict resolution techniques would improve this.	team	self_reflection	partially_actionable
 84	Need better understanding of how to give effective feedback	skill	manager_feedback	partially_actionable
-820	I should improve my ability to summarize key points in meetings effectively.	communication	self_reflection	actionable
-506	I'm not utilizing available mentorship opportunities to improve my skills.	skill	self_reflection	partially_actionable
-881	Creating a structured feedback framework would increase actionability.	team	manager_feedback	actionable
-879	Course modules should be more interactive to increase student engagement.	subject	course_feedback	partially_actionable
-179	Limited understanding of how team dynamics impact productivity	team	self_reflection	actionable
+819	I should improve my ability to summarize key points in meetings effectively.	communication	self_reflection	actionable
+605	The course's lack of practical examples makes it hard to apply theoretical concepts.	growth	course_feedback	actionable
+880	Creating a structured feedback framework would increase actionability.	team	manager_feedback	actionable
+878	Course modules should be more interactive to increase student engagement.	subject	course_feedback	partially_actionable
+316	The team's knowledge-sharing is ad hoc; scheduling regular skill share sessions would improve efficiency.	growth	manager_feedback	actionable
 259	The project's user testing phase was skipped, leading to usability issues.	productivity	peer_review	actionable
-552	I should use a planner or digital tools to better organize my workflow.	productivity	self_reflection	actionable
+551	I should use a planner or digital tools to better organize my workflow.	productivity	self_reflection	actionable
 89	Need more training on how to handle disagreements	growth	self_reflection	actionable
-674	The training program should include more opportunities for peer-to-peer learning.	skill	course_feedback	actionable
+372	The team's workflow lacks automation; identifying repetitive tasks for tooling could improve efficiency.	productivity	manager_feedback	actionable
 443	The course requires too much passive learning; more interactive elements would help.	subject	course_feedback	actionable
 375	The project's scope creep wasn't managed effectively; enforcing change control processes would improve planning.	productivity	peer_review	actionable
-875	Course content needs more emphasis on critical thinking and application of concepts.	subject	course_feedback	partially_actionable
-990	The team's progress updates are inconsistent, making it hard to track milestones.	team	manager_feedback	actionable
-975	I must work on my ability to manage stress and anxiety during high-pressure tasks.	productivity	self_reflection	actionable
+329	The course's feedback is too generic; providing specific examples would help learners improve.	subject	course_feedback	partially_actionable
+989	The team's progress updates are inconsistent, making it hard to track milestones.	team	manager_feedback	actionable
+974	I must work on my ability to manage stress and anxiety during high-pressure tasks.	productivity	self_reflection	actionable
 175	Could benefit from more practice in leading discussions	team	course_feedback	partially_actionable
-864	I need to be more efficient in my workflow by avoiding multitasking.	productivity	self_reflection	actionable
-684	The course content needs more diverse examples to cater to different learning styles.	subject	course_feedback	actionable
+859	I must be more organized in my workflow to manage multiple projects efficiently.	productivity	self_reflection	actionable
+548	The course material is too theory-heavy; more hands-on exercises would help.	subject	course_feedback	actionable
