@@ -7,7 +7,9 @@ def label_text(file_path):
     # open and read the file
     with open(file_path, 'r') as f:
         data = f.read()
+    
     print(data)
+
 
 if __name__ == "__main__":
     label_text('./dataset/synthetic_feedback_dataset.tsv')
