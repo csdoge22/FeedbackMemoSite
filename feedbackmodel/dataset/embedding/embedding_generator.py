@@ -8,6 +8,10 @@ MODEL_NAME = "all-MiniLM-L6-v2"
 EMBEDDING_DIR = os.path.join(os.path.dirname(__file__), "../data/embeddings")
 os.makedirs(EMBEDDING_DIR, exist_ok=True)
 
+
+# -------------------------
+# Encode texts using SentenceTransformer
+# -------------------------
 def encode_texts(texts: list[str], model_name: str = MODEL_NAME) -> np.ndarray:
     """
     Generate embeddings for a list of texts using SentenceTransformer.
@@ -23,10 +27,14 @@ def encode_texts(texts: list[str], model_name: str = MODEL_NAME) -> np.ndarray:
     embeddings = model.encode(texts, show_progress_bar=True)
     return embeddings
 
+
+# -------------------------
+# Encode a dataset split with caching
+# -------------------------
 def encode_dataset_split(split_name: str) -> tuple[list[str], np.ndarray]:
     """
-    Encode the 'feedback_text' column for a specific dataset split,
-    and return embeddings along with unique string IDs.
+    Encode the 'feedback_text' column for a specific dataset split.
+    Automatically caches embeddings to disk to avoid recomputation.
 
     Args:
         split_name (str): 'train', 'test', or 'stop'.
@@ -38,24 +46,28 @@ def encode_dataset_split(split_name: str) -> tuple[list[str], np.ndarray]:
     df = load_dataset(split_name)
     if "feedback_text" not in df.columns:
         raise ValueError("Dataset must contain 'feedback_text' column.")
-    
-    ids = get_split_ids(split_name)
-    embeddings = encode_texts(df["feedback_text"].tolist())
 
-    # Save embeddings to disk for caching
-    save_path = os.path.join(EMBEDDING_DIR, f"{split_name}_{MODEL_NAME}_{df.shape[0]}rows.npy")
-    np.save(save_path, embeddings)
-    print(f"Saved {split_name} embeddings to: {save_path}")
+    ids = get_split_ids(split_name)
+    cache_path = os.path.join(EMBEDDING_DIR, f"{split_name}_{MODEL_NAME}_{df.shape[0]}rows.npy")
+
+    if os.path.exists(cache_path):
+        embeddings = np.load(cache_path)
+        print(f"Loaded cached embeddings for '{split_name}' ({df.shape[0]} rows).")
+    else:
+        documents = df["feedback_text"].tolist()
+        embeddings = encode_texts(documents)
+        np.save(cache_path, embeddings)
+        print(f"Saved embeddings for '{split_name}' ({df.shape[0]} rows) to cache.")
 
     return ids, embeddings
 
+
+# -------------------------
+# Encode all splits
+# -------------------------
 def encode_all_splits() -> dict[str, tuple[list[str], np.ndarray]]:
     """
-    Encode all dataset splits and return a dictionary mapping split_name
-    to (IDs, embeddings).
-
-    Returns:
-        dict[str, tuple[list[str], np.ndarray]]: Mapping from split to embeddings & IDs
+    Encode all dataset splits ('train', 'test', 'stop') and return dictionary mapping split -> (ids, embeddings).
     """
     results = {}
     for split in ["train", "test", "stop"]:
@@ -63,7 +75,11 @@ def encode_all_splits() -> dict[str, tuple[list[str], np.ndarray]]:
         results[split] = (ids, embeddings)
     return results
 
+
+# -------------------------
+# Main check
+# -------------------------
 if __name__ == "__main__":
     all_embeddings = encode_all_splits()
     for split, (ids, embs) in all_embeddings.items():
-        print(f"{split} -> {len(ids)} embeddings, shape: {embs.shape}")
+        print(f"{split}: {len(ids)} embeddings, shape {embs.shape}")
