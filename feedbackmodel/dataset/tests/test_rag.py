@@ -83,3 +83,31 @@ def test_rag_returns_empty_for_unmatched_filters(collection):
         n_results=3,
     )
     assert results == [[]], "RAG should return empty results for unmatched filters."
+    
+def test_similarity_search_select_all(collection):
+    """
+    Test retrieving top N results from the entire collection without any filters.
+    Ensures that the function handles single-query embeddings correctly.
+    """
+    query = "Any random query"
+    
+    # Encode single query (returns shape (1, embedding_dim))
+    query_emb = encode_texts([query])  # keep as 2D array
+    
+    results = retrieve_similar_with_filters(
+        collection,
+        query_embeddings=query_emb,
+        n_results=5  # top 5 from entire DB
+    )
+
+    # There should be exactly one outer list (per query)
+    assert len(results) == 1, f"Expected 1 result list for single query, got {len(results)}"
+
+    # Ensure we get at most n_results items in inner list
+    assert len(results[0]) <= 5, f"Expected <=5 results, got {len(results[0])}"
+
+    # Ensure each result has required keys
+    for res in results[0]:
+        for key in ("id", "document", "metadata", "distance"):
+            assert key in res, f"Missing key '{key}' in result"
+

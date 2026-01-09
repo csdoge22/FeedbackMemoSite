@@ -97,9 +97,9 @@ def initialize_db() -> chromadb.api.models.Collection:
 # ------------------------------------------------------------------
 
 def _filter_records(records, **filters):
+    """AND-filter records by metadata."""
     if not filters:
         return records
-
     filtered = []
     for r in records:
         md = r["metadata"]
@@ -114,32 +114,40 @@ def _filter_records(records, **filters):
 
 def retrieve_by_metadata(collection, **filters):
     """
-    Chroma 1.4.0 only allows ONE where operator.
-    We fetch broadly, then AND-filter in Python.
+    Safe AND filtering on metadata. Returns a list of records.
+    Supports zero filters (returns all documents) or multiple filters (AND logic).
+    Each record has: {'id', 'document', 'metadata'}
     """
-
-    if not filters:
-        raise ValueError("At least one metadata filter is required.")
-
-    primary_key, primary_value = next(iter(filters.items()))
-
-    raw = collection.get(
-        where={primary_key: primary_value},
-        include=["documents", "metadatas"],
-    )
+    if filters:
+        # Pick first filter for Chroma's where query
+        primary_key, primary_value = next(iter(filters.items()))
+        raw = collection.get(
+            where={primary_key: primary_value},
+            include=["documents", "metadatas", "embeddings"],  # valid includes
+        )
+    else:
+        # No filters → retrieve everything
+        raw = collection.get(include=["documents", "metadatas", "embeddings"])
 
     records = [
         {
             "id": raw["ids"][i],
             "document": raw["documents"][i],
             "metadata": raw["metadatas"][i],
+            "embedding": raw["embeddings"][i],
         }
-        for i in range(len(raw["ids"]))
+        for i in range(len(raw["documents"]))
     ]
 
-    filtered = _filter_records(records, **filters)
-    return filtered
+    # AND-filtering in Python if multiple filters
+    if filters:
+        filtered = []
+        for r in records:
+            if all(r["metadata"].get(k) == v for k, v in filters.items()):
+                filtered.append(r)
+        return filtered
 
+    return records
 
 # ------------------------------------------------------------------
 # RAG-style Retrieval with AND Filters (SAFE)
@@ -154,16 +162,28 @@ def retrieve_similar_with_filters(
     split: str | None = None,
 ):
     """
-    Vector similarity + AND metadata filtering (Chroma-safe).
+    Vector similarity + optional metadata filtering (Chroma-safe).
     Returns one result list per query embedding.
+
+    Args:
+        collection: Chroma collection
+        query_embeddings: np.ndarray of shape (num_queries, embedding_dim)
+                          or (embedding_dim,) for single query
+                          or list[list[float]]
+        n_results: number of top results to return per query
+        category, source_context, split: optional metadata filters
     """
 
-    # Normalize embeddings to list[list[float]]
+    # Ensure query_embeddings is a list of lists
     if isinstance(query_embeddings, np.ndarray):
-        query_embeddings = query_embeddings.tolist()
+        if query_embeddings.ndim == 1:
+            query_embeddings = [query_embeddings.tolist()]
+        else:
+            query_embeddings = query_embeddings.tolist()
     elif isinstance(query_embeddings, list) and isinstance(query_embeddings[0], (float, int)):
         query_embeddings = [query_embeddings]
 
+    # Build metadata filters
     filters = {}
     if split:
         filters["split"] = split
@@ -172,13 +192,15 @@ def retrieve_similar_with_filters(
     if source_context:
         filters["source_context"] = source_context
 
-    # If filters exist → metadata-first, then similarity
+    # Metadata-first retrieval if filters are provided
     if filters:
         candidate_records = retrieve_by_metadata(collection, **filters)
 
+        # If no candidates match, return empty lists for each query
         if not candidate_records:
             return [[] for _ in query_embeddings]
 
+        # Get embeddings for candidates
         candidate_embeddings = [
             collection.get(ids=[r["id"]], include=["embeddings"])["embeddings"][0]
             for r in candidate_records
@@ -200,18 +222,18 @@ def retrieve_similar_with_filters(
             ])
         return results
 
-    # No filters → direct Chroma query
+    # No metadata filters → direct Chroma query
     raw = collection.query(
         query_embeddings=query_embeddings,
         n_results=n_results,
-        include=["documents", "metadatas", "ids", "distances"],
+        include=["documents", "metadatas", "embeddings", "distances"],  # distances included!
     )
-    print("Raw RAG Ids:", raw["ids"])
 
+    # Format Chroma results consistently
     batched_results = []
-    for i in range(len(raw["ids"])):
+    for i in range(len(raw["documents"])):
         batch = []
-        for j in range(len(raw["ids"][i])):
+        for j in range(len(raw["documents"][i])):
             batch.append({
                 "id": raw["ids"][i][j],
                 "document": raw["documents"][i][j],
@@ -222,10 +244,13 @@ def retrieve_similar_with_filters(
 
     return batched_results
 
-
 # ------------------------------------------------------------------
 # Convenience Wrappers
 # ------------------------------------------------------------------
+
+def retrieve_all(collection):
+    """ Return all the documents in the collection. """
+    return retrieve_by_metadata(collection)
 
 def retrieve_by_category(collection, category):
     return retrieve_by_metadata(collection, category=category)
