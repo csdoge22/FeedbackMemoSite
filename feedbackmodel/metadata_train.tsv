@@ -1,0 +1,802 @@
+index	feedback_id	text	cluster_label	is_labeled	label	labeled
+0	576	the course isn't accessible for students with varying learning styles.	13	False	medium	True
+1	335	the project's resource allocation was unbalanced; using workload balancing tools could improve efficiency.	11	False	medium	True
+2	213	i tend to avoid difficult feedback; learning active listening techniques could improve my coaching.	4	False	medium	True
+3	962	i need to develop better time management strategies to handle my workload more efficiently.	0	False	medium	True
+4	614	i need to document my workflow steps more systematically to improve knowledge sharing.	7	False	medium	True
+5	584	frequent disagreements over work methods are slowing down progress.	2	False	medium	True
+6	779	i should improve my ability to summarize key points in meetings effectively.	4	False	medium	True
+7	449	frequent changes in requirements make it hard to stay focused.	9	False	medium	True
+8	41	frequent meetings reduce time available for focused work	0	False	medium	True
+9	283	the project's risk assessment was incomplete, leading to unexpected challenges.	14	False	medium	True
+10	850	course modules should be more interactive to increase student engagement.	10	False	medium	True
+11	634	i should implement a daily reflection routine to identify productivity trends.	0	False	medium	True
+12	863	i need to be more efficient in my workflow by avoiding multitasking.	7	False	medium	True
+13	6	peer feedback is occasionally too vague to be useful	6	False	medium	True
+14	902	creating a structured feedback framework would increase actionability.	6	False		False
+15	468	i need to improve my ability to adapt to changing project requirements.	9	False	medium	True
+16	574	frequent interruptions during focused work reduce overall output quality.	0	False		False
+17	246	the lab's grading system lacks differentiation between skill levels; introducing tiered evaluations could help.	13	False	medium	True
+18	680	i should develop a system to track my progress toward personal development goals.	8	False	medium	True
+19	432	the course lacks up-to-date materials that reflect industry standards.	13	False	medium	True
+20	417	the assignments are too vague; clearer instructions would improve quality.	1	False		False
+21	81	limited access to learning resources outside core responsibilities	5	False	medium	True
+22	208	the lecture examples were too theoretical; including more real-world applications would enhance understanding.	10	False		False
+23	115	could improve my ability to ask clarifying questions	4	False	medium	True
+24	107	could improve my ability to listen actively during discussions	4	False		False
+25	120	few opportunities to share knowledge with peers	12	False	medium	True
+26	668	i should establish clearer priorities for project tasks to improve overall productivity.	11	False	medium	True
+27	684	i'm not leveraging my manager's feedback effectively to shape my career trajectory.	6	False		False
+28	391	the project's documentation is inconsistent; implementing standardized templates would improve quality.	2	False	medium	True
+29	582	the course content is too theoretical and lacks practical application examples.	13	False		False
+30	895	i need to be more open to receiving constructive criticism without defensiveness.	4	False		False
+31	735	i should practice summarizing meeting points to ensure clarity and follow-up.	4	False		False
+32	131	could benefit from more training on using collaboration tools	12	False	medium	True
+33	978	i should focus on improving my ability to manage time effectively during long projects.	0	False		False
+34	149	must work on asking for feedback more proactively	6	False		False
+35	190	must work on accepting feedback without defensiveness	6	False		False
+36	147	could benefit from more practice in leading discussions	12	False	medium	True
+37	669	the team needs better protocols for handling disagreements in a constructive way.	2	False	medium	True
+38	724	establishing clear documentation practices would reduce onboarding time.	2	False	medium	True
+39	995	there's a lack of recognition for team members' hard work, which demotivates the group.	2	False	medium	True
+40	590	frequent interruptions during meetings reduce focus and efficiency.	0	False		False
+41	559	i should explore new learning platforms to expand my knowledge.	8	False	medium	True
+42	827	i must be more proactive in identifying and addressing bottlenecks.	11	False		False
+43	362	my reluctance to ask for help leads to inefficiencies; fostering a culture of inquiry would improve teamwork.	12	False	medium	True
+44	225	the team's use of jargon hinders clarity; encouraging plain language in meetings would improve transparency.	2	False		False
+45	281	the course's feedback mechanisms are delayed; real-time evaluation tools could improve learning outcomes.	10	False		False
+46	616	i'm not effectively using feedback from peers to identify areas for personal growth.	6	False		False
+47	187	could benefit from more training on using collaboration tools	12	False		False
+48	480	i should explore networking opportunities to expand my professional knowledge.	8	False	medium	True
+49	247	i often delay feedback; committing to immediate post-task reviews would enhance learning.	6	False		False
+50	773	i need to refine my ability to receive feedback without defensiveness.	4	False		False
+51	756	i need to be more concise in written communication to avoid delays.	4	False		False
+52	467	the course materials are outdated and don't reflect current industry practices.	13	False		False
+53	294	i avoid difficult feedback; learning structured dialogue techniques would improve resolution.	4	False		False
+54	746	i need to strengthen my presentation skills for better client and team communication.	4	False		False
+55	397	the course's content delivery is passive; incorporating real-world case studies would improve relevance.	10	False		False
+56	401	the team often misses deadlines because of unclear task ownership.	2	False		False
+57	782	creating a centralized knowledge repository would improve access to important information.	12	False		False
+58	450	i should use project management tools to organize my tasks more effectively.	7	False	medium	True
+59	260	the team's knowledge-sharing is ad hoc; scheduling regular skill share sessions would improve efficiency.	12	False		False
+60	744	creating personalized development plans would help employees align their goals.	8	False		False
+61	689	the course's peer review process lacks clear instructions for giving effective feedback.	13	False		False
+62	956	i need to enhance my ability to present complex information in a digestible format.	8	False		False
+63	364	the team's use of terminology is inconsistent; creating a shared glossary would improve alignment.	2	False		False
+64	10	confidence in public speaking is lacking	4	False		False
+65	627	the team's diversity of thought is underutilized in our problem-solving discussions.	12	False		False
+66	59	rarely receive feedback in a timely manner	6	False		False
+67	347	the project's documentation is inconsistent; implementing standardized templates would improve quality.	2	False		False
+68	19	could use more practice in time management techniques	0	False		False
+69	676	i'm not effectively using the feedback i receive to identify specific areas for improvement.	6	False		False
+70	801	i must improve my ability to organize complex information clearly.	8	False		False
+71	762	establishing clear escalation paths would reduce bottlenecks in decision-making.	11	False		False
+72	834	course content needs more emphasis on critical thinking and application of concepts.	10	False		False
+73	805	i should focus on building stronger relationships with mentors for guidance.	3	False	medium	True
+74	413	i need to improve my listening skills during team discussions.	4	False		False
+75	937	the workflow between departments is siloed, preventing efficient knowledge sharing.	12	False		False
+76	250	the course's time allocation for assignments is too rigid; allowing flexible deadlines could improve outcomes.	1	False		False
+77	947	team members rarely provide feedback on each other's work, which limits growth.	2	False		False
+78	447	the course lacks practical application exercises that match real-world scenarios.	13	False		False
+79	289	the course's assignments are too time-consuming; suggesting optional practice problems would help.	1	False		False
+80	832	creating standardized templates for project documentation would improve clarity.	2	False		False
+81	932	i should engage in more collaborative learning to enhance my technical expertise.	8	False		False
+82	221	the team's feedback loops are infrequent; implementing weekly check-ins would allow timely course correction.	2	False		False
+83	45	few opportunities exist to share knowledge with peers	12	False		False
+84	507	i need to practice being more concise in my communication.	4	False	medium	True
+85	116	frequent changes in project scope create confusion	9	False		False
+86	245	the team's workflow lacks transparency; implementing shared dashboards would improve accountability.	2	False		False
+87	30	need to develop better listening skills during feedback sessions	4	False		False
+88	427	i need to improve my ability to give constructive criticism.	4	False		False
+89	152	must work on managing time between competing priorities	0	False		False
+90	765	standardizing onboarding processes would reduce training time for new hires.	3	False	medium	True
+91	403	assignments lack clear objectives, making it hard to prioritize tasks effectively.	11	False		False
+92	649	the project management tool's customization options are too limited for our team size.	2	False		False
+93	356	the team's use of feedback is inconsistent; providing training on its implementation could help.	6	False	medium	True
+94	24	rarely receive specific feedback on my contributions	6	False		False
+95	141	limited access to learning resources outside core responsibilities	5	False	medium	True
+96	787	i should focus on improving my ability to think strategically about long-term goals.	8	False		False
+97	638	i should develop a system to track personal learning goals and measure progress.	8	False		False
+98	889	i should be more concise in my emails and written communication.	4	False		False
+99	866	creating a centralized knowledge repository would improve access to important information.	12	False		False
+100	101	few clear guidelines on how to handle project delays	9	False		False
+101	768	i need to be more proactive in seeking feedback rather than waiting for evaluations.	6	False		False
+102	973	the company needs better systems for managing and responding to employee feedback.	6	False		False
+103	382	my reluctance to ask for help leads to inefficiencies; fostering a culture of inquiry would improve teamwork.	12	False		False
+104	377	the course's content delivery is passive; incorporating real-world case studies would improve relevance.	10	False		False
+105	655	the training program should include more scenario-based learning for complex problem-solving.	8	False		False
+106	737	the current workflow lacks automation, leading to redundant manual tasks.	7	False		False
+107	181	could benefit from more practice in time management	0	False		False
+108	743	flexible working hours could enhance productivity for employees with variable schedules.	0	False		False
+109	71	could benefit from more training on how to provide feedback	6	False		False
+110	171	could improve my ability to ask clarifying questions	4	False		False
+111	549	i need to practice active listening during team discussions.	4	False		False
+112	253	the lecture's content overwhelmed beginners; suggesting optional preparatory modules might help.	10	False		False
+113	954	i must learn to delegate tasks more effectively to reduce my workload.	11	False		False
+114	704	i should establish better routines for tracking my personal development progress.	8	False		False
+115	234	i avoid difficult conversations; developing a structured dialogue framework would improve resolution.	4	False		False
+116	128	could improve my ability to provide specific examples in feedback	4	False		False
+117	664	i'm not using the feedback system effectively to identify areas for personal skill development.	6	False		False
+118	555	i'm not setting clear boundaries for task ownership.	11	False		False
+119	97	could benefit from more practice in time management	0	False		False
+120	594	frequent changes in project scope make it hard to maintain quality.	9	False		False
+121	454	i should review my work for consistency and accuracy before submission.	6	False		False
+122	390	i need to improve my ability to delegate; practicing trust-building techniques would enhance team dynamics.	12	False		False
+123	972	i should explore new methodologies for learning and applying technical knowledge.	8	False		False
+124	795	i need to be more accountable in meeting deadlines and follow-through.	11	False		False
+125	406	the course content is too theory-heavy; more hands-on exercises would help.	10	False		False
+126	459	frequent delays in project milestones create unnecessary pressure.	9	False		False
+127	376	the team's use of feedback is inconsistent; providing training on its implementation could help.	6	False		False
+128	984	i must learn to delegate tasks more effectively to reduce my workload.	11	False		False
+129	536	the team's feedback is often vague and lacks specific examples.	6	False		False
+130	402	i should practice public speaking to improve my confidence in presentations.	4	False		False
+131	977	the team's feedback process lacks structure, making it hard to identify real issues.	2	False		False
+132	441	i need to practice summarizing key points in meetings.	4	False		False
+133	900	course modules should be more interactive to increase student engagement.	10	False		False
+134	861	i should make time to reflect on my progress and adjust goals as needed.	0	False		False
+135	640	i'm not utilizing the feedback i receive to make consistent process improvements.	6	False		False
+136	626	i hesitate to ask for clarification when instructions are ambiguous, which leads to errors.	1	False		False
+137	139	could benefit from more structured onboarding for new projects	3	False	medium	True
+138	398	i need to practice more structured feedback; adopting frameworks like the star method would help.	6	False		False
+139	2	i'm struggling to keep up with the pace of technical training modules	8	False		False
+140	354	my communication style is direct but sometimes perceived as harsh; practicing empathy would improve clarity.	4	False		False
+141	381	the course's feedback mechanisms are delayed; real-time evaluation tools could enhance learning.	10	False		False
+142	411	i should delegate tasks more effectively to reduce workload stress.	11	False		False
+143	646	i'm not providing enough context when giving feedback, which can cause misunderstandings.	6	False		False
+144	301	the course's assessment criteria are unclear; providing detailed rubrics would enhance understanding.	1	False		False
+145	918	the project timeline was unrealistic given the scope, causing burnout among staff.	14	False	medium	True
+146	657	the peer review process lacks clear guidelines for giving feedback on creative work.	13	False		False
+147	730	courses need more structured feedback mechanisms for students to improve effectively.	1	False		False
+148	917	team members often hesitate to share ideas during meetings, which stifles innovation.	12	False		False
+149	971	the team's workflow is hindered by unclear ownership of tasks.	2	False		False
+150	146	struggling to find time for professional development	8	False		False
+151	599	the team could benefit from more structured brainstorming sessions to ensure all voices are heard.	12	False		False
+152	533	i need to practice being more assertive in expressing my ideas.	4	False		False
+153	344	the team's use of terminology is inconsistent; creating a shared glossary would improve alignment.	2	False		False
+154	688	i need to improve my ability to articulate feedback clearly and concisely during meetings.	4	False		False
+155	233	the course's feedback is too generic; providing specific examples would help improve weaker areas.	10	False		False
+156	854	workshops on negotiation skills could improve conflict resolution and agreement outcomes.	12	False		False
+157	267	the project's timeline didn't account for external dependencies; better risk analysis would improve planning.	14	False		False
+158	882	workshops on negotiation skills could improve conflict resolution and agreement outcomes.	12	False		False
+159	928	i should explore new methodologies to improve my problem-solving approaches.	8	False		False
+160	359	the project's resource allocation was unbalanced; using workload balancing tools could improve efficiency.	11	False		False
+161	645	the course feedback system lacks a way to suggest content improvements in real-time.	13	False		False
+162	798	creating a shared calendar system would help with team coordination.	12	False		False
+163	592	the course syllabus is too rigid; more flexibility would benefit learners.	10	False		False
+164	534	frequent delays in feedback make it harder to adjust and improve work.	6	False		False
+165	815	i must be more mindful of how my communication style affects team dynamics.	12	False		False
+166	864	course modules should be more interactive to increase student engagement.	10	False		False
+167	61	could improve my ability to provide specific examples in feedback	4	False		False
+168	296	the team's conflict resolution methods are inconsistent; providing training could help.	2	False		False
+169	388	the team's collaboration lacks transparency; implementing shared dashboards would improve efficiency.	2	False		False
+170	913	the team's communication during the project was inconsistent, leading to delays.	2	False		False
+171	738	i need to develop a more systematic approach to learning new skills.	8	False		False
+172	324	the team's workflow lacks automation; identifying repetitive tasks for tooling could improve efficiency.	2	False		False
+173	566	the course syllabus is too advanced for beginners; more foundational lessons are needed.	10	False		False
+174	919	i should focus on public speaking to improve my ability to present complex ideas.	4	False		False
+175	327	the project's documentation is inconsistent; implementing standardized templates would improve quality.	2	False		False
+176	725	i need to refine my ability to provide constructive criticism without discouraging peers.	4	False		False
+177	671	the project management tools we use aren't optimized for our team's specific workflow.	2	False		False
+178	126	rarely receive guidance on how to improve performance	6	False		False
+179	224	the project's budget constraints limited resource allocation; better financial planning could prevent delays.	14	False		False
+180	70	must work on setting clearer personal development goals	8	False		False
+181	194	must work on managing my time more effectively	0	False	medium	True
+182	138	must work on managing my time more effectively	0	False		False
+183	158	must work on developing better documentation habits	2	False		False
+184	513	i need to practice giving feedback in a way that's respectful and constructive.	4	False		False
+185	64	limited access to mentorship programs outside my department	3	False		False
+186	780	course content should include real-world case studies for better contextual learning.	10	False		False
+187	385	the course's assignments don't align with learning objectives; revising them for relevance would improve outcomes.	1	False		False
+188	588	frequent delays in feedback make it harder to adjust and improve work.	6	False		False
+189	271	the project's documentation lacks version history; implementing a tracking system would improve traceability.	2	False		False
+190	373	the course's feedback is too generic; providing specific examples would help learners improve.	1	False		False
+191	990	i must improve my ability to stay calm under pressure during critical tasks.	4	False		False
+192	86	must work on developing better listening skills	4	False		False
+193	299	the project's scope creep wasn't managed effectively; enforcing change control processes would improve planning.	9	False		False
+194	570	the team's feedback lacks specificity, making it hard to know what needs improvement.	6	False		False
+195	412	the course lacks real-world examples, making concepts harder to grasp.	13	False	medium	True
+196	650	i should improve my ability to ask clarifying questions during team discussions.	4	False		False
+197	482	i need to improve my ability to ask for help when needed.	4	False		False
+198	617	the team's communication channels need clearer guidelines for urgent vs. routine messages.	2	False		False
+199	905	i should focus on improving my ability to think strategically about long-term goals.	8	False		False
+200	226	the course's feedback mechanisms are delayed; implementing real-time evaluations would help learners improve quicker.	10	False		False
+201	593	i need to practice giving feedback in a way that's respectful and constructive.	4	False		False
+202	119	could benefit from more practice in leading discussions	12	False		False
+203	129	few clear guidelines on how to handle project delays	9	False		False
+204	652	i'm not effectively using my manager's feedback to shape my performance goals.	6	False		False
+205	249	the team's knowledge is siloed; organizing cross-department workshops would improve collaboration.	12	False		False
+206	227	i often struggle with time-blocking; experimenting with pomodoro techniques might enhance productivity.	0	False		False
+207	970	i need to improve my ability to write and present reports in a more engaging manner.	4	False		False
+208	869	i need to be more disciplined in following through on action items.	4	False		False
+209	719	more regular check-ins could improve accountability on cross-functional projects.	11	False		False
+210	975	frequent conflicts between team members over resource allocation cause delays.	2	False		False
+211	923	the company should provide tools for asynchronous communication to improve collaboration.	12	False		False
+212	755	team members must learn to ask clarifying questions instead of assuming requirements.	2	False		False
+213	739	implementing daily stand-ups would increase transparency and alignment.	12	False		False
+214	358	i need to practice more structured feedback; adopting frameworks like the star method would help.	6	False		False
+215	577	i need to practice summarizing my thoughts clearly in meetings.	4	False		False
+216	20	frequent changes to project scope create confusion	9	False		False
+217	499	frequent delays in feedback make it harder to adjust and improve work.	6	False		False
+218	277	the course's content delivery method is passive; incorporating interactive elements would improve engagement.	10	False		False
+219	273	the course's reading materials are too advanced; suggesting supplementary guides would aid beginners.	10	False		False
+220	239	the team's use of feedback is reactive rather than proactive; implementing quarterly retrospectives would improve this.	6	False		False
+221	997	the feedback from team members is often too vague to act on effectively.	6	False		False
+222	58	need more training on using collaboration tools effectively	12	False		False
+223	40	limited opportunities for hands-on learning experiences	5	False		False
+224	287	the project's documentation lacks clarity; implementing standardized templates would improve quality.	2	False		False
+225	757	creating more structured feedback formats would improve clarity and actionability.	6	False		False
+226	529	i should prioritize tasks based on urgency and importance.	11	False		False
+227	642	i tend to focus on surface-level feedback rather than deeper skill development opportunities.	8	False		False
+228	575	i'm not setting clear boundaries for personal tasks and team responsibilities.	11	False		False
+229	206	i noticed that feedback sessions often end without clear next steps for improvement.	6	False		False
+230	475	frequent conflicts in team roles create confusion and inefficiency.	2	False		False
+231	624	i'm not leveraging the project management software's analytics features to track productivity trends.	11	False		False
+232	466	i'm not taking enough time to reflect on my learning experiences.	5	False		False
+233	108	few opportunities to practice time management techniques	0	False		False
+234	701	the team needs clearer guidelines for handling project risks and contingencies.	2	False		False
+235	205	the codebase lacks consistent documentation, which slows down new developers' onboarding.	2	False		False
+236	342	i need to improve my ability to delegate; practicing trust-building techniques would enhance team dynamics.	12	False		False
+237	514	frequent changes in project scope make it hard to maintain quality.	9	False		False
+238	998	i must work on my ability to collaborate with cross-functional teams effectively.	12	False		False
+239	60	limited understanding of how team dynamics impact productivity	12	False		False
+240	957	frequent interruptions during focused work reduce overall productivity and task quality.	0	False		False
+241	545	i should track my progress more systematically to identify areas for improvement.	8	False		False
+242	637	the project management methodology needs adaptation to our team's workflow style.	2	False		False
+243	602	during our recent presentation, i realized my speaking pace can be too fast for audience comprehension.	4	False		False
+244	464	i should prioritize tasks based on urgency and importance.	11	False		False
+245	361	the course's feedback mechanisms are delayed; real-time evaluation tools could enhance learning.	10	False		False
+246	718	i need to practice active listening during meetings to ensure all voices are heard.	4	False		False
+247	493	the course isn't accessible for students with varying learning styles.	13	False		False
+248	518	the course content is too dense; more spaced-out lessons would help retention.	10	False		False
+249	451	the team's feedback is often vague and lacks specific examples.	6	False		False
+250	851	i should be more concise in my emails and written communication.	4	False		False
+251	4	could benefit from clearer guidelines on documentation standards	2	False		False
+252	565	i'm not leveraging peer reviews to improve my work quality.	11	False		False
+253	670	i'm not utilizing the mentorship program enough to gain insights into leadership development.	3	False		False
+254	532	the course content is too advanced for beginners; more foundational lessons are needed.	10	False		False
+255	804	course content needs more emphasis on critical thinking and application of concepts.	10	False		False
+256	955	there's a lack of clear direction from leadership, which affects team motivation.	2	False		False
+257	778	implementing regular peer coaching sessions would enhance team growth.	12	False		False
+258	691	the team needs better tools for collaborative problem-solving during project execution.	12	False		False
+259	332	the team's use of feedback is inconsistent; providing training on its implementation could help.	6	False		False
+260	197	limited access to learning resources outside core responsibilities	5	False		False
+261	314	my reluctance to ask for help leads to inefficiencies; fostering a culture of inquiry would improve teamwork.	12	False		False
+262	92	few opportunities to share knowledge with peers	12	False		False
+263	444	i should track my progress more systematically to identify areas for improvement.	8	False		False
+264	243	the course's content assumes prior knowledge not explicitly covered; adding prerequisite modules would help.	10	False		False
+265	858	course content needs more emphasis on critical thinking and application of concepts.	10	False		False
+266	202	the course's pacing left some students behind; adjusting the syllabus to allow for review might help.	10	False		False
+267	333	the course's content delivery is passive; incorporating real-world case studies would improve relevance.	10	False		False
+268	635	the team's feedback process lacks follow-up mechanisms to ensure action items are completed.	2	False		False
+269	7	ideas are often dismissed without proper consideration	9	False		False
+270	563	i should prioritize tasks based on their impact and urgency.	11	False		False
+271	623	the peer feedback system could include anonymous options to encourage more candid input.	6	False		False
+272	788	team members should be trained in basic project management principles.	12	False		False
+273	578	frequent conflicts in team roles create confusion and inefficiency.	2	False		False
+274	46	need clearer expectations for when to seek assistance	11	False		False
+275	942	i should focus on time-blocking techniques to increase productivity during work hours.	0	False		False
+276	203	my time management during projects often slips; i need to set clearer daily priorities.	0	False		False
+277	862	course instructors need to provide more personalized guidance for struggling students.	1	False		False
+278	265	the course's content doesn't address real-world applications; integrating industry case studies would help.	10	False		False
+279	666	i struggle to accept feedback without feeling defensive, which hinders personal growth.	6	False		False
+280	686	i often focus on minor issues rather than addressing the root causes of productivity challenges.	11	False		False
+281	57	few clear guidelines on how to handle project delays	9	False		False
+282	229	the team's workflow lacks automation; identifying repetitive tasks for tooling could free up time.	2	False		False
+283	232	the project's risk assessment was overlooked, leading to unforeseen issues.	14	False		False
+284	976	i need to enhance my ability to present data in a way that is easy for others to understand.	4	False		False
+285	38	frequent task reassignments without explanation are confusing	11	False		False
+286	496	i'm not taking enough time to reflect on my work and identify areas for improvement.	11	False		False
+287	484	i should use a task tracker to monitor progress on my projects.	11	False		False
+288	842	team members should be encouraged to share their unique perspectives more freely.	12	False		False
+289	201	i find the current workflow inefficient; adding a task tracker could reduce bottlenecks.	7	False		False
+290	665	the team's decision-making process lacks structured input from all members.	2	False		False
+291	924	i must practice active listening to better understand client needs during meetings.	4	False		False
+292	503	the course isn't providing enough opportunities for hands-on practice.	13	False		False
+293	408	frequent interruptions during meetings reduce focus and efficiency.	0	False		False
+294	660	i tend to avoid giving feedback that might seem confrontational, even when it's needed.	6	False		False
+295	871	i should focus on building stronger relationships with mentors for guidance.	3	False		False
+296	776	course instructors need to provide more detailed written feedback on assignments.	1	False	medium	True
+297	134	must work on accepting feedback without defensiveness	6	False		False
+298	39	could improve my ability to give specific, actionable feedback	6	False		False
+299	176	few opportunities to share knowledge with peers	12	False		False
+300	110	must work on managing my time more effectively	0	False		False
+301	740	course content is outdated in several areas and needs updating.	10	False		False
+302	22	few opportunities exist for skill development outside core responsibilities	8	False		False
+303	841	i must improve my ability to organize complex information clearly.	8	False		False
+304	692	i should develop a routine for reflecting on my interactions to improve communication effectiveness.	4	False		False
+305	125	could benefit from more practice in time management	0	False		False
+306	169	limited access to learning resources outside core responsibilities	5	False		False
+307	631	the team needs better tools for tracking shared knowledge and reducing information silos.	12	False		False
+308	845	i should focus on improving my ability to think strategically about long-term goals.	8	False		False
+309	980	i need to refine my ability to handle multiple tasks without compromising quality.	7	False		False
+310	717	team members should rotate leadership roles to develop diverse skills.	12	False		False
+311	619	the course syllabus could better align with industry standards to ensure practical relevance.	10	False		False
+312	705	the team's communication channels could be better organized to reduce information overload.	12	False		False
+313	458	i need to practice asking for clarification when instructions are unclear.	1	False		False
+314	476	i'm not utilizing available mentorship opportunities to improve my skills.	3	False		False
+315	387	the project's timeline didn't allow for adequate risk analysis.	14	False	medium	True
+316	220	i find myself overcommitting; learning to say no could improve focus.	4	False		False
+317	49	could improve my ability to ask clarifying questions	4	False		False
+318	675	the course modules need better alignment with industry trends to ensure relevance.	10	False		False
+319	380	the team's knowledge-sharing is ad hoc; scheduling regular workshops would enhance collaboration.	12	False		False
+320	437	i need to improve my ability to accept feedback without defensiveness.	6	False		False
+321	892	workshops on negotiation skills could improve conflict resolution and agreement outcomes.	12	False		False
+322	831	i need to be more open to receiving constructive criticism without defensiveness.	4	False		False
+323	618	i've been delegating complex tasks without adequate check-ins, leading to inconsistent results.	11	False		False
+324	685	the team needs better systems for tracking and implementing process improvements.	2	False		False
+325	431	i need to practice active listening during meetings.	4	False		False
+326	153	could benefit from more practice in time management	0	False		False
+327	965	there's a lack of recognition for team members' hard work, which demotivates the group.	2	False		False
+328	519	i should use a task tracker to monitor progress on my projects.	11	False		False
+329	56	must work on giving feedback without sounding accusatory	6	False		False
+330	915	the workflow process could be optimized to reduce redundant steps in task completion.	7	False		False
+331	462	i need to improve my ability to give and receive feedback professionally.	4	False		False
+332	587	i need to practice being more assertive in expressing my ideas.	4	False		False
+333	219	the course's reading materials are too dense; suggesting summaries or guides could aid comprehension.	10	False		False
+334	136	few opportunities to practice time management techniques	0	False		False
+335	320	the team's use of terminology is inconsistent; creating a shared glossary would improve alignment.	2	False		False
+336	935	team members rarely acknowledge each other's contributions, impacting morale.	2	False		False
+337	305	the course's content is too theoretical; including real-world applications would improve relevance.	10	False		False
+338	872	creating a shared calendar system would help with team coordination.	12	False		False
+339	847	i must be more mindful of how my communication style affects team dynamics.	12	False		False
+340	500	i should use project management tools to better organize my workflow.	7	False		False
+341	996	i need to practice better prioritization techniques to avoid burnout.	7	False		False
+342	331	the project's scope creep wasn't managed effectively; enforcing change control processes would improve planning.	9	False		False
+343	517	i need to improve my ability to ask for help when needed.	4	False		False
+344	418	i'm not asking for help when i need it, which delays progress.	11	False		False
+345	713	i should focus more on time management to prevent missed deadlines.	0	False		False
+346	991	the feedback i receive often lacks actionable steps for improvement.	6	False		False
+347	699	the training program lacks opportunities to practice applying concepts under time pressure.	13	False		False
+348	473	the course isn't providing enough opportunities for hands-on practice.	13	False		False
+349	512	the course syllabus is too rigid; more flexibility would benefit learners.	10	False		False
+350	710	i should focus more on developing active listening skills to improve team communication.	4	False		False
+351	415	i should take online courses to enhance my technical skills.	8	False		False
+352	865	i should focus on improving my ability to think strategically about long-term goals.	8	False		False
+353	102	must work on developing better documentation habits	2	False		False
+354	105	limited understanding of how to handle constructive criticism	4	False		False
+355	280	the team's knowledge is not shared effectively; implementing a peer review system would enhance collaboration.	12	False		False
+356	162	must work on accepting feedback without defensiveness	6	False		False
+357	1	the team's collaborative approach could be more structured for larger projects	12	False		False
+358	547	i'm not taking enough time to reflect on my work and identify areas for improvement.	11	False		False
+359	621	the lack of clear ownership for project tasks leads to confusion during handoffs.	11	False		False
+360	810	course instructors need to provide more detailed written feedback on assignments.	1	False		False
+361	651	the course content often assumes prior knowledge that students may not have.	10	False		False
+362	154	rarely receive guidance on how to improve performance	6	False		False
+363	789	i need to be more proactive in identifying and addressing bottlenecks.	11	False		False
+364	809	i should make time to reflect on my progress and adjust goals as needed.	0	False		False
+365	820	course workload needs adjustment to allow for more hands-on learning.	5	False		False
+366	909	i need to be more disciplined in following through on action items.	4	False		False
+367	343	the project's timeline didn't allow for adequate risk analysis.	14	False		False
+368	445	frequent conflicts over responsibilities create tension within the team.	12	False		False
+369	345	the course's assignments don't align with learning objectives; revising them for relevance would improve outcomes.	1	False		False
+370	145	need more training on how to handle disagreements	12	False		False
+371	615	the training modules often focus on theory rather than hands-on practice for new tools.	5	False		False
+372	511	i'm not setting clear boundaries for personal tasks and team responsibilities.	11	False		False
+373	943	the feedback from clients is too vague to implement meaningful improvements.	6	False		False
+374	486	i'm not setting clear boundaries for personal tasks and team responsibilities.	11	False		False
+375	400	i need to take more initiative in project planning to grow my leadership skills.	8	False		False
+376	586	the course syllabus doesn't provide enough opportunities for hands-on practice.	13	False		False
+377	707	the training program needs more interactive elements to engage participants actively.	5	False		False
+378	732	i must improve my ability to delegate tasks confidently and trust team capabilities.	8	False		False
+379	661	the team needs better systems for tracking shared knowledge across members.	12	False		False
+380	916	i need more hands-on practice to enhance my proficiency in python programming.	8	False		False
+381	595	i should explore networking opportunities to expand my professional knowledge.	8	False		False
+382	703	the course content needs more diverse perspectives to address different learning needs.	10	False		False
+383	886	course workload needs adjustment to allow for more hands-on learning.	5	False		False
+384	140	frequent multitasking reduces overall quality of work	0	False		False
+385	952	i should explore new tools or software that can streamline my daily workflow.	7	False		False
+386	811	i need to be more disciplined in following through on action items.	4	False		False
+387	987	frequent interruptions during focused work reduce overall productivity and task quality.	0	False		False
+388	355	the project's scope creep wasn't managed effectively; enforcing change control processes would improve planning.	9	False		False
+389	111	could benefit from more structured onboarding for new projects	3	False		False
+390	188	frequent ambiguity around task priorities causes confusion	11	False		False
+391	114	must work on developing better listening skills	4	False		False
+392	531	i'm not leveraging peer reviews to improve my work quality.	11	False		False
+393	104	frequent ambiguity around task priorities causes confusion	11	False		False
+394	769	creating more opportunities for cross-departmental collaboration could drive innovation.	12	False		False
+395	912	i need to improve my time management skills to meet project deadlines.	0	False		False
+396	90	struggling to find time for professional development	8	False		False
+397	469	frequent miscommunication about deadlines leads to missed targets.	2	False		False
+398	667	the course content needs more practical examples to illustrate theoretical concepts.	10	False		False
+399	571	i need to improve my ability to accept feedback and use it for growth.	6	False		False
+400	620	i should schedule regular knowledge-sharing sessions to capitalize on team expertise.	12	False		False
+401	112	frequent multitasking reduces overall quality of work	0	False		False
+402	921	i need to develop better note-taking strategies during lectures to retain information.	4	False		False
+403	687	the training program should include more hands-on practice for complex technical skills.	8	False		False
+404	72	frequent ambiguity around task priorities causes confusion	11	False		False
+405	383	the project's documentation lacks version history; implementing a tracking system would improve traceability.	2	False		False
+406	767	workshops on effective delegation would improve team coordination.	12	False		False
+407	303	the project's documentation is inconsistent; implementing standardized templates would improve quality.	2	False		False
+408	806	implementing a feedback culture requires training in how to give and receive input.	6	False		False
+409	167	could benefit from more structured onboarding for new projects	3	False		False
+410	8	timely feedback on assignments would improve learning outcomes	1	False		False
+411	109	rarely get feedback on my ability to collaborate with others	6	False		False
+412	524	frequent delays in project milestones create unnecessary pressure.	9	False		False
+413	509	i should use templates to streamline repetitive tasks and improve efficiency.	7	False		False
+414	898	workshops on effective communication could improve team collaboration.	12	False	medium	True
+415	124	must work on managing time between competing priorities	0	False		False
+416	122	could improve my ability to explain technical concepts clearly	4	False		False
+417	694	i'm not setting clear expectations with team members for project deliverables.	2	False		False
+418	231	my tendency to micromanage stifles team ownership; practicing trust-building could improve collaboration.	12	False		False
+419	745	team dynamics suffer when roles are unclear, leading to overlap and inefficiency.	2	False		False
+420	907	i must be more mindful of how my communication style affects team dynamics.	12	False		False
+421	714	collaboration between departments is often hindered by unclear communication channels.	2	False		False
+422	465	frequent disagreements over work methods are slowing down progress.	2	False		False
+423	964	i should focus on improving my ability to document technical processes clearly.	8	False		False
+424	50	rarely get feedback on non-technical skills	6	False		False
+425	310	i need to practice more structured feedback; adopting frameworks like sbi would help.	6	False		False
+426	609	i've been avoiding difficult conversations about project priorities, which delays decision-making.	9	False		False
+427	774	creating standardized templates for project documentation would improve clarity.	2	False		False
+428	460	i should focus on developing skills that align with long-term goals.	8	False	medium	True
+429	366	my tendency to avoid difficult conversations hinders team growth; learning conflict resolution techniques would improve this.	12	False		False
+430	477	the course syllabus is too rigid; more flexibility would benefit learners.	10	False		False
+431	491	the team's feedback process is inconsistent across different members.	6	False		False
+432	741	improving documentation for common processes would reduce confusion and errors.	2	False		False
+433	426	the course isn't accessible for students with disabilities; more accommodations are needed.	13	False		False
+434	189	limited understanding of how to handle constructive criticism	4	False		False
+435	237	my communication style is direct but sometimes perceived as harsh; practicing empathy in feedback would help.	4	False		False
+436	230	the lab's instructions are inconsistent across sections; standardizing them would reduce confusion.	1	False		False
+437	678	i struggle with providing balanced feedback that acknowledges both strengths and areas for growth.	6	False		False
+438	925	team members often interrupt each other, which disrupts productive discussions.	12	False		False
+439	350	i need to improve my listening skills during feedback sessions; practicing active listening would help.	4	False		False
+440	371	the project's documentation is inconsistent; implementing standardized templates would improve quality.	2	False		False
+441	222	the lecture's complex concepts require more visual aids; adding diagrams would enhance learning.	10	False		False
+442	856	creating a shared calendar system would help with team coordination.	12	False		False
+443	453	the course isn't tailored to different learning paces, causing some students to fall behind.	10	False		False
+444	198	must work on developing better listening skills	4	False		False
+445	733	the lack of mentorship opportunities limits growth for junior staff.	3	False		False
+446	945	there's a lack of clear guidelines for resolving conflicts within the team.	2	False		False
+447	66	must work on asking for feedback more proactively	6	False		False
+448	302	i need to improve my ability to delegate complex tasks; practicing trust-building would help.	8	False		False
+449	930	i need to strengthen my ability to give and receive constructive feedback.	4	False		False
+450	34	frequent multitasking reduces overall efficiency	0	False		False
+451	906	creating a centralized knowledge repository would improve access to important information.	12	False		False
+452	727	the project scope is often unclear, which leads to rework and frustration.	9	False		False
+453	286	i need to improve my ability to delegate; practicing trust-building techniques would enhance team dynamics.	12	False		False
+454	461	the team's feedback process lacks follow-up actions, making it less effective.	6	False		False
+455	527	i need to improve my ability to give and receive feedback professionally.	4	False		False
+456	681	the team's knowledge-sharing practices could be more structured for consistency.	12	False		False
+457	855	i should focus on building stronger relationships with mentors for guidance.	3	False		False
+458	523	i need to practice summarizing key points in meetings.	4	False		False
+459	603	the team's lack of cross-training is creating bottlenecks in our workflow.	2	False		False
+460	654	i struggle to provide constructive feedback without sounding critical in group settings.	6	False		False
+461	572	the course content is too dense; more spaced-out lessons would help retention.	10	False		False
+462	821	i must improve my time management to avoid overcommitting myself.	0	False		False
+463	349	the course's content assumes prior knowledge not covered; suggesting prerequisite modules would help.	10	False		False
+464	293	the course's feedback is too generic; providing specific examples would help learners improve.	1	False		False
+465	319	the project's budgeting process lacked contingency planning; adding buffer funds would mitigate risks.	14	False		False
+466	98	rarely receive guidance on how to improve performance	6	False		False
+467	113	limited access to learning resources outside core responsibilities	5	False		False
+468	600	i've noticed that my tendency to delay feedback until the last minute often creates unnecessary pressure.	6	False		False
+469	199	could improve my ability to ask clarifying questions	4	False		False
+470	130	must work on developing better documentation habits	2	False		False
+471	212	the course's assessment methods don't reflect real-world challenges; incorporating practical tasks would help.	13	False		False
+472	384	the team's use of terminology is inconsistent; creating a shared glossary would improve alignment.	2	False		False
+473	241	i need to improve my ability to delegate complex tasks; practicing trust-building with the team would help.	8	False		False
+474	569	i should use templates to streamline repetitive tasks and improve efficiency.	7	False		False
+475	698	i should focus more on developing emotional intelligence to improve team interactions.	12	False		False
+476	564	frequent misalignment between team goals creates confusion.	2	False		False
+477	76	few opportunities to practice leadership skills	8	False		False
+478	420	i should document my workflow to increase efficiency and reduce errors.	7	False		False
+479	812	workshops on effective communication could improve team collaboration.	12	False		False
+480	28	ideas from junior members are often overlooked	12	False		False
+481	55	limited opportunities to practice public speaking	4	False		False
+482	696	i struggle with accepting feedback that challenges my assumptions about team dynamics.	6	False		False
+483	32	struggling to keep up with rapidly changing project requirements	9	False		False
+484	721	i should take initiative in identifying areas for personal skill development.	8	False		False
+485	209	my public speaking skills need refinement; practicing with recorded replays might help.	4	False		False
+486	497	the course material is too dense; more spaced-out lessons would help retention.	10	False		False
+487	908	course workload needs adjustment to allow for more hands-on learning.	5	False		False
+488	53	frequent ambiguity around project goals causes confusion	9	False		False
+489	981	frequent changes in project scope due to poor planning cause wasted effort.	9	False	medium	True
+490	674	i need to improve my ability to ask for feedback in a way that encourages open dialogue.	4	False		False
+491	173	need more training on how to handle disagreements	12	False		False
+492	21	must work on delivering constructive feedback to peers	6	False		False
+493	836	workshops on effective communication could improve team collaboration.	12	False		False
+494	538	the course isn't tailored to different learning paces, causing some students to fall behind.	10	False		False
+495	143	could improve my ability to ask clarifying questions	4	False		False
+496	506	the course syllabus doesn't provide enough flexibility for personal learning goals.	13	False		False
+497	983	the team's performance reviews are too generic and do not address individual areas for growth.	2	False		False
+498	378	i need to practice more structured feedback; adopting frameworks like the star method would help.	6	False		False
+499	833	i should make time to reflect on my progress and adjust goals as needed.	0	False		False
+500	172	frequent changes in project scope create confusion	9	False		False
+501	552	the team's feedback is inconsistent, making it hard to understand expectations.	6	False		False
+502	720	the workshop lacks hands-on activities that would make the subject more engaging.	13	False		False
+503	516	the team's feedback lacks actionable steps, making it less helpful.	6	False		False
+504	816	course content should include real-world case studies for better contextual learning.	10	False		False
+505	65	frequent changes in team composition create instability	2	False		False
+506	742	i should work on being more receptive to feedback, especially when it's critical.	6	False		False
+507	148	few opportunities to share knowledge with peers	12	False		False
+508	82	must work on accepting feedback without defensiveness	6	False		False
+509	211	the team's collaborative tools are outdated; upgrading to a modern platform could improve efficiency.	2	False		False
+510	298	my communication style is direct but sometimes perceived as harsh; practicing empathy would improve clarity.	4	False		False
+511	579	i should use project management tools to organize my tasks more effectively.	7	False		False
+512	604	i prefer written over verbal critiques to avoid miscommunication about project requirements.	2	False		False
+513	931	the team's decision-making process is too slow, delaying necessary actions.	2	False		False
+514	759	team members should be trained on conflict resolution techniques to manage disagreements.	12	False		False
+515	471	the team's feedback is often delayed, which reduces its impact.	6	False		False
+516	573	i should use a task tracker to monitor progress on my projects.	11	False		False
+517	240	the course's assessment criteria are unclear; providing detailed rubrics would enhance student understanding.	1	False		False
+518	94	could improve my ability to explain technical concepts clearly	4	False		False
+519	786	creating a more structured feedback framework would increase actionability.	6	False		False
+520	885	i must be more mindful of how my communication style affects team dynamics.	12	False		False
+521	911	i should focus on improving my ability to think strategically about long-term goals.	8	False		False
+522	207	the team's conflict resolution process feels informal; establishing a formal protocol could help.	12	False		False
+523	508	the course content is too theoretical and lacks practical application examples.	13	False		False
+524	948	i should practice more to improve my speed and accuracy in data entry tasks.	8	False		False
+525	611	i'm not utilizing the mentorship program enough to accelerate my professional development.	3	False	medium	True
+526	840	course content should include real-world case studies for better contextual learning.	10	False		False
+527	200	the team's communication during the sprint planning was unclear, leading to duplicated tasks.	2	False		False
+528	530	frequent disagreements over work methods are slowing down progress.	2	False		False
+529	182	rarely receive guidance on how to improve performance	6	False		False
+530	36	limited access to industry-specific training resources	5	False		False
+531	311	the project's resource allocation was unbalanced; using workload balancing tools could improve efficiency.	11	False		False
+532	26	meetings often start late and end without clear next steps	2	False		False
+533	127	must work on setting clearer personal development goals	8	False		False
+534	934	i must work on managing stress to maintain focus during high-pressure situations.	0	False		False
+535	174	struggling to find time for professional development	8	False		False
+536	348	the team's workflow lacks automation; identifying repetitive tasks for tooling could improve efficiency.	2	False		False
+537	558	frequent disagreements about project timelines slow down progress.	9	False		False
+538	164	few opportunities to practice time management techniques	0	False		False
+539	758	i should develop a habit of reflecting on weekly achievements and challenges.	8	False		False
+540	901	i need to be more concise in my emails and written communication.	4	False		False
+541	357	the course's content delivery is passive; incorporating real-world case studies would improve relevance.	10	False		False
+542	75	could improve my ability to give feedback without being vague	6	False		False
+543	421	the team's feedback process feels unstructured and unproductive.	6	False		False
+544	568	frequent delays in project milestones create unnecessary pressure.	9	False		False
+545	498	i need to practice being more assertive in expressing my ideas.	4	False		False
+546	544	frequent changes in requirements make it hard to stay focused.	9	False		False
+547	888	course instructors need to provide more personalized guidance for struggling students.	1	False		False
+548	852	creating a structured feedback framework would increase actionability.	6	False		False
+549	452	i need to practice empathy during team discussions.	12	False		False
+550	99	must work on setting clearer personal development goals	8	False		False
+551	285	the course's content doesn't address diverse learning styles; incorporating multimedia resources would help.	10	False		False
+552	170	must work on developing better listening skills	4	False		False
+553	430	the team's feedback is inconsistent, making it hard to understand expectations.	6	False		False
+554	751	i need to reduce multitasking to improve focus and task completion quality.	0	False		False
+555	37	need clearer guidelines for handling conflicts in team settings	2	False		False
+556	941	team members often have conflicting priorities, leading to delays in project delivery.	2	False		False
+557	734	creating a shared knowledge base would enhance skill-sharing across departments.	12	False		False
+558	414	some tasks are unclear, leading to redundant work and frustration.	11	False		False
+559	867	i must be more mindful of how my communication style affects team dynamics.	12	False		False
+560	763	i need to practice more active listening when receiving feedback.	4	False		False
+561	263	the project's task dependencies weren't clearly mapped, causing delays.	9	False		False
+562	711	the team needs better systems for documenting shared knowledge to improve collaboration.	12	False		False
+563	255	the project's budgeting process lacks contingency planning; adding buffer funds would mitigate risks.	14	False		False
+564	837	i should focus on building stronger relationships with mentors for guidance.	3	False		False
+565	290	my feedback to peers often lacks actionable steps; learning frameworks like the star method would help.	6	False		False
+566	155	must work on setting clearer personal development goals	8	False		False
+567	144	frequent changes in project scope create confusion	9	False		False
+568	825	i need to focus on improving my ability to think strategically about long-term goals.	8	False		False
+569	425	meetings often lack clear agendas, leading to wasted time.	2	False		False
+570	440	the team's feedback sessions are infrequent and not actionable.	6	False		False
+571	478	i need to practice giving feedback in a way that's respectful and constructive.	4	False		False
+572	439	i should explore new learning platforms to expand my knowledge.	8	False		False
+573	702	i often give feedback that's too vague to be useful for improvement.	6	False		False
+574	142	must work on developing better listening skills	4	False		False
+575	438	frequent multitasking reduces the quality of my work.	0	False		False
+576	121	must work on asking for feedback more proactively	6	False		False
+577	800	course modules should be more interactive to increase student engagement.	10	False		False
+578	772	team members must learn to communicate their workload transparently.	12	False		False
+579	567	i need to practice being more concise in my communication.	4	False		False
+580	920	the feedback loop between departments is unclear, leading to duplicated efforts.	2	False		False
+581	663	the training program's assessment methods don't accurately reflect real-world application.	13	False		False
+582	988	i should seek out workshops or training programs to strengthen my analytical skills.	8	False		False
+583	817	i need to be more organized in my workflow to manage multiple projects efficiently.	7	False		False
+584	386	my tendency to avoid difficult conversations hinders team growth; learning conflict resolution techniques would improve this.	12	False		False
+585	870	course instructors need to provide more detailed written feedback on assignments.	1	False		False
+586	236	the lecture's examples were too simplistic; including advanced scenarios would better prepare students for challenges.	10	False		False
+587	876	workshops on effective communication could improve team collaboration.	12	False		False
+588	168	frequent multitasking reduces overall quality of work	0	False		False
+589	185	few clear guidelines on how to handle project delays	9	False		False
+590	163	could improve my ability to listen actively during discussions	4	False		False
+591	583	i should use a planner to better manage my time and reduce stress.	0	False		False
+592	315	the project's documentation lacks version history; implementing a tracking system would improve traceability.	2	False		False
+593	48	struggling to find time for professional development activities	8	False		False
+594	589	i should use templates to streamline repetitive tasks and improve efficiency.	7	False		False
+595	525	i should focus on developing skills that align with long-term goals.	8	False		False
+596	868	course workload needs adjustment to allow for more hands-on learning.	5	False		False
+597	23	need better tools for tracking team performance metrics	2	False		False
+598	13	feedback is rarely given in a timely manner	6	False		False
+599	88	frequent changes in project scope create confusion	9	False		False
+600	334	i need to practice more structured feedback; adopting frameworks like the star method would help.	6	False		False
+601	399	the project's resource allocation was unbalanced; using workload balancing tools could improve efficiency.	11	False		False
+602	160	frequent ambiguity around task priorities causes confusion	11	False		False
+603	826	team members should be trained in basic project management principles.	12	False		False
+604	528	the course syllabus doesn't provide enough opportunities for hands-on practice.	13	False		False
+605	448	i need to improve my ability to present complex information clearly.	4	False		False
+606	409	i need to ask for clarifications more often to avoid misunderstandings.	4	False		False
+607	161	limited understanding of how to handle constructive criticism	4	False		False
+608	562	the course isn't providing enough opportunities for hands-on practice.	13	False		False
+609	550	frequent miscommunication about deadlines leads to missed targets.	2	False		False
+610	307	the project's timeline didn't allow for adequate risk analysis.	14	False		False
+611	929	the feedback provided during reviews lacks specific examples of areas needing improvement.	6	False		False
+612	950	i need to improve my ability to manage deadlines without sacrificing quality.	0	False		False
+613	54	could benefit from more practice in leading team discussions	12	False		False
+614	276	the team's collaboration lacks transparency; implementing shared status updates would enhance accountability.	2	False		False
+615	783	i should make a habit of setting clear goals for each work cycle.	0	False		False
+616	723	the software tools we use could be better integrated with our workflow systems.	7	False		False
+617	894	creating a shared calendar system would help with team coordination.	12	False		False
+618	73	limited understanding of how to handle constructive criticism	4	False		False
+619	770	the course lacks sufficient practice exercises for mastering technical concepts.	13	False		False
+620	429	i should seek out more collaborative projects to enhance teamwork skills.	12	False		False
+621	63	need more guidance on how to handle disagreements	2	False		False
+622	80	frequent multitasking reduces overall quality of work	0	False		False
+623	633	the training content often lacks real-world application scenarios for complex concepts.	13	False		False
+624	74	must work on developing better documentation habits	2	False		False
+625	887	i need to be more disciplined in following through on action items.	4	False		False
+626	12	mentoring programs should include more hands-on practice	3	False		False
+627	395	the project's scope creep wasn't managed effectively; enforcing change control processes would improve planning.	9	False		False
+628	457	the course content is too advanced for beginners; more foundational lessons are needed.	10	False		False
+629	210	the project deadline was unrealistic given the scope; renegotiating timelines is necessary.	14	False		False
+630	784	workshops on negotiation skills could improve conflict resolution and agreement outcomes.	12	False		False
+631	416	our group needs better conflict resolution strategies during disagreements.	12	False		False
+632	214	the onboarding process lacks personalized guidance; assigning mentors per new hire would improve retention.	3	False		False
+633	67	could improve my ability to listen actively during discussions	4	False		False
+634	750	implementing a feedback culture requires training in how to give and receive input.	6	False		False
+635	150	could improve my ability to explain technical concepts clearly	4	False		False
+636	434	frequent miscommunication between team members leads to delays.	2	False		False
+637	993	frequent misunderstandings between team members indicate a need for better communication protocols.	2	False		False
+638	822	workshops on negotiation skills could improve conflict resolution and agreement outcomes.	12	False		False
+639	91	could benefit from more practice in leading discussions	12	False		False
+640	304	the team's workflow lacks automation; identifying repetitive tasks for tooling could free up time.	2	False		False
+641	802	team members should be encouraged to share their unique perspectives more freely.	12	False		False
+642	25	need more guidance on balancing workload with personal projects	11	False		False
+643	966	i need to practice better prioritization techniques to avoid burnout.	7	False		False
+644	726	workshops on conflict resolution could enhance team cohesion during disagreements.	12	False		False
+645	159	could benefit from more training on using collaboration tools	12	False		False
+646	196	frequent multitasking reduces overall quality of work	0	False		False
+647	178	could improve my ability to explain technical concepts clearly	4	False		False
+648	363	the project's documentation lacks version history; implementing a tracking system would improve traceability.	2	False		False
+649	760	the course syllabus needs better alignment with industry-relevant skills.	10	False		False
+650	485	frequent interruptions during focused work reduce overall output quality.	0	False		False
+651	489	frequent misalignment between team goals creates confusion.	2	False		False
+652	891	i must be more proactive in identifying and addressing bottlenecks.	11	False		False
+653	256	the team's documentation practices are inconsistent; implementing version-controlled templates could improve quality.	2	False		False
+654	818	implementing regular peer coaching sessions would enhance team growth.	12	False		False
+655	282	my tendency to micromanage stifles innovation; fostering autonomy would improve team performance.	12	False		False
+656	306	my feedback style is overly technical; simplifying language would make it more accessible.	6	False		False
+657	184	could improve my ability to provide specific examples in feedback	4	False		False
+658	436	the course syllabus is unclear, making it hard to plan study time.	10	False		False
+659	341	the course's feedback mechanisms are delayed; real-time evaluation tools could enhance learning.	10	False		False
+660	967	the feedback from team members is often too vague to act on effectively.	6	False		False
+661	215	the team's meetings often run over time; implementing a strict agenda would help.	2	False		False
+662	31	mentorship programs should include more one-on-one time	3	False		False
+663	504	i should use a planner to better manage my time and reduce stress.	0	False		False
+664	308	the team's collaboration lacks transparency; implementing shared dashboards would improve efficiency.	2	False		False
+665	979	there's a lack of clear guidelines for resolving disagreements within the team.	2	False		False
+666	423	there's a lack of mentorship opportunities for skill development.	3	False		False
+667	323	the project's timeline didn't allow for adequate user testing.	14	False		False
+668	257	the course's reading lists are too long; curating essential texts would reduce overwhelm.	10	False		False
+669	597	i need to improve my ability to ask for help when needed.	4	False		False
+670	291	the project's budgeting process didn't account for hidden costs; better forecasting would improve planning.	14	False		False
+671	879	i need to be more concise in my emails and written communication.	4	False		False
+672	792	implementing team retrospectives would help identify process improvements.	2	False		False
+673	903	i must be more proactive in identifying and addressing bottlenecks.	11	False		False
+674	123	limited understanding of how team dynamics impact productivity	12	False		False
+675	340	the team's knowledge-sharing is ad hoc; scheduling regular skill share sessions would improve efficiency.	12	False		False
+676	715	the course material could use more practical examples to reinforce concepts.	10	False	medium	True
+677	272	the team's use of feedback is inconsistent; providing training on its implementation could help.	6	False		False
+678	93	must work on asking for feedback more proactively	6	False		False
+679	749	workshops on effective goal-setting would improve individual and team performance.	12	False		False
+680	235	the team's knowledge-sharing sessions are infrequent; scheduling monthly skill swaps would enhance collective expertise.	12	False		False
+681	470	i should use a planner or digital tools to better organize my workflow.	7	False		False
+682	18	communication between departments is often delayed	2	False		False
+683	591	i'm not utilizing available mentorship opportunities to improve my skills.	3	False		False
+684	521	i'm not taking enough time to reflect on my learning experiences.	5	False		False
+685	83	few clear guidelines on how to handle conflicts	2	False		False
+686	844	course instructors need to provide more detailed written feedback on assignments.	1	False		False
+687	938	i should seek out more opportunities for professional development in my field.	8	False		False
+688	877	i should make time to reflect on my progress and adjust goals as needed.	0	False		False
+689	339	the project's documentation lacks version history; implementing a tracking system would improve traceability.	2	False		False
+690	216	the lab exercises require prerequisites not clearly listed; adding pre-requisite checks would be helpful.	13	False		False
+691	326	i need to improve my ability to give specific, actionable feedback; practicing frameworks like the star method would help.	6	False		False
+692	697	the team needs better protocols for documenting project decisions to avoid repeated discussions.	2	False	medium	True
+693	622	i tend to overcommit during meetings, which affects my ability to follow through on all promises.	4	False		False
+694	754	i should take more initiative in seeking out learning opportunities beyond my role.	8	False		False
+695	100	could improve my ability to provide specific examples in feedback	4	False		False
+696	479	frequent changes in project scope make it hard to maintain quality.	9	False		False
+697	636	i'm not practicing active listening during meetings, which reduces team collaboration effectiveness.	12	False		False
+698	266	my reluctance to ask for help leads to inefficiencies; fostering a culture of inquiry would improve teamwork.	12	False		False
+699	553	i need to improve my ability to ask for clarification when instructions are unclear.	1	False		False
+700	722	our team's feedback loops often lack specificity, leading to vague improvements.	6	False		False
+701	14	need clearer expectations for cross-functional collaboration	12	False		False
+702	297	the course's content assumes prior knowledge not covered; suggesting prerequisite modules would help.	10	False		False
+703	193	rarely get feedback on my ability to collaborate with others	6	False		False
+704	379	the project's resource allocation was unbalanced; using workload balancing tools could improve efficiency.	11	False		False
+705	474	i should set specific times for focused work to avoid distractions.	0	False		False
+706	191	could improve my ability to listen actively during discussions	4	False		False
+707	875	i must be more organized in my workflow to manage multiple projects efficiently.	7	False	medium	True
+708	456	i'm not leveraging peer reviews to improve my work quality.	11	False		False
+709	254	i avoid giving negative feedback; learning to frame it constructively would improve team development.	6	False		False
+710	813	i should focus on improving my ability to think strategically about long-term goals.	8	False		False
+711	910	course instructors need to provide more personalized guidance for struggling students.	1	False		False
+712	442	some tasks are not aligned with our team's goals, leading to confusion.	2	False		False
+713	157	few clear guidelines on how to handle project delays	9	False		False
+714	17	i need to improve my ability to ask for help when stuck	4	False		False
+715	897	i must be more organized in my workflow to manage multiple projects efficiently.	7	False		False
+716	166	must work on managing my time more effectively	0	False		False
+717	351	the project's budgeting process lacked contingency planning; adding buffer funds would mitigate risks.	14	False		False
+718	846	creating a centralized knowledge repository would improve access to important information.	12	False		False
+719	180	must work on managing time between competing priorities	0	False		False
+720	781	i need to be more mindful of how my communication style affects team dynamics.	12	False		False
+721	15	take more time to document solutions for future reference	7	False		False
+722	424	i should review my work more thoroughly before submitting.	11	False		False
+723	368	the team's collaboration lacks transparency; implementing shared dashboards would improve efficiency.	2	False		False
+724	228	the mentorship program's goals are vague; defining measurable milestones would improve outcomes.	3	False		False
+725	218	the project's scope was ambiguous, causing confusion about deliverables.	9	False		False
+726	706	i'm not utilizing my peer feedback as effectively as i could to improve team performance.	6	False		False
+727	679	the training program lacks sufficient practice opportunities for applying new skills.	13	False		False
+728	501	the team's feedback lacks specificity, making it hard to know what needs improvement.	6	False		False
+729	156	could improve my ability to provide specific examples in feedback	4	False		False
+730	625	the training program needs more mentorship opportunities for hands-on learning.	3	False		False
+731	321	the course's assignments don't align with learning objectives; revising them for relevance would improve outcomes.	1	False		False
+732	606	i should set clearer expectations for deliverables to reduce rework and confusion.	11	False		False
+733	766	i should focus on building stronger relationships with mentors and peers.	3	False		False
+734	455	frequent distractions during work hours reduce overall productivity.	0	False		False
+735	78	must work on managing my time more effectively	0	False		False
+736	899	i should make time to reflect on my progress and adjust goals as needed.	0	False		False
+737	873	i need to be more open to receiving constructive criticism without defensiveness.	4	False		False
+738	922	there's a lack of clarity in role definitions, which causes confusion during tasks.	2	False		False
+739	317	the course's feedback mechanisms are delayed; real-time evaluation tools could enhance learning.	10	False		False
+740	731	adopting agile methodologies could streamline our workflow and increase productivity.	7	False		False
+741	394	my communication style is direct but sometimes perceived as harsh; practicing empathy would improve clarity.	4	False		False
+742	288	the team's workflow lacks automation; identifying repetitive tasks for tooling could improve efficiency.	2	False		False
+743	677	the team needs clearer role definitions to avoid overlapping responsibilities.	2	False		False
+744	278	i need to practice more structured feedback; adopting frameworks like the situation-complication-resolution model would help.	6	False		False
+745	35	must work on accepting feedback without defensiveness	6	False		False
+746	47	frequent changes in leadership create uncertainty	2	False		False
+747	433	i should break down complex tasks into smaller, manageable steps.	7	False		False
+748	803	i need to be more efficient in my workflow by avoiding multitasking.	7	False		False
+749	292	the team's knowledge-sharing is ad hoc; scheduling regular cross-departmental workshops would improve efficiency.	12	False		False
+750	690	i'm not utilizing the feedback i receive to make consistent, measurable improvements.	6	False		False
+751	133	limited understanding of how to handle constructive criticism	4	False		False
+752	244	my feedback to peers sometimes lacks specificity; learning structured frameworks would improve clarity.	6	False		False
+753	949	the company needs better systems for tracking and addressing employee concerns.	11	False		False
+754	994	i should focus on improving my ability to document technical processes clearly.	8	False		False
+755	838	creating a shared calendar system would help with team coordination.	12	False		False
+756	883	i should focus on improving my ability to think strategically about long-term goals.	8	False		False
+757	252	the team's conflict resolution methods are inconsistent; providing training could improve consistency.	2	False		False
+758	747	more opportunities for cross-training would broaden individual skill sets.	8	False		False
+759	946	i need to develop stronger organizational skills to manage multiple projects efficiently.	8	False		False
+760	481	the team's feedback lacks actionable steps, making it less helpful.	6	False		False
+761	328	the team's knowledge-sharing is ad hoc; scheduling regular workshops would enhance collaboration.	12	False		False
+762	410	the team's communication style is too informal, leading to confusion.	2	False		False
+763	435	i'm not utilizing available resources to improve my skills.	5	False		False
+764	944	i must improve my ability to adapt to changing project requirements.	9	False		False
+765	682	i find it difficult to provide feedback that's both honest and constructive in time-sensitive situations.	6	False		False
+766	896	course content needs more emphasis on critical thinking and application of concepts.	10	False		False
+767	52	limited access to performance evaluation templates	7	False		False
+768	336	the team's collaboration lacks transparency; implementing shared dashboards would improve efficiency.	2	False		False
+769	204	the mentorship program lacks structure; defining clear goals for each session would improve outcomes.	3	False		False
+770	132	frequent ambiguity around task priorities causes confusion	11	False		False
+771	848	course workload needs adjustment to allow for more hands-on learning.	5	False		False
+772	312	the team's use of feedback is inconsistent; providing training on its implementation could help.	6	False		False
+773	927	frequent changes in project scope without proper communication create frustration.	9	False		False
+774	79	could benefit from more structured onboarding for new projects	3	False		False
+775	653	the team needs better practices for documenting decisions to avoid repeated discussions.	2	False		False
+776	659	the course's feedback system could be improved with more specific, actionable suggestions.	10	False		False
+777	808	creating standardized templates for project documentation would improve clarity.	2	False		False
+778	68	few opportunities to practice time management techniques	0	False		False
+779	693	the training content needs more real-world application scenarios for complex concepts.	10	False		False
+780	835	i must be more organized in my workflow to manage multiple projects efficiently.	7	False		False
+781	370	i need to improve my ability to delegate; practicing trust-building techniques would enhance team dynamics.	12	False		False
+782	785	i need to be more concise in my emails and written communication.	4	False		False
+783	515	i should explore networking opportunities to expand my professional knowledge.	8	False		False
+784	881	i must be more proactive in identifying and addressing bottlenecks.	11	False		False
+785	585	i'm not taking enough time to reflect on my learning experiences.	5	False		False
+786	262	i need to improve my listening skills during feedback sessions; practicing active listening would help.	4	False		False
+787	843	i need to be more efficient in my workflow by avoiding multitasking.	7	False		False
+788	857	i need to be more open to receiving constructive criticism without defensiveness.	4	False		False
+789	598	the course material is too dense; more spaced-out lessons would help retention.	10	False		False
+790	487	the course syllabus doesn't adequately prepare students for real-world challenges.	13	False		False
+791	3	frequent interruptions during focused work time reduce output quality	0	False		False
+792	118	struggling to find time for professional development	8	False		False
+793	422	i need to practice time-blocking techniques to manage my workload better.	0	False		False
+794	794	course instructors need to provide more personalized guidance for struggling students.	1	False		False
+795	522	the course materials are outdated and don't reflect current industry practices.	13	False		False
+796	596	the team's feedback lacks actionable steps, making it less helpful.	6	False		False
+797	672	i often focus on quantity over quality when giving peer feedback, which is less helpful.	6	False		False
+798	446	i'm not setting clear boundaries for task ownership.	11	False		False
+799	325	the course's content assumes prior knowledge not covered; suggesting prerequisite modules would help.	10	False		False
+800	238	the project's timeline included buffer periods; better resource planning could prevent burnout.	14	False		False

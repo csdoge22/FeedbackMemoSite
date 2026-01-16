@@ -1,0 +1,89 @@
+# RAG-assisted dimension labeling configuration
+# Static rules, thresholds, confidence, and examples
+
+dimensions:
+  severity:
+    keywords:
+      urgent: ["urgent","critical","immediately","asap","blocked","blocker","outage","security","data loss","safety","burnout","missed deadline","missed deadlines","deadline"]
+      emotional_intensity: ["angry","frustrat","upset","panic","overwhelmed"]
+    patterns:
+      deadline_pattern: "(due|deadline|by\\s+\\w+|end of week|end of day|tomorrow|today)"
+      blocking_pattern: "(blocked|can't proceed|cannot proceed|stuck|blocking)"
+      recurrence_pattern: "(often|frequently|many|recurring|again|repeated)"
+  urgency:
+    keywords:
+      urgent: ["urgent","immediately","asap","blocked","blocker","critical"]
+    patterns:
+      deadline_pattern: "(due|deadline|by\\s+\\w+|end of week|end of day|tomorrow|today)"
+      blocking_pattern: "(blocked|can't proceed|cannot proceed|stuck|blocking)"
+  impact:
+    keywords:
+      emotional_intensity: ["angry","frustrat","upset","panic","overwhelmed"]
+    patterns:
+      recurrence_pattern: "(often|frequently|many|recurring|again|repeated)"
+
+labeling_rules:
+  preprocessing: "lowercase_strip"
+  thresholds:
+    low: 0.33
+    medium: [0.33, 0.66]
+    high: 0.66
+  confidence:
+    round_decimals: 2
+    cap: 0.98
+    floor: 0.05
+  rationale_format: "semicolon-separated signals, empty string if none"
+  output_keys: ["labels", "confidences", "rationale", "evidence", "source", "model_id"]
+  json_only: true
+
+examples:
+  - input: "Frequent interruptions during focused work reduce overall output quality."
+    retrieved_context: ["Similar feedback about recurring interruptions and lost focus."]
+    labels:
+      severity: "medium"
+      urgency: "medium"
+      impact: "medium"
+    confidences:
+      severity: 0.45
+      urgency: 0.50
+      impact: 0.50
+    rationale:
+      severity: "recurrence_language"
+      urgency: "recurrence_language"
+      impact: "recurrence_language"
+    source: "weak_llm"
+    model_id: "example_model_001"
+
+  - input: "We are blocked on the payment provider and cannot deploy."
+    retrieved_context: ["Similar feedback mentioning blocked deployment and critical delays."]
+    labels:
+      severity: "high"
+      urgency: "high"
+      impact: "high"
+    confidences:
+      severity: 0.95
+      urgency: 0.98
+      impact: 0.90
+    rationale:
+      severity: "blocking_pattern; urgent_keyword"
+      urgency: "blocking_pattern; urgent_keyword"
+      impact: "blocking_pattern; urgent_keyword"
+    source: "weak_llm"
+    model_id: "example_model_001"
+
+  - input: "Course could use more examples."
+    retrieved_context: []
+    labels:
+      severity: "low"
+      urgency: "low"
+      impact: "low"
+    confidences:
+      severity: 0.20
+      urgency: 0.20
+      impact: 0.20
+    rationale:
+      severity: ""
+      urgency: ""
+      impact: ""
+    source: "weak_llm"
+    model_id: "example_model_001"
