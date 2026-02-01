@@ -1,15 +1,20 @@
+# dataset/analysis/dataset_clustering.py
 import os
+from typing import Any, Dict
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import umap
+import logging
 
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
 from dataset.processing.dataset_loader import load_dataset
 from dataset.processing.preprocessing import preprocess_text_series
-from dataset.embedding.embedding_generator import encode_dataset_split
+from dataset.embedding.embedding_cache_client import EmbeddingCacheClient
+
+logger = logging.getLogger(__name__)
 
 # ============================================================
 # Configuration
@@ -17,7 +22,7 @@ from dataset.embedding.embedding_generator import encode_dataset_split
 MAX_K = 15
 RANDOM_STATE = 42
 
-UMAP_N_NEIGHBORS = 15
+UMAP_N_NEIGHBORS = 15 
 UMAP_MIN_DIST = 0.1
 
 PLOT_DIR = os.path.join(os.path.dirname(__file__), "plots")
@@ -43,13 +48,13 @@ def find_optimal_k(embeddings, max_k=MAX_K):
     silhouettes = []
 
     ks = range(2, max_k + 1)
-
     for k in ks:
         kmeans = KMeans(n_clusters=k, random_state=RANDOM_STATE)
         labels = kmeans.fit_predict(embeddings)
         wcss.append(kmeans.inertia_)
         silhouettes.append(silhouette_score(embeddings, labels))
 
+    # Plot Elbow + Silhouette
     plt.figure(figsize=(12, 5))
     plt.subplot(1, 2, 1)
     plt.plot(ks, wcss, marker="o")
@@ -138,7 +143,6 @@ def save_cluster_plot(embeddings_2d, labels, centroids_2d, split, seed_indices=N
         cmap="tab20",
         s=10,
         alpha=0.6,
-        label="Points",
     )
     plt.scatter(
         centroids_2d[:, 0],
@@ -174,34 +178,48 @@ def save_cluster_plot(embeddings_2d, labels, centroids_2d, split, seed_indices=N
     print(f"[Saved] Cluster plot → {path}")
 
 # ============================================================
-# Reusable Clustering Pipeline
+# Reusable Clustering Pipeline (use external EmbeddingCache)
 # ============================================================
-def run_clustering_pipeline(split="train", initial_seed_count=50, plot=True):
+def run_clustering_pipeline(
+    split: str = "train",
+    initial_seed_count: int = 50,
+    plot: bool = True,
+    embedding_cache: EmbeddingCacheClient | None = None,
+) -> Dict[str, Any]:
     """
-    Returns all outputs needed for ActiveLearningMetadata initialization.
+    Clustering pipeline using cached MiniLM embeddings.
     """
+
+    if embedding_cache is None:
+        embedding_cache = EmbeddingCacheClient(split=split)
+
+    # Load dataset ONCE
     df = load_dataset(split)
     texts = preprocess_text_series(df["feedback_text"])
-    _, embeddings = encode_dataset_split(split)
 
-    # Reduce dimensionality for plotting
+    # Encode texts (no caching logic here)
+    embeddings = embedding_cache.encode_texts(texts)
+    logger.info(f"[Clustering] Encoded {len(embeddings)} texts")
+
+    # Dimensionality reduction
     embeddings_2d, reducer = reduce_dimensionality(embeddings)
 
-    # Find optimal k
+    # K selection
     optimal_k = find_optimal_k(embeddings)
 
-    # Cluster embeddings
+    # Clustering
     labels, centroids = cluster_embeddings(embeddings, optimal_k)
     centroids_2d = reducer.transform(centroids)
 
-    # Select seeds
+    # Seed selection
     seed_indices = log_weighted_round_robin_seed_selection(
         labels, embeddings, centroids, initial_seed_count
     )
 
-    # Optional plot
     if plot:
-        save_cluster_plot(embeddings_2d, labels, centroids_2d, split, seed_indices)
+        save_cluster_plot(
+            embeddings_2d, labels, centroids_2d, split, seed_indices
+        )
 
     return {
         "df": df,
@@ -213,6 +231,10 @@ def run_clustering_pipeline(split="train", initial_seed_count=50, plot=True):
         "centroids_2d": centroids_2d,
     }
 
+
+# ============================================================
+# Utility
+# ============================================================
 def get_distribution(labels):
     unique, counts = np.unique(labels, return_counts=True)
     return dict(zip(unique.tolist(), counts.tolist()))

@@ -8,7 +8,7 @@ from dataset.embedding.database_client import (
     retrieve_by_metadata,
     retrieve_similar_with_filters,
 )
-from dataset.embedding.embedding_generator import encode_texts
+from dataset.embedding.embedding_cache import encode_texts
 
 
 @pytest.fixture(scope="module")

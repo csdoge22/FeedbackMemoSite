@@ -1,0 +1,34 @@
+prompt_name: feedback_labeling_with_severity_urgency_impact
+description: |
+  Label each feedback item with severity, urgency, and impact.
+  Strict JSON output is required. Use definitions provided below.
+
+definitions:
+  severity:
+    description: How serious the issue is.
+    low: Minor or cosmetic issue; little negative effect.
+    medium: Noticeable problem; affects performance or workflow moderately.
+    high: Critical problem; could cause major negative outcomes if ignored.
+  urgency:
+    description: How soon the issue should be addressed.
+    low: Can be addressed later; no immediate consequences.
+    medium: Should be addressed soon; affects short-term performance.
+    high: Needs immediate attention to prevent serious problems.
+  impact:
+    description: How broadly the issue affects people or processes.
+    low: Individual-level; affects only one person or a small personal task.
+    medium: Team-level; affects workflow, efficiency, or small group outcomes.
+    high: Organization-wide or systemic; affects many people or critical outcomes.
+
+instructions: |
+  1. Read the feedback carefully.
+  2. Consider context and consequences.
+  3. Assign severity, urgency, and impact strictly according to definitions.
+  4. Output a single JSON object with this structure:
+
+  ```json
+  {
+    "severity": "low|medium|high",
+    "urgency": "low|medium|high",
+    "impact": "low|medium|high"
+  }

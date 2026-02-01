@@ -1,0 +1,13 @@
+{
+  "dimension": "urgency",
+  "num_training_examples": 150,
+  "created_at": 1769980902.521884,
+  "sklearn_version": "1.8.0",
+  "vectorizer_type": "TfidfVectorizer",
+  "model_type": "MultinomialNB",
+  "labels": [
+    "high",
+    "low",
+    "medium"
+  ]
+}
