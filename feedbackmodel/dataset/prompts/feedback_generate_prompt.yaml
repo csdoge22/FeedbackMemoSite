@@ -1,28 +1,22 @@
-task: generate_feedback_dataset
+task: generate_feedback_dataset_json
 
 description: |
-  Produce a strictly formatted TSV dataset for a feedback prioritizer.
+  Produce a strictly formatted JSON array representing a synthetic feedback dataset.
+  The dataset is used to train and evaluate systems that prioritize and classify feedback.
+  The data must be diverse, realistic, and intentionally varied in tone, length, and style.
 
-constraints:
-  - Output MUST be plain TSV (tab-separated values) with real TAB characters (ASCII 0x09).
-  - Newlines (ASCII 0x0A) are allowed only between rows; no blank lines.
-  - Do NOT include any text before or after the TSV (no commentary, tags, or explanations).
-  - Do NOT include markdown, code fences, or example rows in the output.
-  - All characters MUST be ASCII. Do not emit non-ASCII characters.
-  - Use only the exact columns and order specified in output_format.columns.
-  - The file MUST contain EXACTLY N + 1 lines: 1 header row followed by N data rows.
-  - Each data row MUST have exactly five columns separated by real tabs.
-  - feedback_id MUST be consecutive integers starting at 0 (0..N-1).
-
-dataset_requirements:
-  - relevance: feedback should concern growth, skills, team dynamics, productivity, learning, or performance.
-  - diversity: vary tone, length, phrasing, and structure; include implicit and explicit feedback.
-  - balance: aim for an even mix of constructive vs critical, emotional vs neutral, actionable vs descriptive.
-  - realism: mimic workplace, academic, and team contexts.
+global_constraints:
+  - Output must be valid JSON only. No commentary or markdown.
+  - Output must be a single JSON array of length N.
+  - All characters must be ASCII.
+  - Do not include explanations or metadata outside the JSON array.
+  - Each object must contain exactly the fields listed in output_format.fields.
+  - Do not repeat the same feedback_text across items.
+  - Avoid template-like repetition or near-duplicate phrasing.
 
 output_format:
-  type: TSV
-  columns:
+  type: json
+  fields:
     - feedback_id
     - feedback_text
     - category
@@ -35,35 +29,74 @@ allowed_values:
   actionability_hint: [actionable, partially_actionable, descriptive_only]
 
 generation_instructions: |
-  BEGIN TSV OUTPUT ON THE NEXT LINE. DO NOT WRITE ANYTHING BEFORE THE HEADER LINE.
+  Assume the caller provides an integer N.
+  Generate exactly N feedback objects with feedback_id values from 0 to N-1.
 
-  OUTPUT MUST START IMMEDIATELY WITH THE FOLLOWING HEADER LINE (USE REAL TAB CHARACTERS):
-  feedback_id	feedback_text	category	source_context	actionability_hint
-  IMPORTANT: Do NOT emit the two-character sequence backslash + t ("\\t"). Use an actual TAB character (press the TAB key) between columns.
+  For each feedback item, internally select a unique style profile using the following axes.
+  Do NOT output the profile explicitly — it should only influence the text.
 
-  After the header, produce EXACTLY N data rows, one per line, using REAL TAB characters as separators.
+  Style axes (must vary across items):
+    - Tone:
+        * supportive
+        * neutral
+        * frustrated
+        * appreciative
+        * concerned
+        * reflective
+        * impatient
+    - Formality:
+        * casual
+        * professional
+        * overly formal
+        * slightly robotic
+        * mixed human-robotic
+    - Length:
+        * very short (8–15 words)
+        * short (1 sentence)
+        * medium (2–3 sentences)
+        * long (4–6 sentences)
+    - Specificity:
+        * vague or high-level
+        * moderately specific
+        * concrete with examples
+    - Emotional intensity:
+        * flat / factual
+        * mild emotion
+        * clearly emotional but realistic
 
-  For each data row i (0..N-1) emit columns:
-    - feedback_id: integer i
-    - feedback_text: exactly ONE sentence, ASCII only, containing no TABs or newlines
-    - category: one of the values in allowed_values.category
-    - source_context: one of the values in allowed_values.source_context
-    - actionability_hint: one of the values in allowed_values.actionability_hint
+  Human vs robotic spectrum:
+    - Some feedback should sound fully human and conversational.
+    - Some should sound procedural, checklist-like, or system-generated.
+    - Some should sit in between (polite but stiff, or emotionally muted).
 
-  Formatting rules:
-    - Use REAL tabs only as column separators.
-    - No extra whitespace at line ends or between fields beyond single tabs.
-    - Do NOT include enumeration, bullets, or quote marks around fields.
+  Semantic intent coverage:
+    Distribute these intents across the dataset (not all per item):
+      - praise
+      - concern
+      - suggestion
+      - reflection
+      - frustration
+      - confusion
+      - appreciation
+      - disappointment
 
-  Uniqueness and diversity (important):
-    - DO NOT repeat the exact same `feedback_text` more than once in the entire output.
-    - Vary phrasing, sentence structure, and vocabulary to maximize diversity across rows.
-    - Avoid producing formulaic or template-like sentences; small surface changes are not sufficient.
-    - Do NOT output identical rows across batches; each data row must be unique.
+  Realism rules:
+    - Match tone and expectations to the source_context.
+      * peer_review: informal, observational, sometimes emotional
+      * manager_feedback: structured, evaluative, goal-oriented
+      * self_reflection: introspective, uncertain, personal
+      * course_feedback: academic, topic-focused, sometimes blunt
+    - Avoid exaggerated extremes or unrealistic perfection.
+    - Avoid marketing language or buzzwords.
 
-  HARD FAILURE RULE:
-  If you cannot meet ALL constraints exactly, output exactly this single line and nothing else:
-  REFUSE: unable to generate a valid dataset under the given constraints.
+  Content rules:
+    - feedback_text must be natural language with no tabs or newlines.
+    - Use varied sentence structures.
+    - Do not reuse distinctive phrases or sentence openings across items.
 
-example_note: |
-  (Do NOT include this example in output.) The header must match exactly the header line above.
+  Category alignment:
+    - category must match the main theme of the feedback.
+    - actionability_hint must reflect whether a clear action is implied or stated.
+
+hard_failure_rule: |
+  If you cannot meet all constraints exactly, output an empty JSON array [] and nothing else.

@@ -4,13 +4,11 @@ import logging
 import math
 import time
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 import json
-import numpy as np
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.metrics import f1_score
 import os
+from sklearn.metrics import f1_score
+import argparse
 
 from dataset.analysis.dataset_clustering import run_clustering_pipeline
 from dataset.processing.load_splits import load_split
@@ -26,7 +24,7 @@ from curation.query.query_strategies import (
     hybrid_coreset_bald_sampling,
 )
 
-from curation.utils.rag_client import RAGClient, CollectionClient
+from curation.utils.rag_client import RAGClient
 from curation.seeds.seed_factory import seeded_seed_proposal
 from curation.labeling.llm_labeling import LLMOracle
 from curation.utils.stopping import StoppingConfig, StoppingController
@@ -41,7 +39,7 @@ from dataset.embedding.database_client import EmbeddingCacheClient
 os.environ["TRANSFORMERS_OFFLINE"] = "1"
 os.environ["HF_HUB_OFFLINE"] = "1"
 
-BATCH_SIZE = 5
+BATCH_SIZE = 10
 MODEL_ID = "weak_llm_v1"
 SAVE_EVERY_ITERATION = True
 ARTIFACT_DIR = Path("model_artifact")
@@ -99,7 +97,6 @@ def replace_nan_with_none(obj):
         return None
     return obj
 
-
 # -----------------------------
 # ARTIFACT HELPERS
 # -----------------------------
@@ -119,7 +116,6 @@ def wrap_artifacts(metadata: ActiveLearningMetadata, model_updater: ModelConfide
             }
         )
     return artifacts
-
 
 # -----------------------------
 # QUERY STRATEGY HELPERS
@@ -153,18 +149,15 @@ def select_batch_indices(
     else:
         raise ValueError(f"Unknown query strategy: {strategy}")
 
-
 # -----------------------------
-# MAIN ACTIVE LEARNING LOOP
+# ACTIVE LEARNING PIPELINE
 # -----------------------------
-def main(strategy: str = "hybrid"):
-    # Create embedding cache + RAG client (caching handled internally)
+def run_active_learning(strategy: str = "hybrid"):
+    # Embedding cache + RAG client
     embedding_cache_client = EmbeddingCacheClient(split="train", top_k=5)
     rag_client = RAGClient(collection_client=embedding_cache_client, top_k=5)
 
-    # -----------------------------
     # Run clustering and get seeds
-    # -----------------------------
     outputs = run_clustering_pipeline(
         split="train",
         initial_seed_count=50,
@@ -174,9 +167,7 @@ def main(strategy: str = "hybrid"):
     df = outputs["df"]
     seed_indices = outputs["seed_indices"]
 
-    # -----------------------------
-    # Initialize metadata for active learning
-    # -----------------------------
+    # Initialize metadata
     metadata = ActiveLearningMetadata(
         feedback_texts=df["feedback_text"].tolist(),
         seed_indices=seed_indices,
@@ -189,24 +180,24 @@ def main(strategy: str = "hybrid"):
         if seed:
             metadata.mark_as_labeled([idx], [seed])
 
-    # -----------------------------
-    # Human labeling setup
-    # -----------------------------
-    labeling = HumanLabeling(metadata, rag_client, llm_call_fn, embedding_cache=embedding_cache_client)
+    labeling = HumanLabeling(
+        metadata,
+        rag_client,
+        llm_call_fn,
+        embedding_cache=embedding_cache_client,
+    )
     model_updater = ModelConfidenceUpdater()
 
     stopper = StoppingController(
         StoppingConfig(
             min_iterations=2,
-            patience=1,
-            window_size=2,
-            mean_kappa_threshold=0.99,
-            floor_kappa_threshold=0.95
+            patience=2,
+            window_size=3,
+            mean_kappa_threshold=0.90,
+            floor_kappa_threshold=0.80,
         ),
-        DIMENSIONS
+        DIMENSIONS,
     )
-
-    metrics = ALMetricsTracker(METRICS_LOG_FILE)
 
     stop_df = load_split("stop_labeled")
     test_df = load_split("test_labeled")
@@ -214,9 +205,6 @@ def main(strategy: str = "hybrid"):
     test_texts = test_df["feedback_text"].tolist()
     true_test_labels = {d: test_df[d].tolist() for d in DIMENSIONS}
 
-    # -----------------------------
-    # Initial model fit
-    # -----------------------------
     model_updater.fit(metadata)
 
     iteration = 0
@@ -224,46 +212,78 @@ def main(strategy: str = "hybrid"):
         iteration += 1
         logger.info(f"[Iteration {iteration}] Starting")
 
-        # Fit model and update confidences
         model_updater.fit(metadata)
         model_updater.update_unlabeled_confidences(metadata)
 
-        # -----------------------------
-        # Select batch for labeling
-        # -----------------------------
         batch_indices = select_batch_indices(
-            metadata, iteration, strategy=strategy, batch_size=BATCH_SIZE
+            metadata,
+            iteration,
+            strategy=strategy,
+            batch_size=BATCH_SIZE,
         )
         if not batch_indices:
-            logger.info("[Labeling] No unlabeled items left")
             break
 
         labeling.label_batch(batch_indices, MODEL_ID)
+        logger.info(f"[Iteration {iteration}] Labeled batch indices: {batch_indices}")
 
-        # -----------------------------
-        # Save artifacts per iteration
-        # -----------------------------
         if SAVE_EVERY_ITERATION:
             artifacts = wrap_artifacts(metadata, model_updater)
             save_all_artifacts(artifacts, artifact_dir=ARTIFACT_DIR)
 
-        # -----------------------------
-        # Stopping check using STOP set
-        # -----------------------------
+        test_preds = model_updater.predict(test_texts)
+        per_dim_f1 = compute_per_dimension_f1(true_test_labels, test_preds)
+        macro_f1 = compute_macro_f1(per_dim_f1)
+
+        metrics_record = {
+            "iteration": iteration,
+            "batch_indices": batch_indices,
+            "per_dimension_f1": replace_nan_with_none(per_dim_f1),
+            "macro_f1": macro_f1,
+            "num_labeled": len(metadata.labeled_indices()),
+            "timestamp": time.time(),
+        }
+        with open(METRICS_LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(json.dumps(metrics_record) + "\n")
+
         stop_preds = model_updater.predict(stop_texts)
-        stop_snapshot = {i: {d: stop_preds[d][i] for d in DIMENSIONS} for i in range(len(stop_texts))}
+        stop_snapshot = {
+            i: {d: stop_preds[d][i] for d in DIMENSIONS}
+            for i in range(len(stop_texts))
+        }
         if stopper.update(stop_snapshot):
             logger.info("[Stopping] Predictions stabilized on STOP set")
             break
 
-    # -----------------------------
-    # Final save
-    # -----------------------------
     artifacts = wrap_artifacts(metadata, model_updater)
     save_all_artifacts(artifacts, artifact_dir=ARTIFACT_DIR)
     metadata.save("metadata.json")
-    logger.info("[Done] Labeling complete")
+    logger.info("[Done] Active learning complete")
 
+# -----------------------------
+# MAIN ACTIVE LEARNING LOOP
+# -----------------------------
+# -----------------------------
+# MAIN ENTRY POINT
+# -----------------------------
+def main(
+    strategy: str = "hybrid",
+):
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--use_active_learning",
+        action="store_true",
+        help="Flag to indicate whether to use active learning",
+    )
+    parser.add_argument("--strategy", default=strategy, help="Strategy to use for active learning")
+    args = parser.parse_args()
+
+    if args.use_active_learning:
+        run_active_learning(strategy=args.strategy)
+    else:
+        raise NotImplementedError(
+            "Non-active learning mode is intentionally not implemented yet."
+        )
 
 if __name__ == "__main__":
     main(strategy="hybrid")

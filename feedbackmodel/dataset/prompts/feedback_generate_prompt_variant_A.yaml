@@ -1,0 +1,75 @@
+task: generate_feedback_dataset_json
+
+description: |
+  Generate a synthetic feedback dataset in JSON format.
+  The feedback should reflect realistic human behavior, imperfect communication,
+  and common failure modes in professional, academic, and personal feedback.
+
+global_constraints:
+  - Output must be valid JSON only.
+  - Output must be a single JSON array of length N.
+  - Use ASCII characters only.
+  - No markdown, comments, or explanations.
+  - Each object must contain exactly the specified fields.
+  - Do not repeat feedback_text or closely paraphrase earlier items.
+
+output_format:
+  type: json
+  fields:
+    - feedback_id
+    - feedback_text
+    - category
+    - source_context
+    - actionability_hint
+
+allowed_values:
+  category: [growth, team, skill, subject, productivity, communication]
+  source_context: [peer_review, manager_feedback, self_reflection, course_feedback]
+  actionability_hint: [actionable, partially_actionable, descriptive_only]
+
+generation_instructions: |
+  Generate exactly N feedback items.
+  feedback_id must be sequential from 0 to N-1.
+
+  Each feedback_text should be grounded in a concrete situation or behavior,
+  even if the actionability is unclear.
+
+  Behavioral patterns to distribute across items:
+    - unclear expectations
+    - misaligned priorities
+    - inconsistent performance
+    - partial improvement
+    - overconfidence or hesitation
+    - lack of follow-through
+    - unclear ownership
+    - passive or indirect communication
+
+  Tone variation:
+    - polite but indirect
+    - mildly frustrated
+    - neutral observational
+    - cautiously supportive
+    - reflective or self-critical
+
+  Length variation:
+    - single short sentence
+    - two to three sentences
+    - longer feedback with context or reasoning
+
+  Human vs robotic:
+    - Some feedback should sound spontaneous and imperfect.
+    - Some should sound structured or policy-driven.
+    - Some should feel emotionally restrained or overly formal.
+
+  Alignment rules:
+    - category must match the dominant theme.
+    - actionability_hint must reflect how explicit the suggestion is.
+    - source_context should influence tone and expectations.
+
+  Avoid:
+    - motivational slogans
+    - exaggerated positivity or negativity
+    - instructional checklists
+
+hard_failure_rule: |
+  If any constraint cannot be satisfied, output [] only.
