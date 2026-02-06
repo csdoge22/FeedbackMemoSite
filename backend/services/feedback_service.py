@@ -26,6 +26,7 @@ class FeedbackService:
         user_id: int,
         content: str,
         category: str | None = None,
+        priority: str | None = None,
     ) -> Feedback:
         """
         Submit feedback for a user.
@@ -36,6 +37,7 @@ class FeedbackService:
             user_id=user_id,
             content=content,
             category=category,
+            priority=priority,
         )
         return self.feedback_repo.save_feedback(feedback)
 
@@ -46,6 +48,25 @@ class FeedbackService:
     def get_feedback_by_category(self, category: str) -> list[Feedback]:
         """Get all feedback for a specific category."""
         return self.feedback_repo.get_feedback_by_category(category)
+
+    def get_feedback_by_priority(self, priority: str) -> list[Feedback]:
+        """Get all feedback for a specific priority level."""
+        return self.feedback_repo.get_feedback_by_priority(priority)
+
+    def update_feedback(
+        self,
+        feedback_id: int,
+        content: str | None = None,
+        category: str | None = None,
+        priority: str | None = None,
+    ) -> Feedback | None:
+        """Update feedback by ID. Returns updated Feedback or None if not found."""
+        return self.feedback_repo.update_feedback(
+            feedback_id,
+            content=content,
+            category=category,
+            priority=priority,
+        )
 
     def delete_feedback(self, feedback_id: int) -> bool:
         """Delete feedback by ID. Returns True if successful, False if not found."""

@@ -14,3 +14,4 @@ class Feedback(SQLModel, table=True):
     user_id: int = Field(index=True)
     content: str
     category: Optional[str] = None
+    priority: Optional[str] = None
