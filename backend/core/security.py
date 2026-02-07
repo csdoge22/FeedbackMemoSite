@@ -1,44 +1,101 @@
-"""Security utilities and auth dependency stubs."""
+"""
+Security utilities and auth dependencies.
+"""
+
+from datetime import datetime, timedelta
+from typing import Optional
+import os
+
+from dotenv import load_dotenv
+from fastapi import Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
+from jose import JWTError, jwt
 from passlib.context import CryptContext
-from fastapi import Depends
 from sqlmodel import Session
 
 from core.database import get_session
 from repositories.user_repo import UserRepository
 from models.user import User
 
-# Password hashing context
+load_dotenv()
+
+# -------------------------
+# CONFIG
+# -------------------------
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+
+
+# -------------------------
+# PASSWORD HASHING
+# -------------------------
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def hash_password(password: str) -> str:
-    """Hash a plain password using bcrypt."""
     return pwd_context.hash(password)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verify a plain password against a hashed password."""
     return pwd_context.verify(plain_password, hashed_password)
 
 
-# Stubbed auth dependency - will be replaced with JWT later
-class CurrentUserStub:
-    """Stub current user object. Replace with JWT-based auth later."""
-    def __init__(self, user_id: int = 1, username: str = "testuser"):
-        self.id = user_id
-        self.username = username
+# -------------------------
+# JWT SETUP
+# -------------------------
 
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+
+
+def create_jwt_token(user: User) -> str:
+    """
+    Create a JWT access token for a user.
+    """
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+
+    payload = {
+        "sub": str(user.id),
+        "exp": expire,
+    }
+
+    token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+    return token
+
+
+# -------------------------
+# AUTH DEPENDENCY
+# -------------------------
 
 def get_current_user(
+    token: str = Depends(oauth2_scheme),
     session: Session = Depends(get_session),
-) -> CurrentUserStub:
+) -> User:
     """
-    Dependency to get the current authenticated user.
-    
-    STUB: Currently returns a fake user.
-    TODO: Replace with JWT token validation.
-    Design allows services to use this without changes.
+    Dependency to get the currently authenticated user from a JWT.
     """
-    # Stub: Return a fake authenticated user
-    # In production, validate JWT token from request headers
-    return CurrentUserStub(user_id=1, username="testuser")
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id: Optional[str] = payload.get("sub")
+
+        if user_id is None:
+            raise credentials_exception
+
+    except JWTError:
+        raise credentials_exception
+
+    repo = UserRepository(session)
+    user = repo.get_by_id(int(user_id))
+
+    if user is None:
+        raise credentials_exception
+
+    return user
