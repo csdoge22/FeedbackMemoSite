@@ -7,8 +7,11 @@ This file:
 - Registers routers
 - Serves as the ASGI entry point
 """
+import os
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
+from utils import database
 from core.database import create_db_and_tables
 from routers import auth, feedback
 
@@ -18,6 +21,17 @@ app = FastAPI(
     version="1.0.0",
     description="API for managing user feedback with authentication",
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # In production, specify allowed origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+if os.getenv("ENV")=="dev":
+    database.clear_database()
 
 # Initialize database tables on startup (safe no-op if already present)
 create_db_and_tables()

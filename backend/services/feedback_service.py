@@ -56,11 +56,19 @@ class FeedbackService:
     def update_feedback(
         self,
         feedback_id: int,
+        user_id: int,
         content: str | None = None,
         category: str | None = None,
         priority: str | None = None,
     ) -> Feedback | None:
-        """Update feedback by ID. Returns updated Feedback or None if not found."""
+        """
+        Update feedback by ID (ownership required).
+        Returns updated Feedback or None if not found or not authorized.
+        """
+        feedback = self.feedback_repo.get_feedback_by_id(feedback_id)
+        if not feedback or feedback.user_id != user_id:
+            return None
+        
         return self.feedback_repo.update_feedback(
             feedback_id,
             content=content,
@@ -68,6 +76,13 @@ class FeedbackService:
             priority=priority,
         )
 
-    def delete_feedback(self, feedback_id: int) -> bool:
-        """Delete feedback by ID. Returns True if successful, False if not found."""
+    def delete_feedback(self, feedback_id: int, user_id: int) -> bool:
+        """
+        Delete feedback by ID (ownership required).
+        Returns True if successful, False if not found or not authorized.
+        """
+        feedback = self.feedback_repo.get_feedback_by_id(feedback_id)
+        if not feedback or feedback.user_id != user_id:
+            return False
+        
         return self.feedback_repo.delete_feedback(feedback_id)

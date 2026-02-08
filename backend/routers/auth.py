@@ -2,11 +2,14 @@
 Auth router: handles HTTP requests for user registration and login.
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi.responses import JSONResponse
 from sqlmodel import Session
+from dotenv import load_dotenv
+import os
 
 from core.database import get_session
-from core.security import get_current_user, create_jwt_token
+from core.security import get_current_user, create_jwt_token, get_current_user_from_cookie, get_current_user_flexible
 from schemas.user import (
     UserRegisterRequest,
     UserLoginRequest,
@@ -15,8 +18,9 @@ from schemas.user import (
 from services.auth_service import AuthService
 from repositories.user_repo import UserRepository
 
+load_dotenv()
 router = APIRouter(prefix="/auth", tags=["Auth"])
-
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
 
 @router.post(
     "/register",
@@ -51,27 +55,16 @@ def register(
         )
 
 
-@router.post("/login", status_code=status.HTTP_200_OK)
+@router.post("/login")
 def login(
     request: UserLoginRequest,
+    response: Response,  # <- added
     session: Session = Depends(get_session),
 ):
-    """
-    Authenticate user and return JWT token.
-
-    Flow:
-    - Validate credentials
-    - Issue JWT
-    - Frontend stores token and sends it on future requests
-    """
     repo = UserRepository(session)
     service = AuthService(repo)
 
-    user = service.authenticate_user(
-        username=request.username,
-        password=request.password,
-    )
-
+    user = service.authenticate_user(request.username, request.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -80,20 +73,33 @@ def login(
 
     access_token = create_jwt_token(user)
 
-    return {
-        "access_token": access_token,
-        "token_type": "bearer",
-    }
+    # Set JWT in HTTP-only cookie
+    response.set_cookie(
+        key="access_token",
+        value=access_token,
+        httponly=True,
+        samesite="lax",  # or 'strict' in production
+        max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
+        secure=False,  # True if using HTTPS
+    )
+
+    return {"message": "Login successful"}
+
+@router.post("/logout")
+def logout(response: Response):
+    """
+    Logout endpoint - removes the HTTP-only JWT cookie.
+    """
+    response.delete_cookie("access_token")
+    return {"message": "Logged out successfully"}
 
 
 @router.get("/me", response_model=UserResponse)
 def get_current_user_profile(
-    current_user=Depends(get_current_user),
+    current_user=Depends(get_current_user_flexible),
 ):
     """
     Get the current authenticated user's profile.
-
-    Requires:
-    Authorization: Bearer <JWT>
+    Works with both HTTP-only cookie and Authorization Bearer header.
     """
     return UserResponse.from_orm(current_user)

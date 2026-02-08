@@ -3,10 +3,11 @@ Feedback router: handles HTTP requests for feedback submission and retrieval.
 """
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlmodel import Session
+from sqlmodel import Session, delete
 
+from models.feedback import Feedback
 from core.database import get_session
-from core.security import get_current_user
+from core.security import get_current_user, get_current_user_flexible, get_current_user_from_cookie
 from schemas.feedback import (
     FeedbackSubmitRequest,
     FeedbackResponse,
@@ -32,7 +33,7 @@ router = APIRouter(prefix="/feedback", tags=["Feedback"])
 )
 def submit_feedback(
     request: FeedbackSubmitRequest,
-    current_user: User = Depends(get_current_user),   # 🔐 JWT required
+    current_user: User = Depends(get_current_user_flexible),   # 🔐 accept cookie or bearer
     session: Session = Depends(get_session),
 ):
     """
@@ -55,24 +56,8 @@ def submit_feedback(
 # READ (PUBLIC)
 # -------------------------
 
-@router.get("/{feedback_id}", response_model=FeedbackResponse)
-def get_feedback_by_id(
-    feedback_id: int,
-    session: Session = Depends(get_session),
-):
-    """
-    Public read: get a feedback entry by ID.
-    """
-    repo = FeedbackRepository(session)
-    feedback = repo.get_feedback_by_id(feedback_id)
-
-    if not feedback:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Feedback not found",
-        )
-
-    return FeedbackResponse.from_orm(feedback)
+# Note: `GET /{feedback_id}` is defined after static routes to avoid
+# accidental matching of static paths like '/me' to the dynamic parameter.
 
 
 @router.get("/category/{category}", response_model=list[FeedbackResponse])
@@ -109,19 +94,58 @@ def get_feedback_by_priority(
 # READ (PRIVATE / USER-SCOPED)
 # -------------------------
 
+
 @router.get("/me", response_model=list[FeedbackResponse])
 def get_my_feedback(
-    current_user: User = Depends(get_current_user),   # 🔐 JWT required
+    current_user: User = Depends(get_current_user_flexible),  # use cookie if available
     session: Session = Depends(get_session),
 ):
     """
     Get feedback for the authenticated user only.
+    Works for AuthContext / Dashboard.
     """
     repo = FeedbackRepository(session)
     service = FeedbackService(repo)
 
     feedback_list = service.get_user_feedback(current_user.id)
     return [FeedbackResponse.from_orm(f) for f in feedback_list]
+
+
+# Alias endpoint for compatibility
+@router.get("/my-feedback", response_model=list[FeedbackResponse])
+def my_feedback(
+    current_user: User = Depends(get_current_user_flexible),
+    session: Session = Depends(get_session),
+):
+    """
+    Alias for /feedback/me
+    """
+    return get_my_feedback(current_user=current_user, session=session)
+
+
+# -------------------------
+# READ (PUBLIC) - by ID
+# -------------------------
+
+
+@router.get("/{feedback_id}", response_model=FeedbackResponse)
+def get_feedback_by_id(
+    feedback_id: int,
+    session: Session = Depends(get_session),
+):
+    """
+    Public read: get a feedback entry by ID.
+    """
+    repo = FeedbackRepository(session)
+    feedback = repo.get_feedback_by_id(feedback_id)
+
+    if not feedback:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Feedback not found",
+        )
+
+    return FeedbackResponse.from_orm(feedback)
 
 
 # -------------------------
@@ -132,7 +156,7 @@ def get_my_feedback(
 def update_feedback(
     feedback_id: int,
     request: FeedbackUpdateRequest,
-    current_user: User = Depends(get_current_user),   # 🔐 JWT required
+    current_user: User = Depends(get_current_user_flexible),   # 🔐 JWT or cookie required
     session: Session = Depends(get_session),
 ):
     """
@@ -165,7 +189,7 @@ def update_feedback(
 @router.delete("/{feedback_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_feedback(
     feedback_id: int,
-    current_user: User = Depends(get_current_user),   # 🔐 JWT required
+    current_user: User = Depends(get_current_user_flexible),   # 🔐 JWT or cookie required
     session: Session = Depends(get_session),
 ):
     """

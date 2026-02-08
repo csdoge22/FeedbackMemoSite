@@ -35,16 +35,17 @@ class AuthService:
         user = User(username=username, hashed_password=hashed)
         return self.user_repo.save(user)
 
-    def authenticate_user(self, username: str, password: str) -> bool:
-        """
-        Authenticate user by checking username and password.
-        
-        Returns True if credentials are valid, False otherwise.
-        """
+    def authenticate_user(self, username: str, password: str) -> User | None:
+        """Authenticate user credentials. Returns User if valid, else None."""
         user = self.user_repo.get_by_username(username)
+
         if not user:
-            return False
-        return verify_password(password, user.hashed_password)
+            return None
+
+        if not verify_password(password, user.hashed_password):
+            return None
+
+        return user
 
     def get_user(self, user_id: int) -> User | None:
         """Get a user by ID."""

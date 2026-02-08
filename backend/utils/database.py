@@ -1,15 +1,14 @@
-"""
-DEPRECATED: Use core.database instead.
+from sqlmodel import Session, delete
+from models.user import User
+from models.feedback import Feedback
+from core.database import engine
 
-This module is kept for backward compatibility only.
-All new code should import from core.database.
-"""
-import warnings
-from core.database import create_db_and_tables, get_session, engine  # noqa: F401
-
-warnings.warn(
-    "utils.database is deprecated. Use core.database instead.",
-    DeprecationWarning,
-    stacklevel=2,
-)
-
+def clear_database():
+    """
+    Clear all feedback and users from the database.
+    For testing purposes only.
+    """
+    with Session(engine) as session:
+        session.exec(delete(Feedback))  # Delete child records first
+        session.exec(delete(User))      # Then delete parent records
+        session.commit()
