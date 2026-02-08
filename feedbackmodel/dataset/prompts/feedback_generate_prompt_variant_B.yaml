@@ -1,0 +1,66 @@
+task: generate_feedback_dataset_json
+
+description: |
+  Produce a high-diversity synthetic feedback dataset in JSON format.
+  Emphasize lexical variation, stylistic extremes, and non-uniform sentence structure
+  while preserving realism.
+
+global_constraints:
+  - Output valid JSON only.
+  - Single JSON array of exactly N items.
+  - ASCII characters only.
+  - No additional text outside the JSON array.
+  - Each item must include all required fields.
+  - No duplicated or near-duplicated feedback_text.
+
+output_format:
+  type: json
+  fields:
+    - feedback_id
+    - feedback_text
+    - category
+    - source_context
+    - actionability_hint
+
+allowed_values:
+  category: [growth, team, skill, subject, productivity, communication]
+  source_context: [peer_review, manager_feedback, self_reflection, course_feedback]
+  actionability_hint: [actionable, partially_actionable, descriptive_only]
+
+generation_instructions: |
+  Generate exactly N feedback entries.
+  Assign feedback_id sequentially from 0 to N-1.
+
+  Lexical diversity requirements:
+    - Vary vocabulary and phrasing aggressively.
+    - Avoid repeating distinctive words or sentence openings.
+    - Mix simple language with more technical or abstract phrasing.
+
+  Stylistic variation:
+    - abrupt or minimal feedback
+    - verbose, reflective feedback
+    - rigid, procedural wording
+    - conversational or informal phrasing
+    - emotionally flat or emotionally colored
+
+  Sentence structure:
+    - mix fragments and full sentences
+    - mix direct statements and hedged language
+    - vary use of conjunctions and qualifiers
+
+  Human–machine spectrum:
+    - Some feedback should read like it came from a system or form.
+    - Some should read like casual human remarks.
+    - Some should feel intentionally awkward or overly precise.
+
+  Realism constraints:
+    - Tone must match source_context expectations.
+    - Avoid fictional scenarios or implausible events.
+    - Do not include emojis or slang that would be unrealistic in context.
+
+  Semantic focus:
+    - Each feedback should clearly emphasize one primary issue.
+    - Secondary issues may appear but should not dominate.
+
+hard_failure_rule: |
+  If output violates any constraint, return [] only.

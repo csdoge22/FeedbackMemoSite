@@ -32,3 +32,19 @@ build/
 ### VS Code ###
 .vscode/
 .env
+*.env
+modelenv/
+__pycache__/
+*.py[cod]
+backendenv/
+
+API_USAGE.md
+ARCHITECTURE_DIAGRAMS.md
+FINAL_REPORT.md
+INDEX.md
+QUICK_REFERENCE.md
+README_REFACTORING.md
+REFACTORING_SUMMARY.md
+START_HERE.md
+VALIDATION_CHECKLIST.md
+VISUAL_SUMMARY.md

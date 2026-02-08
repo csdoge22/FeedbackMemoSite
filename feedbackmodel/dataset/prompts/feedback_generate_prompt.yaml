@@ -1,0 +1,102 @@
+task: generate_feedback_dataset_json
+
+description: |
+  Produce a strictly formatted JSON array representing a synthetic feedback dataset.
+  The dataset is used to train and evaluate systems that prioritize and classify feedback.
+  The data must be diverse, realistic, and intentionally varied in tone, length, and style.
+
+global_constraints:
+  - Output must be valid JSON only. No commentary or markdown.
+  - Output must be a single JSON array of length N.
+  - All characters must be ASCII.
+  - Do not include explanations or metadata outside the JSON array.
+  - Each object must contain exactly the fields listed in output_format.fields.
+  - Do not repeat the same feedback_text across items.
+  - Avoid template-like repetition or near-duplicate phrasing.
+
+output_format:
+  type: json
+  fields:
+    - feedback_id
+    - feedback_text
+    - category
+    - source_context
+    - actionability_hint
+
+allowed_values:
+  category: [growth, team, skill, subject, productivity, communication]
+  source_context: [peer_review, manager_feedback, self_reflection, course_feedback]
+  actionability_hint: [actionable, partially_actionable, descriptive_only]
+
+generation_instructions: |
+  Assume the caller provides an integer N.
+  Generate exactly N feedback objects with feedback_id values from 0 to N-1.
+
+  For each feedback item, internally select a unique style profile using the following axes.
+  Do NOT output the profile explicitly — it should only influence the text.
+
+  Style axes (must vary across items):
+    - Tone:
+        * supportive
+        * neutral
+        * frustrated
+        * appreciative
+        * concerned
+        * reflective
+        * impatient
+    - Formality:
+        * casual
+        * professional
+        * overly formal
+        * slightly robotic
+        * mixed human-robotic
+    - Length:
+        * very short (8–15 words)
+        * short (1 sentence)
+        * medium (2–3 sentences)
+        * long (4–6 sentences)
+    - Specificity:
+        * vague or high-level
+        * moderately specific
+        * concrete with examples
+    - Emotional intensity:
+        * flat / factual
+        * mild emotion
+        * clearly emotional but realistic
+
+  Human vs robotic spectrum:
+    - Some feedback should sound fully human and conversational.
+    - Some should sound procedural, checklist-like, or system-generated.
+    - Some should sit in between (polite but stiff, or emotionally muted).
+
+  Semantic intent coverage:
+    Distribute these intents across the dataset (not all per item):
+      - praise
+      - concern
+      - suggestion
+      - reflection
+      - frustration
+      - confusion
+      - appreciation
+      - disappointment
+
+  Realism rules:
+    - Match tone and expectations to the source_context.
+      * peer_review: informal, observational, sometimes emotional
+      * manager_feedback: structured, evaluative, goal-oriented
+      * self_reflection: introspective, uncertain, personal
+      * course_feedback: academic, topic-focused, sometimes blunt
+    - Avoid exaggerated extremes or unrealistic perfection.
+    - Avoid marketing language or buzzwords.
+
+  Content rules:
+    - feedback_text must be natural language with no tabs or newlines.
+    - Use varied sentence structures.
+    - Do not reuse distinctive phrases or sentence openings across items.
+
+  Category alignment:
+    - category must match the main theme of the feedback.
+    - actionability_hint must reflect whether a clear action is implied or stated.
+
+hard_failure_rule: |
+  If you cannot meet all constraints exactly, output an empty JSON array [] and nothing else.
