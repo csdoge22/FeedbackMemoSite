@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center">
       <Link to="/" className="font-bold text-xl">
-        MyApp
+        FeedStore
       </Link>
       <div className="space-x-4">
         {user ? (
