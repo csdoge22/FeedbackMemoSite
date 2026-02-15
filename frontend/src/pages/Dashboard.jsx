@@ -8,47 +8,10 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import feedbackAPI from "../api/feedback";
+import FeedbackItem from "../components/FeedbackItem";
 
 // Priority sorting order
 const PRIORITY_ORDER = { high: 3, medium: 2, low: 1 };
-
-// Feedback item component
-function FeedbackItem({ feedback, onDelete }) {
-  const PRIORITY_STYLES = {
-    high: "border-red-500 bg-red-50 text-red-900",
-    medium: "border-yellow-500 bg-yellow-50 text-yellow-900",
-    low: "border-green-500 bg-green-50 text-green-900",
-  };
-  const DEFAULT_STYLE = "border-gray-300 bg-white text-gray-900";
-  const DEFAULT_PRIORITY = "medium";
-
-  if (!feedback) return null;
-
-  const { id, content, category, priority: rawPriority } = feedback;
-  const priority = rawPriority ?? DEFAULT_PRIORITY;
-  const priorityStyle = PRIORITY_STYLES[priority] ?? DEFAULT_STYLE;
-
-  return (
-    <article
-      className={`border rounded-lg p-4 space-y-2 ${priorityStyle}`}
-      aria-label={`Feedback item with ${priority} priority`}
-    >
-      <header className="flex justify-between items-center">
-        <span className="text-xs font-medium px-2 py-1 rounded">{priority.toUpperCase()}</span>
-        <button
-          type="button"
-          onClick={() => onDelete(id)}
-          className="text-xs text-red-500 hover:underline"
-          aria-label="Delete feedback"
-        >
-          Delete
-        </button>
-      </header>
-      <p className="text-sm text-gray-800 whitespace-pre-wrap">{content}</p>
-      {category && <p className="text-xs text-gray-500">Category: {category}</p>}
-    </article>
-  );
-}
 
 export default function Dashboard() {
   const { user, loading: authLoading } = useAuth();
@@ -104,6 +67,19 @@ export default function Dashboard() {
       alert(`Failed to add feedback: ${err.message}`);
     } finally {
       setIsSubmitting(false);
+    }
+  }
+
+  // Update feedback
+  async function handleEdit(feedbackId, updatedData) {
+    try {
+      const updated = await feedbackAPI.updateFeedback(feedbackId, updatedData);
+      setFeedbacks((prev) =>
+        prev.map((f) => (f.id === feedbackId ? updated : f))
+      );
+    } catch (err) {
+      alert(`Failed to update feedback: ${err.message}`);
+      throw err;
     }
   }
 
@@ -193,7 +169,7 @@ export default function Dashboard() {
       ) : (
         <div className="space-y-3">
           {sortedFeedbacks.map((feedback) => (
-            <FeedbackItem key={feedback.id} feedback={feedback} onDelete={handleDelete} />
+            <FeedbackItem key={feedback.id} feedback={feedback} onDelete={handleDelete} onUpdate={handleEdit} />
           ))}
         </div>
       )}

@@ -1,49 +1,34 @@
-"""Database engine and session management."""
+"""Database engine and session management with PostgreSQL support."""
 from sqlmodel import create_engine, Session, SQLModel
 import os
-from sqlalchemy import text
 
-# Read from environment or use default for local development
+# Read from environment or use default PostgreSQL for local development
+# Default: PostgreSQL on localhost using current user (macOS Homebrew)
+# For production, set DATABASE_URL environment variable
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "sqlite:///feedback.db"
+    "postgresql://localhost/feedbackdb"
 )
 
-# Engine setup
-if DATABASE_URL.startswith("sqlite"):
-    engine = create_engine(
-        DATABASE_URL,
-        connect_args={"check_same_thread": False},
-        echo=False,
-    )
-else:
-    engine = create_engine(DATABASE_URL, echo=False)
+# Engine setup for PostgreSQL
+# Using psycopg2-binary as the driver (installed in requirements.txt)
+engine = create_engine(
+    DATABASE_URL,
+    echo=False,
+    # Connection pool settings optimized for development
+    pool_size=10,
+    max_overflow=20,
+    pool_pre_ping=True,  # Verify connections before using them
+)
 
 
 def create_db_and_tables():
-    """Create all tables and perform minimal compatibility fixes.
+    """Create all tables in PostgreSQL.
 
-    This function creates tables if missing and applies lightweight
-    compatibility fixes for development (e.g. add missing columns in
-    SQLite when the model evolved). It intentionally does not perform
-    destructive migrations.
+    This function creates all SQLModel tables if they don't already exist.
+    Safe to call multiple times (idempotent).
     """
     SQLModel.metadata.create_all(engine)
-
-    # Minimal SQLite compatibility: ensure `priority` column exists on feedback
-    # If the DB was created before the model added `priority`, add the column.
-    try:
-        if engine.dialect.name == "sqlite":
-            with engine.connect() as conn:
-                result = conn.execute(text("PRAGMA table_info('feedback')")).fetchall()
-                columns = [row[1] for row in result]
-                if "priority" not in columns:
-                    # Add nullable TEXT column; safe no-op for existing data
-                    conn.execute(text("ALTER TABLE feedback ADD COLUMN priority TEXT"))
-    except Exception:
-        # Don't raise during app startup for non-critical migration failures;
-        # leave the error visible in logs if necessary.
-        pass
 
 
 def get_session():

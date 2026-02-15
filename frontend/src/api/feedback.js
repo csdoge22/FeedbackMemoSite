@@ -9,7 +9,7 @@
  * Uses HTTP-only cookie for authentication.
  */
 
-const API_BASE = "http://localhost:8000/feedback";
+const API_BASE = `${import.meta.env.VITE_API_URL || "http://localhost:8000"}/feedback`;
 
 /**
  * Error handler: Extract meaningful messages
@@ -67,6 +67,20 @@ async function submitFeedback(feedback) {
 }
 
 /**
+ * Update feedback by ID
+ * @param {number|string} feedbackId 
+ * @param {Object} feedback { content?, category?, priority? }
+ */
+async function updateFeedback(feedbackId, feedback) {
+  const response = await fetch(`${API_BASE}/${feedbackId}`, {
+    method: "PUT",
+    ...authenticatedOptions,
+    body: JSON.stringify(feedback),
+  });
+  return handleResponse(response);
+}
+
+/**
  * Delete feedback by ID
  * @param {number|string} feedbackId 
  */
@@ -84,6 +98,7 @@ async function deleteFeedback(feedbackId) {
 const feedbackAPI = {
   getMyFeedback,
   submitFeedback,
+  updateFeedback,
   deleteFeedback,
 };
 

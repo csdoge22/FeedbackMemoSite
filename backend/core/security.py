@@ -29,7 +29,13 @@ load_dotenv()
 # -------------------------
 
 SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError("SECRET_KEY environment variable is required")
+
 ALGORITHM = os.getenv("ALGORITHM")
+if not ALGORITHM:
+    raise ValueError("ALGORITHM environment variable is required")
+
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
 
 # -------------------------

@@ -73,14 +73,15 @@ def login(
 
     access_token = create_jwt_token(user)
 
-    # Set JWT in HTTP-only cookie
+    # Set JWT in HTTP-only cookie with environment-specific security settings
+    is_production = os.getenv("ENV") == "production"
     response.set_cookie(
         key="access_token",
         value=access_token,
         httponly=True,
-        samesite="lax",  # or 'strict' in production
+        samesite="strict" if is_production else "lax",
         max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
-        secure=False,  # True if using HTTPS
+        secure=is_production,  # True for HTTPS in production
     )
 
     return {"message": "Login successful"}
