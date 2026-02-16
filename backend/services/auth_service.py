@@ -1,18 +1,19 @@
 """Auth service: contains business logic for user registration and authentication."""
-from repositories.user_repo import UserRepository
-from models.user import User
+
 from core.security import hash_password, verify_password
+from models.user import User
+from repositories.user_repo import UserRepository
 
 
 class AuthService:
     """
     AuthService contains all authentication business logic.
-    
+
     Responsibilities:
     - User registration logic (check duplicates, hash password)
     - User authentication (verify credentials)
     - User management (get, update, delete)
-    
+
     Does NOT:
     - Create database sessions
     - Handle HTTP requests
@@ -25,7 +26,7 @@ class AuthService:
     def register_user(self, username: str, password: str) -> User:
         """
         Register a new user with username and password.
-        
+
         Raises ValueError if username already exists.
         """
         existing_user = self.user_repo.get_by_username(username)
@@ -73,4 +74,3 @@ class AuthService:
         if not user:
             return False
         return self.user_repo.delete(user)
-

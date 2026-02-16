@@ -10,7 +10,7 @@
  * Works with backend /auth and /user endpoints
  */
 
-const API_BASE = "http://localhost:8000/auth"; // Adjust if backend runs on different port
+const API_BASE = `${import.meta.env.VITE_API_URL || "http://localhost:8000"}/auth`; // Uses VITE_API_URL, defaults to localhost
 
 /**
  * Error handler: Extract meaningful error messages from API responses

@@ -3,21 +3,21 @@ Feedback router: handles HTTP requests for feedback submission and retrieval.
 """
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlmodel import Session, delete
+from sqlmodel import Session
 
-from models.feedback import Feedback
 from core.database import get_session
-from core.security import get_current_user, get_current_user_flexible, get_current_user_from_cookie
+from core.security import (
+    get_current_user_flexible,
+)
+from models.user import User
+from repositories.feedback_repo import FeedbackRepository
 from schemas.feedback import (
-    FeedbackSubmitRequest,
     FeedbackResponse,
+    FeedbackSubmitRequest,
     FeedbackUpdateRequest,
     PriorityRequest,
 )
 from services.feedback_service import FeedbackService
-from repositories.feedback_repo import FeedbackRepository
-from models.user import User
-
 
 router = APIRouter(prefix="/feedback", tags=["Feedback"])
 
@@ -26,6 +26,7 @@ router = APIRouter(prefix="/feedback", tags=["Feedback"])
 # CREATE
 # -------------------------
 
+
 @router.post(
     "/submit",
     response_model=FeedbackResponse,
@@ -33,7 +34,9 @@ router = APIRouter(prefix="/feedback", tags=["Feedback"])
 )
 def submit_feedback(
     request: FeedbackSubmitRequest,
-    current_user: User = Depends(get_current_user_flexible),   # 🔐 accept cookie or bearer
+    current_user: User = Depends(
+        get_current_user_flexible
+    ),  # 🔐 accept cookie or bearer
     session: Session = Depends(get_session),
 ):
     """
@@ -152,11 +155,14 @@ def get_feedback_by_id(
 # UPDATE
 # -------------------------
 
+
 @router.put("/{feedback_id}", response_model=FeedbackResponse)
 def update_feedback(
     feedback_id: int,
     request: FeedbackUpdateRequest,
-    current_user: User = Depends(get_current_user_flexible),   # 🔐 JWT or cookie required
+    current_user: User = Depends(
+        get_current_user_flexible
+    ),  # 🔐 JWT or cookie required
     session: Session = Depends(get_session),
 ):
     """
@@ -167,7 +173,7 @@ def update_feedback(
 
     feedback = service.update_feedback(
         feedback_id=feedback_id,
-        user_id=current_user.id,   # 👈 ownership enforced in service
+        user_id=current_user.id,  # 👈 ownership enforced in service
         content=request.content,
         category=request.category,
         priority=request.priority,
@@ -186,10 +192,13 @@ def update_feedback(
 # DELETE
 # -------------------------
 
+
 @router.delete("/{feedback_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_feedback(
     feedback_id: int,
-    current_user: User = Depends(get_current_user_flexible),   # 🔐 JWT or cookie required
+    current_user: User = Depends(
+        get_current_user_flexible
+    ),  # 🔐 JWT or cookie required
     session: Session = Depends(get_session),
 ):
     """
@@ -200,7 +209,7 @@ def delete_feedback(
 
     success = service.delete_feedback(
         feedback_id=feedback_id,
-        user_id=current_user.id,   # 👈 ownership enforced
+        user_id=current_user.id,  # 👈 ownership enforced
     )
 
     if not success:
@@ -215,6 +224,7 @@ def delete_feedback(
 # -------------------------
 # ML / AUXILIARY (PUBLIC)
 # -------------------------
+
 
 @router.post("/priority")
 def predict_priority(

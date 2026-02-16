@@ -1,4 +1,5 @@
 """Feedback service: contains business logic for feedback submission and retrieval."""
+
 from models.feedback import Feedback
 from repositories.feedback_repo import FeedbackRepository
 
@@ -6,12 +7,12 @@ from repositories.feedback_repo import FeedbackRepository
 class FeedbackService:
     """
     FeedbackService contains all feedback-related business logic.
-    
+
     Responsibilities:
     - Validate and submit feedback
     - Retrieve feedback by user or category
     - Delete feedback
-    
+
     Does NOT:
     - Create database sessions
     - Handle HTTP requests
@@ -30,7 +31,7 @@ class FeedbackService:
     ) -> Feedback:
         """
         Submit feedback for a user.
-        
+
         Returns the created Feedback object.
         """
         feedback = Feedback(
@@ -68,7 +69,7 @@ class FeedbackService:
         feedback = self.feedback_repo.get_feedback_by_id(feedback_id)
         if not feedback or feedback.user_id != user_id:
             return None
-        
+
         return self.feedback_repo.update_feedback(
             feedback_id,
             content=content,
@@ -84,5 +85,5 @@ class FeedbackService:
         feedback = self.feedback_repo.get_feedback_by_id(feedback_id)
         if not feedback or feedback.user_id != user_id:
             return False
-        
+
         return self.feedback_repo.delete_feedback(feedback_id)

@@ -1,7 +1,9 @@
 from sqlmodel import Session, delete
-from models.user import User
-from models.feedback import Feedback
+
 from core.database import engine
+from models.feedback import Feedback
+from models.user import User
+
 
 def clear_database():
     """
@@ -10,5 +12,5 @@ def clear_database():
     """
     with Session(engine) as session:
         session.exec(delete(Feedback))  # Delete child records first
-        session.exec(delete(User))      # Then delete parent records
+        session.exec(delete(User))  # Then delete parent records
         session.commit()

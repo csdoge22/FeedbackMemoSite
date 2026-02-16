@@ -1,6 +1,7 @@
 // src/components/Navbar.jsx
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import logo from "../assets/FBReflectLogo.png"  // <-- import image
 
 export default function Navbar() {
   const { user, logout } = useAuth()
@@ -15,8 +16,9 @@ export default function Navbar() {
 
   return (
     <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center">
-      <Link to="/" className="font-bold text-xl">
-        FeedStore
+      <Link to="/" className="font-bold text-xl flex items-center">
+        <img src={logo} alt="FBReflect Logo" className="h-8 inline-block mr-2" />
+        FBReflect
       </Link>
       <div className="space-x-4">
         {user ? (

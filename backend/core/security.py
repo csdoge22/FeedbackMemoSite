@@ -7,20 +7,20 @@ Handles:
 - Support for both Authorization header and HTTP-only cookie
 """
 
+import os
 from datetime import datetime, timedelta
 from typing import Optional
-import os
 
 from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt, ExpiredSignatureError
+from jose import ExpiredSignatureError, JWTError, jwt
 from passlib.context import CryptContext
 from sqlmodel import Session
 
 from core.database import get_session
-from repositories.user_repo import UserRepository
 from models.user import User
+from repositories.user_repo import UserRepository
 
 load_dotenv()
 
@@ -29,7 +29,13 @@ load_dotenv()
 # -------------------------
 
 SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError("SECRET_KEY environment variable is required")
+
 ALGORITHM = os.getenv("ALGORITHM")
+if not ALGORITHM:
+    raise ValueError("ALGORITHM environment variable is required")
+
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
 
 # -------------------------
@@ -72,12 +78,14 @@ def create_jwt_token(user: User) -> str:
 # AUTH DEPENDENCIES
 # -------------------------
 
+
 def get_current_user(
     token: str = Depends(oauth2_scheme),
     session: Session = Depends(get_session),
 ) -> User:
     """
-    Dependency to get the currently authenticated user from an Authorization Bearer token.
+    Dependency to get the currently authenticated user from an
+    Authorization Bearer token.
     """
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -91,7 +99,9 @@ def get_current_user(
         if not user_id:
             raise credentials_exception
     except ExpiredSignatureError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Session expired")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Session expired"
+        )
     except JWTError:
         raise credentials_exception
 
@@ -127,7 +137,9 @@ def get_current_user_from_cookie(
                 detail="Invalid token payload",
             )
     except ExpiredSignatureError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Session expired")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Session expired"
+        )
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -143,6 +155,7 @@ def get_current_user_from_cookie(
         )
 
     return user
+
 
 def get_current_user_flexible(
     request: Request,
