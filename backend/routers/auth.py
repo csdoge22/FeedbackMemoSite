@@ -2,25 +2,29 @@
 Auth router: handles HTTP requests for user registration and login.
 """
 
-from fastapi import APIRouter, Depends, HTTPException, Response, status
-from fastapi.responses import JSONResponse
-from sqlmodel import Session
-from dotenv import load_dotenv
 import os
 
+from dotenv import load_dotenv
+from fastapi import APIRouter, Depends, HTTPException, Response, status
+from sqlmodel import Session
+
 from core.database import get_session
-from core.security import get_current_user, create_jwt_token, get_current_user_from_cookie, get_current_user_flexible
+from core.security import (
+    create_jwt_token,
+    get_current_user_flexible,
+)
+from repositories.user_repo import UserRepository
 from schemas.user import (
-    UserRegisterRequest,
     UserLoginRequest,
+    UserRegisterRequest,
     UserResponse,
 )
 from services.auth_service import AuthService
-from repositories.user_repo import UserRepository
 
 load_dotenv()
 router = APIRouter(prefix="/auth", tags=["Auth"])
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
+
 
 @router.post(
     "/register",
@@ -85,6 +89,7 @@ def login(
     )
 
     return {"message": "Login successful"}
+
 
 @router.post("/logout")
 def logout(response: Response):

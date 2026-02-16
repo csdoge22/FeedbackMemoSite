@@ -1,16 +1,17 @@
 """Feedback repository: database access layer for Feedback model."""
-from sqlmodel import Session, select
-from models.feedback import Feedback
 
+from sqlmodel import Session, select
+
+from models.feedback import Feedback
 
 class FeedbackRepository:
     """
     FeedbackRepository handles all database operations for Feedback model.
-    
+
     Responsibilities:
     - CRUD operations (Create, Read, Update, Delete)
     - Execute SQLModel queries
-    
+
     Does NOT:
     - Contain business logic
     - Import FastAPI
@@ -54,18 +55,21 @@ class FeedbackRepository:
         category: str | None = None,
         priority: str | None = None,
     ) -> Feedback | None:
-        """Update feedback fields by ID. Returns updated Feedback or None if not found."""
+        """
+        Update feedback fields by ID. Returns updated Feedback or None
+        if not found.
+        """
         feedback = self.get_feedback_by_id(feedback_id)
         if not feedback:
             return None
-        
+
         if content is not None:
             feedback.content = content
         if category is not None:
             feedback.category = category
         if priority is not None:
             feedback.priority = priority
-        
+
         self.session.add(feedback)
         self.session.commit()
         self.session.refresh(feedback)

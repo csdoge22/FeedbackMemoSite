@@ -1,0 +1,47 @@
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+exclude = '''
+/(
+    backendenv
+  | venv
+  | \.venv
+  | \.tox
+  | \.git
+  | __pycache__
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+# Exclude virtual environments and build artifacts
+exclude = [
+    "backendenv",
+    "venv",
+    ".venv",
+    ".tox",
+    "__pycache__",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+# Enable core lint rules
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes (unused imports, undefined names)
+    "W",   # pycodestyle warnings
+    "I",   # import sorting (replaces isort)
+]
+
+# Allow Ruff to auto-fix issues (unused imports, etc.)
+fixable = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+# Allow unused imports in __init__.py (common pattern)
+"__init__.py" = ["F401"]

@@ -7,17 +7,20 @@ This file:
 - Registers routers
 - Serves as the ASGI entry point
 """
+
 import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from utils import database
 from core.database import create_db_and_tables
 from routers import auth, feedback
+from utils import database
 
 # -------------------------
 # STARTUP VALIDATION
 # -------------------------
+
 
 def validate_environment():
     """Validate required environment variables at startup."""
@@ -28,6 +31,7 @@ def validate_environment():
             f"Missing required environment variables: {', '.join(missing)}. "
             "Please check your .env file."
         )
+
 
 validate_environment()
 
@@ -51,7 +55,7 @@ app.add_middleware(
 # Initialize database tables on startup (safe no-op if already present)
 create_db_and_tables()
 
-if os.getenv("ENV")=="dev":
+if os.getenv("ENV") == "dev":
     database.clear_database()
 
 # Register routers for modular endpoint organization
@@ -69,4 +73,3 @@ def index():
 def health_check():
     """Simple health check for monitoring."""
     return {"status": "ok"}
-

@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from typing import Dict, Literal
+
 import joblib
 import numpy as np
 
@@ -32,6 +33,7 @@ MODEL_PATHS = {
     "impact": MODEL_DIR / "impact",
 }
 
+
 # -----------------------------
 # Model Loading
 # -----------------------------
@@ -56,6 +58,7 @@ def load_models() -> Dict[str, dict]:
 
     return models
 
+
 # -----------------------------
 # Prediction Helpers
 # -----------------------------
@@ -74,6 +77,7 @@ def predict_dimension(vectorizer, model, text: str) -> dict:
         "confidence": float(np.max(probs)),
     }
 
+
 def predict_all_dimensions(models: Dict[str, dict], text: str) -> Dict[str, dict]:
     """
     Run prediction for severity, urgency, and impact.
@@ -87,6 +91,7 @@ def predict_all_dimensions(models: Dict[str, dict], text: str) -> Dict[str, dict
         for dim in DIMENSIONS
     }
 
+
 # -----------------------------
 # Priority Logic (Business Layer)
 # -----------------------------
@@ -99,10 +104,11 @@ def compute_priority_score(
     Weighted priority score.
     """
     return (
-        0.45 * LABEL_TO_SCORE[urgency] +
-        0.35 * LABEL_TO_SCORE[severity] +
-        0.20 * LABEL_TO_SCORE[impact]
+        0.45 * LABEL_TO_SCORE[urgency]
+        + 0.35 * LABEL_TO_SCORE[severity]
+        + 0.20 * LABEL_TO_SCORE[impact]
     )
+
 
 def bucket_priority(score: float) -> PriorityLabel:
     """
@@ -116,6 +122,7 @@ def bucket_priority(score: float) -> PriorityLabel:
         return "medium"
     else:
         return "low"
+
 
 # -----------------------------
 # Public API (what FastAPI calls)

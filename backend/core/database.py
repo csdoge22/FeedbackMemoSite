@@ -1,14 +1,13 @@
 """Database engine and session management with PostgreSQL support."""
-from sqlmodel import create_engine, Session, SQLModel
+
 import os
+
+from sqlmodel import Session, SQLModel, create_engine
 
 # Read from environment or use default PostgreSQL for local development
 # Default: PostgreSQL on localhost using current user (macOS Homebrew)
 # For production, set DATABASE_URL environment variable
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://localhost/feedbackdb"
-)
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://localhost/feedbackdb")
 
 # Engine setup for PostgreSQL
 # Using psycopg2-binary as the driver (installed in requirements.txt)

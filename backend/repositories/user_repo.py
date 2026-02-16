@@ -1,18 +1,20 @@
 """User repository: database access layer for User model."""
-from sqlmodel import Session, select
+
 from sqlalchemy.exc import IntegrityError
+from sqlmodel import Session, select
+
 from models.user import User
 
 
 class UserRepository:
     """
     UserRepository handles all database operations for User model.
-    
+
     Responsibilities:
     - CRUD operations (Create, Read, Update, Delete)
     - Execute SQLModel queries
     - Translate DB errors to domain errors
-    
+
     Does NOT:
     - Contain business logic
     - Import FastAPI
@@ -25,7 +27,7 @@ class UserRepository:
     def save(self, user: User) -> User:
         """
         Save a new user to the database.
-        
+
         Raises ValueError if username already exists (duplicate key).
         """
         self.session.add(user)
@@ -60,4 +62,3 @@ class UserRepository:
         self.session.delete(user)
         self.session.commit()
         return True
-
