@@ -62,14 +62,6 @@ uvicorn app:app --reload
 ## 💡 Usage
 
 - Access the app at `http://127.0.0.1:8000`
-- API endpoints:
-
-  - `POST /tabs` – create a new tab
-  - `GET /tabs` – list all tabs
-  - `POST /feedback` – add feedback to a tab
-  - `DELETE /feedback/{id}` – remove feedback entry
-
-> Example usage, screenshots, or curl commands can be added here.
 
 ---
 
