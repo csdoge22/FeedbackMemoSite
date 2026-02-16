@@ -19,12 +19,13 @@ Live demo: [FBReflect Demo](http://fbreflect.sonit7cloud.com)
 ## ✨ Features
 
 <ul>
-<li>📂 Create, update, and delete tabs and subtabs</li>
 <li>📝 Add, edit, and remove feedback entries</li>
+<li>🎨 Intuitive UI with icons and buttons for fast interaction</li>
+<li>📂 Create, update, and delete tabs and subtabs (planned)</li> 
+<li>🧠 AI Priority Mapper (planned)</li>
 <li>🤝 Real-time collaboration (planned)</li>
 <li>🧠 AI-assisted feedback refinement (planned)</li>
 <li>🔔 Notifications for reminders and updates (planned)</li>
-<li>🎨 Intuitive UI with icons and buttons for fast interaction</li>
 </ul>
 
 ---
@@ -34,7 +35,7 @@ Live demo: [FBReflect Demo](http://fbreflect.sonit7cloud.com)
 - **Backend:** Python, FastAPI, SQLModel, PostgreSQL
 - **Frontend:** React.js, Tailwind CSS, Vite
 - **Testing & Linting:** PyTest, Black, Ruff
-- **Deployment:** Gunicorn (FastAPI Production Server)
+- **Deployment:** Gunicorn (FastAPI Production Server), Amazon EC2 (Amazon Linux), Route 53 (Domain)
 
 ---
 
