@@ -4,27 +4,26 @@
   <img src="docs/demo_screenshot.png" alt="FBReflect Demo" width="600">
 </p>
 
-**v1.0.0** – A deployed, lightweight feedback platform for organizing and managing feedback, helping you remember what you need.
+**v0.0.0** – A lightweight feedback platform for organizing and managing feedback, helping you remember what you need.
 
 Ideal for personal growth, team dynamics, and organizational structure.
 
 ---
 
-## 🚀 Demo
-
-Live demo: [FBReflect Demo](http://fbreflect.sonit7cloud.com)
+## 🚀 Demo (To Be Determined)
 
 ---
 
 ## ✨ Features
 
 <ul>
-<li>📂 Create, update, and delete tabs and subtabs</li>
 <li>📝 Add, edit, and remove feedback entries</li>
+<li>🎨 Intuitive UI with icons and buttons for fast interaction</li>
+<li>📂 Create, update, and delete tabs and subtabs (planned)</li> 
+<li>🧠 AI Priority Mapper (planned)</li>
 <li>🤝 Real-time collaboration (planned)</li>
 <li>🧠 AI-assisted feedback refinement (planned)</li>
 <li>🔔 Notifications for reminders and updates (planned)</li>
-<li>🎨 Intuitive UI with icons and buttons for fast interaction</li>
 </ul>
 
 ---
@@ -34,7 +33,7 @@ Live demo: [FBReflect Demo](http://fbreflect.sonit7cloud.com)
 - **Backend:** Python, FastAPI, SQLModel, PostgreSQL
 - **Frontend:** React.js, Tailwind CSS, Vite
 - **Testing & Linting:** PyTest, Black, Ruff
-- **Deployment:** Gunicorn (FastAPI Production Server)
+- **Deployment:** Gunicorn (FastAPI Production Server), Amazon EC2 (Amazon Linux), Route 53 (Domain)
 
 ---
 
@@ -62,14 +61,6 @@ uvicorn app:app --reload
 ## 💡 Usage
 
 - Access the app at `http://127.0.0.1:8000`
-- API endpoints:
-
-  - `POST /tabs` – create a new tab
-  - `GET /tabs` – list all tabs
-  - `POST /feedback` – add feedback to a tab
-  - `DELETE /feedback/{id}` – remove feedback entry
-
-> Example usage, screenshots, or curl commands can be added here.
 
 ---
 
