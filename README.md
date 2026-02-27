@@ -4,15 +4,13 @@
   <img src="docs/demo_screenshot.png" alt="FBReflect Demo" width="600">
 </p>
 
-**v1.0.0** – A deployed, lightweight feedback platform for organizing and managing feedback, helping you remember what you need.
+**v0.0.0** – A lightweight feedback platform for organizing and managing feedback, helping you remember what you need.
 
 Ideal for personal growth, team dynamics, and organizational structure.
 
 ---
 
-## 🚀 Demo
-
-Live demo: [FBReflect Demo](http://fbreflect.sonit7cloud.com)
+## 🚀 Demo (To Be Determined)
 
 ---
 
