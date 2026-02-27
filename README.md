@@ -4,7 +4,7 @@
   <img src="docs/demo_screenshot.png" alt="FBReflect Demo" width="600">
 </p>
 
-**v0.0.0** – A lightweight feedback platform for organizing and managing feedback, helping you remember what you need.
+**v1.0.0** – A lightweight feedback platform for organizing and managing feedback, helping you remember what you need.
 
 Ideal for personal growth, team dynamics, and organizational structure.
 
