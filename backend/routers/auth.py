@@ -83,9 +83,11 @@ def login(
         key="access_token",
         value=access_token,
         httponly=True,
-        samesite="strict" if is_production else "lax",
+        samesite="none" if is_production else "lax",
         max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
-        secure=is_production,  # True for HTTPS in production
+        secure=is_production,  # True for HTTPS in production.
+        # If you have a specific frontend domain, optionally set `domain` to it.
+        # domain=os.getenv("COOKIE_DOMAIN") if os.getenv("COOKIE_DOMAIN") else None,
     )
 
     return {"message": "Login successful"}

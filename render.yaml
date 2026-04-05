@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: fbreflect-backend
+    env: docker
+    plan: starter
+    dockerfilePath: backend/Dockerfile
+    # Optional: render team/region settings
+    autoDeploy: true
+    healthCheckPath: /health

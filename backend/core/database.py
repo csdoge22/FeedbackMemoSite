@@ -3,7 +3,9 @@
 import os
 
 from sqlmodel import Session, SQLModel, create_engine
+from dotenv import load_dotenv
 
+load_dotenv()
 # Read from environment or use default PostgreSQL for local development
 # Default: PostgreSQL on localhost using current user (macOS Homebrew)
 # For production, set DATABASE_URL environment variable
