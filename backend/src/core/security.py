@@ -18,9 +18,9 @@ from jose import ExpiredSignatureError, JWTError, jwt
 from passlib.context import CryptContext
 from sqlmodel import Session
 
-from core.database import get_session
-from models.user import User
-from repositories.user_repo import UserRepository
+from src.core.database import get_session
+from src.models.user import User
+from src.repositories.user_repo import UserRepository
 
 load_dotenv()
 

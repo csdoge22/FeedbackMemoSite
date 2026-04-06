@@ -13,11 +13,12 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from core.database import create_db_and_tables
-from routers import auth, feedback
-from utils import database
+from src.routers import auth
+from src.core.database import create_db_and_tables
+from src.routers import feedback
+from src.utils import database
 
-# -------------------------
+# --------------------------
 # STARTUP VALIDATION
 # -------------------------
 
@@ -43,7 +44,14 @@ app = FastAPI(
 
 # Configure CORS with environment-specific origins
 # In production set CORS_ORIGINS to your deployed frontend URL(s), e.g. https://your-app.vercel.app
-CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+ENV = os.getenv("ENV", "dev")
+
+if ENV == "dev":
+    # Local frontend development
+    CORS_ORIGINS = ["http://localhost:5173"]
+else:
+    # Production — placeholder until frontend is hosted
+    CORS_ORIGINS = ["*"]  # temporarily allow all origins
 
 app.add_middleware(
     CORSMiddleware,

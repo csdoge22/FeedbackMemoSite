@@ -1,7 +1,7 @@
 """Feedback service: contains business logic for feedback submission and retrieval."""
 
-from models.feedback import Feedback
-from repositories.feedback_repo import FeedbackRepository
+from src.models.feedback import Feedback
+from src.repositories.feedback_repo import FeedbackRepository
 
 
 class FeedbackService:

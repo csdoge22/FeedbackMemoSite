@@ -1,8 +1,8 @@
 """Auth service: contains business logic for user registration and authentication."""
 
-from core.security import hash_password, verify_password
-from models.user import User
-from repositories.user_repo import UserRepository
+from src.core.security import hash_password, verify_password
+from src.models.user import User
+from src.repositories.user_repo import UserRepository
 
 
 class AuthService:

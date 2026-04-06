@@ -1,8 +1,8 @@
 from sqlmodel import Session, delete
 
-from core.database import engine
-from models.feedback import Feedback
-from models.user import User
+from src.core.database import engine
+from src.models.feedback import Feedback
+from src.models.user import User
 
 
 def clear_database():
