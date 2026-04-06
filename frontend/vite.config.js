@@ -10,4 +10,5 @@ export default defineConfig({
     setupFiles: "./src/test/setupTests.js",
     globals: true,
   },
+  base: './', // relative paths so assets load correctly
 })
