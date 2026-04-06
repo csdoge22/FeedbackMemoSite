@@ -2,7 +2,7 @@
 
 from sqlmodel import Session, select
 
-from models.feedback import Feedback
+from src.models.feedback import Feedback
 
 
 class FeedbackRepository:

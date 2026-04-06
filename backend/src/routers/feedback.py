@@ -5,19 +5,19 @@ Feedback router: handles HTTP requests for feedback submission and retrieval.
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import Session
 
-from core.database import get_session
-from core.security import (
+from src.core.database import get_session
+from src.core.security import (
     get_current_user_flexible,
 )
-from models.user import User
-from repositories.feedback_repo import FeedbackRepository
-from schemas.feedback import (
+from src.models.user import User
+from src.repositories.feedback_repo import FeedbackRepository
+from src.schemas.feedback import (
     FeedbackResponse,
     FeedbackSubmitRequest,
     FeedbackUpdateRequest,
     PriorityRequest,
 )
-from services.feedback_service import FeedbackService
+from src.services.feedback_service import FeedbackService
 
 router = APIRouter(prefix="/feedback", tags=["Feedback"])
 

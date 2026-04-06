@@ -8,18 +8,18 @@ from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlmodel import Session
 
-from core.database import get_session
-from core.security import (
+from src.core.database import get_session
+from src.core.security import (
     create_jwt_token,
     get_current_user_flexible,
 )
-from repositories.user_repo import UserRepository
-from schemas.user import (
+from src.repositories.user_repo import UserRepository
+from src.schemas.user import (
     UserLoginRequest,
     UserRegisterRequest,
     UserResponse,
 )
-from services.auth_service import AuthService
+from src.services.auth_service import AuthService
 
 load_dotenv()
 router = APIRouter(prefix="/auth", tags=["Auth"])

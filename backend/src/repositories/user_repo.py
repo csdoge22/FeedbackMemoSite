@@ -3,7 +3,7 @@
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
 
-from models.user import User
+from src.models.user import User
 
 
 class UserRepository:
