@@ -33,7 +33,7 @@ Ideal for personal growth, team dynamics, and organizational structure.
 - **Backend:** Python, FastAPI, SQLModel, PostgreSQL
 - **Frontend:** React.js, Tailwind CSS, Vite
 - **Testing & Linting:** PyTest, Black, Ruff
-- **Deployment:** Gunicorn (FastAPI Production Server), Amazon EC2 (Amazon Linux), Route 53 (Domain)
+- **Deployment:** Uvicorn (FastAPI Production Server), Vercel (Frontend Deployment), Render (Backend Deployment), NeonDB (Database Deployment)
 
 ---
 
