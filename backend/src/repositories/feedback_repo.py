@@ -4,6 +4,7 @@ from sqlmodel import Session, select
 
 from models.feedback import Feedback
 
+
 class FeedbackRepository:
     """
     FeedbackRepository handles all database operations for Feedback model.

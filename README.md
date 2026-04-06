@@ -106,7 +106,35 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ---
 
-## 🙏 Acknowledgments
+## � Deployment (Vercel + Render)
+
+### Backend (Render)
+
+1. Create a new web service in Render using the `backend/` folder.
+2. Add environment variables from `backend/.env.example`:
+   - `ENV=production`
+   - `SECRET_KEY`, `ALGORITHM`, `ACCESS_TOKEN_EXPIRE_MINUTES`
+   - `DATABASE_URL`
+   - `CORS_ORIGINS=https://your-frontend.vercel.app`
+3. Use `backend/Dockerfile` or render build command:
+   - `pip install -r requirements.txt`
+   - Start command: `gunicorn -k uvicorn.workers.UvicornWorker app:app --bind 0.0.0.0:$PORT --workers 2`
+4. Set `healthCheckPath` to `/health`.
+
+### Frontend (Vercel)
+
+1. Create a Vercel project with root folder `frontend/`.
+2. In Environment Variables, add:
+   - `VITE_API_URL=https://<your-render-backend>.onrender.com`
+3. Build command: `npm run build`
+4. Output directory: `dist`
+
+### Local dev
+
+- Backend: `cd backend && uvicorn app:app --reload`
+- Frontend: `cd frontend && npm install && npm run dev`
+
+## �🙏 Acknowledgments
 
 - Inspired by open-source feedback platforms
 - Uses FastAPI, SQLModel, React.js, Tailwind CSS, and other excellent libraries

@@ -42,6 +42,7 @@ app = FastAPI(
 )
 
 # Configure CORS with environment-specific origins
+# In production set CORS_ORIGINS to your deployed frontend URL(s), e.g. https://your-app.vercel.app
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
 
 app.add_middleware(
@@ -52,11 +53,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+if os.getenv("ENV") == "dev":
+    database.clear_database()
+
 # Initialize database tables on startup (safe no-op if already present)
 create_db_and_tables()
 
-if os.getenv("ENV") == "dev":
-    database.clear_database()
 
 # Register routers for modular endpoint organization
 app.include_router(auth.router)
