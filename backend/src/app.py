@@ -10,6 +10,7 @@ This file:
 
 import os
 
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -18,6 +19,7 @@ from src.core.database import create_db_and_tables
 from src.routers import feedback
 from src.utils import database
 
+load_dotenv()
 # --------------------------
 # STARTUP VALIDATION
 # -------------------------
@@ -51,16 +53,16 @@ if ENV == "dev":
     CORS_ORIGINS = ["http://localhost:5173"]
 else:
     # Production — placeholder until frontend is hosted
-    CORS_ORIGINS = ["*"]  # temporarily allow all origins
+    CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=CORS_ORIGINS,
-    allow_credentials=True,
+    allow_origins=CORS_ORIGINS,  # explicit origin list
+    allow_credentials=True,       # keep this True for cookies/auth
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 if os.getenv("ENV") == "dev":
     database.clear_database()
 
