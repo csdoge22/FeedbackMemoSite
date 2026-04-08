@@ -33,6 +33,9 @@ export default function Navbar() {
           </>
         ) : (
           <>
+            <Link to="/home" className="hover:underline">
+              Home
+            </Link>
             <Link to="/login" className="hover:underline">
               Login
             </Link>
