@@ -1,4 +1,4 @@
-// src/components/PrivateRoute.jsx
+// src/components/PrivateRoute.jsx (used to protect endpoints that require authentication)
 import { Navigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
