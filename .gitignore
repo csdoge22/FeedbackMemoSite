@@ -50,4 +50,8 @@ VALIDATION_CHECKLIST.md
 VISUAL_SUMMARY.md
 DEPLOYMENT.md
 
+*.db
+*.sql
+*.zip
+Sonit*
 .DS_Store
