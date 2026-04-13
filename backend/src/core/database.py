@@ -6,10 +6,18 @@ from sqlmodel import Session, SQLModel, create_engine
 from dotenv import load_dotenv
 
 load_dotenv()
-# Read from environment or use default PostgreSQL for local development
-# Default: PostgreSQL on localhost using current user (macOS Homebrew)
-# For production, set DATABASE_URL environment variable
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://localhost/feedbackdb")
+# Choose the database connection based on environment.
+# In development, use local PostgreSQL by default unless DATABASE_URL is explicitly set.
+# In production, require DATABASE_URL to be configured.
+ENV = os.getenv("ENV", "dev")
+DEFAULT_DATABASE_URL = f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@localhost:5432/feedbackdb" if ENV == "dev" else None
+DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DATABASE_URL)
+
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL must be set when ENV is not 'dev'. "
+        "Check your environment configuration."
+    )
 
 # Engine setup for PostgreSQL
 # Using psycopg2-binary as the driver (installed in requirements.txt)
