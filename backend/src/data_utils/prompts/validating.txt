@@ -1,0 +1,84 @@
+You are a high-precision dataset validation system for synthetic classification data.
+
+You will evaluate a batch of generated rows.
+
+---
+
+{GENERATED_ROWS}
+
+---
+
+TASK:
+
+For each row, evaluate correctness across:
+
+1. Text ↔ priority alignment
+2. Text ↔ category alignment
+3. Text ↔ urgency alignment
+4. Realism and naturalness of text
+
+---
+
+CRITICAL RULES:
+
+- ONLY these priority labels are valid: High, Medium, Low
+- Be strict about logical consistency, but allow minor stylistic imperfections
+- Do NOT reject rows for grammar or phrasing unless unrealistic
+
+---
+
+DECISION TYPES:
+
+For each row, assign exactly ONE:
+
+- "accept" → row is fully valid
+- "reject" → row is invalid and unusable
+- "fixable" → row is semantically correct but has minor label issues
+
+---
+
+ERROR TYPES (must be included when rejecting or fixing):
+
+- label_mismatch
+- category_mismatch
+- urgency_mismatch
+- unrealistic_text
+- duplicate_or_template_like
+
+---
+
+OUTPUT FORMAT (STRICT JSON ONLY):
+
+{
+  "accepted": [indices],
+  "fixable": [
+    {
+      "index": int,
+      "issues": [string],
+      "suggested_fix": {
+        "priority": "...",
+        "category": "...",
+        "urgency": "..."
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "index": int,
+      "reasons": [string]
+    }
+  ],
+  "batch_summary": {
+    "total": int,
+    "accept_rate": float,
+    "common_failure_modes": [string]
+  }
+}
+
+---
+
+STRICT REQUIREMENTS:
+
+- Every index must appear in exactly one group
+- Output must be valid JSON only
+- Do not include explanations outside JSON

@@ -1,0 +1,121 @@
+Generate a dataset generation plan for a synthetic feedback classification dataset.
+
+You must preserve all original requirements unless they directly conflict with system constraints described below.
+
+---
+
+CORE REQUIREMENTS (DO NOT CHANGE UNLESS CONTRADICTED BELOW):
+- Domain must be GENERAL (not limited to SaaS)
+- Include diverse contexts: academic, workplace, apps, services, daily life
+- Ensure realistic class imbalance (not perfectly uniform)
+
+---
+
+SYSTEM CONSTRAINTS (OVERRIDE RULES):
+
+1. Batch size constraint:
+- batch_size MUST NOT exceed 50 due to downstream model limitations.
+- If a higher value is specified, reduce it to 50.
+
+2. Label space constraint:
+- The ONLY valid priority labels are:
+  - High
+  - Medium
+  - Low
+- Do NOT introduce any other priority labels under any circumstances.
+
+3. Distribution adjustment rule:
+- If original distributions imply unsupported labels (e.g., Critical, Extreme, etc.), merge them into the closest valid label (High, Medium, Low).
+
+---
+
+OUTPUT FORMAT (STRICT JSON ONLY):
+
+{
+  "total_rows": int,
+  "batch_size": int,
+  "distributions": {
+    "priority": {...},
+    "category": {...},
+    "sentiment": {...},
+    "urgency": {...}
+  },
+  "constraints": {
+    "diversity_rules": [...],
+    "label_rules": [...]
+  }
+}
+
+---
+
+VALIDATION RULES:
+- All probability values must sum to 1.0 per distribution category
+- Must include realistic skew (e.g. more negative than positive sentiment)
+- Must include at least 4 diversity rules
+- Must include at least 4 label consistency rules
+
+---
+
+IMPORTANT:
+- Output MUST be valid JSON only (no markdown, no explanations)
+- Do not add extra keys outside the schemaGenerate a dataset generation plan for a synthetic feedback classification dataset.
+
+You must preserve all original requirements unless they directly conflict with system constraints described below.
+
+---
+
+CORE REQUIREMENTS (DO NOT CHANGE UNLESS CONTRADICTED BELOW):
+- Domain must be GENERAL (not limited to SaaS)
+- Include diverse contexts: academic, workplace, apps, services, daily life
+- Ensure realistic class imbalance (not perfectly uniform)
+
+---
+
+SYSTEM CONSTRAINTS (OVERRIDE RULES):
+
+1. Batch size constraint:
+- batch_size MUST NOT exceed 50 due to downstream model limitations.
+- If a higher value is specified, reduce it to 50.
+
+2. Label space constraint:
+- The ONLY valid priority labels are:
+  - High
+  - Medium
+  - Low
+- Do NOT introduce any other priority labels under any circumstances.
+
+3. Distribution adjustment rule:
+- If original distributions imply unsupported labels (e.g., Critical, Extreme, etc.), merge them into the closest valid label (High, Medium, Low).
+
+---
+
+OUTPUT FORMAT (STRICT JSON ONLY):
+
+{
+  "total_rows": int,
+  "batch_size": int,
+  "distributions": {
+    "priority": {...},
+    "category": {...},
+    "sentiment": {...},
+    "urgency": {...}
+  },
+  "constraints": {
+    "diversity_rules": [...],
+    "label_rules": [...]
+  }
+}
+
+---
+
+VALIDATION RULES:
+- All probability values must sum to 1.0 per distribution category
+- Must include realistic skew (e.g. more negative than positive sentiment)
+- Must include at least 4 diversity rules
+- Must include at least 4 label consistency rules
+
+---
+
+IMPORTANT:
+- Output MUST be valid JSON only (no markdown, no explanations)
+- Do not add extra keys outside the schema

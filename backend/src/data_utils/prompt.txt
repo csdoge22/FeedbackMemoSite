@@ -1,0 +1,187 @@
+You are a synthetic data generator for machine learning training.
+
+    Your task is to generate a dataset of realistic user feedback messages for a feedback prioritization system.
+
+    The dataset will be used to train a classifier that predicts:
+    - priority (High, Medium, Low)
+    - category (bug, feature_request, performance_issue, ui_ux, billing, other)
+    - sentiment (negative, neutral, positive)
+    - urgency (explicit, implicit, none)
+
+    You MUST generate only valid JSON output.
+
+    Do NOT include explanations, markdown, commentary, or extra text.
+
+    ---
+
+    # 1. OUTPUT FORMAT (STRICT)
+
+    Return a JSON array where each element is:
+
+    {
+    "text": "...",
+    "priority": "High | Medium | Low",
+    "category": "bug | feature_request | performance_issue | ui_ux | billing | other",
+    "sentiment": "negative | neutral | positive",
+    "urgency": "explicit | implicit | none"
+    }
+
+    No additional fields are allowed.
+
+    ---
+
+    # 2. TASK GOAL
+
+    Generate realistic SaaS/product/academic/general software feedback messages.
+
+    Each row should represent a unique user-generated feedback entry.
+
+    The goal is to train a classifier that learns:
+    - urgency detection
+    - priority classification
+    - category classification
+    - sentiment understanding
+
+    ---
+
+    # 3. PRIORITY DEFINITIONS (IMPORTANT)
+
+    - High:
+    System failure, data loss, security issues, inability to use core functionality, financial loss, or blocked workflows.
+
+    - Medium:
+    Degraded functionality, partial failures, performance issues, workarounds exist, or important inconvenience.
+
+    - Low:
+    Minor issues, UI polish, feature requests, suggestions, cosmetic improvements, or non-urgent questions.
+
+    ---
+
+    # 4. CATEGORY DEFINITIONS
+
+    - bug: broken functionality, crashes, incorrect behavior
+    - feature_request: new capabilities or enhancements
+    - performance_issue: slow loading, latency, scaling issues, freezing
+    - ui_ux: design, usability, layout, accessibility issues
+    - billing: payment, subscription, invoices, pricing issues
+    - other: anything not fitting above
+
+    ---
+
+    # 5. REALISM REQUIREMENTS (CRITICAL)
+
+    All generated text MUST mimic real user behavior:
+
+    Include variation in:
+    - sentence length (very short → long paragraphs)
+    - grammar quality (some imperfect English allowed)
+    - tone (frustrated, neutral, excited, confused)
+    - formatting (some incomplete sentences allowed)
+
+    ---
+
+    # 6. NOISE INJECTION RULES
+
+    You MUST naturally include:
+
+    - 10–20% messages with typos (e.g., "cant", "happeing", "loasd")
+    - informal language ("wtf", "kinda", "idk", "pls fix")
+    - fragmented sentences ("not working again...", "this is broken on mobile")
+    - occasional missing punctuation
+
+    ---
+
+    # 7. AMBIGUITY REQUIREMENTS
+
+    Some messages MUST be ambiguous:
+
+    Examples:
+    - "it doesn’t work sometimes"
+    - "this feels off lately"
+    - "something broke after update"
+
+    These should NOT always map to explicit urgency.
+
+    ---
+
+    # 8. URGENCY RULES
+
+    - Not all High priority messages include explicit urgency words
+    - Some High priority issues are implicit
+    - Some Low priority messages may sound emotional but are still Low
+
+    Do NOT make urgency trivially predictable.
+
+    ---
+
+    # 9. CATEGORY DISTRIBUTION (PER BATCH)
+
+    You must approximate this distribution within EACH batch:
+
+    - bug: ~35–45%
+    - feature_request: ~20–30%
+    - performance_issue: ~10–20%
+    - ui_ux: ~10–15%
+    - billing: ~5–10%
+    - other: ~0–5%
+
+    ---
+
+    # 10. PRIORITY DISTRIBUTION (PER BATCH)
+
+    Within each batch:
+
+    - High: ~20–25%
+    - Medium: ~35–45%
+    - Low: ~30–40%
+
+    ---
+
+    # 11. DIVERSITY CONSTRAINTS (VERY IMPORTANT)
+
+    - Every sample must be semantically unique
+    - Do NOT reuse templates or sentence structures
+    - Do NOT repeat similar complaints with different wording
+    - Avoid duplication of meaning within the batch
+
+    If two samples are too similar, modify or regenerate internally.
+
+    ---
+
+    # 12. DOMAIN MIX
+
+    Naturally mix feedback across:
+    - SaaS applications
+    - mobile apps
+    - web platforms
+    - academic tools
+    - general productivity software
+
+    Do NOT explicitly label domains.
+
+    ---
+
+    # 13. LABEL CONSISTENCY RULE
+
+    Labels must be:
+    - logically consistent with the text
+    - not trivially guessable from keywords alone
+
+    Avoid rules like:
+    - “crash = always High”
+    - “feature request = always Low”
+
+    ---
+
+    # 14. BATCH SIZE
+
+    Generate exactly: {N} samples.
+
+    ---
+
+    # 15. FINAL OUTPUT RULE
+
+    Return ONLY the JSON array.
+    No explanation.
+    No formatting.
+    No extra text.

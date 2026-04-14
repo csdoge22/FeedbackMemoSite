@@ -1,0 +1,352 @@
+[
+  {
+    "text": "The entire login portal is throwing a 500 error for every single user in our organization. We can't access any data.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "srsly the app is crawling today. it takes like 30 seconds just to load the dashboard. fix it now!!",
+    "priority": "High",
+    "category": "performance_issue",
+    "sentiment": "negative",
+    "urgency": "explicit"
+  },
+  {
+    "text": "Would be great if we could get a dark mode option. My eyes are killing me during late night sessions.",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "I noticed a small typo in the settings menu under the 'Notification' tab. It says 'Notifcation' instead.",
+    "priority": "Low",
+    "category": "ui_ux",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The CSV export tool is failing every time I try to download the quarterly report. I have a board meeting in an hour and need this data.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "I was double charged for my subscription this month. Please look into this and process a refund.",
+    "priority": "Medium",
+    "category": "billing",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "It would be super cool if we could integrate with Slack to get real-time updates on task completion.",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "positive",
+    "urgency": "none"
+  },
+  {
+    "text": "The drag-and-drop interface for the Kanban board is a bit clunky. It doesn't always register where I want to drop the card.",
+    "priority": "Medium",
+    "category": "ui_ux",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "CRASHED AGAIN. Third time today while trying to save a project. I'm losng work every time it happens.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "explicit"
+  },
+  {
+    "text": "Is there any way to change the font size? The current one is a bit too small for my team to read comfortably on laptops.",
+    "priority": "Low",
+    "category": "ui_ux",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The API response times have tripled since the last update. Our internal tools are timing out.",
+    "priority": "High",
+    "category": "performance_issue",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "I'm having trouble updating my credit card info. The 'save' button just spins forever.",
+    "priority": "Medium",
+    "category": "billing",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Great platform! Any plans to add an AI-powered summary for the long comment threads?",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "positive",
+    "urgency": "none"
+  },
+  {
+    "text": "The mobile app won't open on iOS 17. It just shows the splash screen and then closes immediately.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "I accidentally deleted a project and can't find a way to restore it from the trash. Is it gone forever?",
+    "priority": "Medium",
+    "category": "other",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "The search filter for 'date created' isn't sorting correctly. It shows entries from 2023 before 2024.",
+    "priority": "Medium",
+    "category": "bug",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "Can you guys add a bulk edit feature for user permissions? Doing it one by one for 50 people is a nightmare.",
+    "priority": "Medium",
+    "category": "feature_request",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "Security vulnerability: I can see the email addresses of users from other organizations in the global search bar.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "neutral",
+    "urgency": "implicit"
+  },
+  {
+    "text": "The page transitions feel a bit sluggish on Firefox, though they work fine on Chrome.",
+    "priority": "Low",
+    "category": "performance_issue",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "I need to download all our invoices for the fiscal year end. Where can I find the archive?",
+    "priority": "Low",
+    "category": "billing",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The system keeps logging me out every 5 minutes even while I am actively typing. I've lost unsaved work twice today.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "URGENT: Payment gateway is down. Customers are unable to checkout and we are losing sales by the minute.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "explicit"
+  },
+  {
+    "text": "Could we get a public API for the analytics module? We want to build our own custom dashboards.",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The sidebar icons are too similar. I keep clicking on 'Settings' when I mean to click 'Profile'.",
+    "priority": "Low",
+    "category": "ui_ux",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "Intermittent timeouts when saving large files. Happens about 20% of the time.",
+    "priority": "Medium",
+    "category": "performance_issue",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Does this tool support multi-factor authentication? I couldn't find it in the security settings.",
+    "priority": "Medium",
+    "category": "feature_request",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The formatting in the email notifications is completely broken. It looks like raw HTML code.",
+    "priority": "Medium",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "I'm having a hard time understanding the pricing for the 'Enterprise' tier. Is the seat limit monthly or yearly?",
+    "priority": "Low",
+    "category": "billing",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The site is fire! Love the new layout. Maybe add a way to pin favorite projects to the top?",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "positive",
+    "urgency": "none"
+  },
+  {
+    "text": "Whenever I try to upload a profile picture, the site just refreshes and nothing happens.",
+    "priority": "Medium",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "Help! I'm completely locked out of my account because the 2FA code isn't being sent to my phone.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "explicit"
+  },
+  {
+    "text": "The search function is very slow when we have more than 1000 items in the list. It takes forever to filter.",
+    "priority": "Medium",
+    "category": "performance_issue",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Could you add a 'Select All' button in the archive? Deleting 200 items individually is tedious.",
+    "priority": "Medium",
+    "category": "feature_request",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The app works fine but it consumes way too much RAM on my Mac. My laptop fan is constantly at max speed.",
+    "priority": "Medium",
+    "category": "performance_issue",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "Just wanted to say thanks for the quick support on my last ticket! Everything is working great now.",
+    "priority": "Low",
+    "category": "other",
+    "sentiment": "positive",
+    "urgency": "none"
+  },
+  {
+    "text": "The color contrast in the new reporting dashboard is very low. It's hard to read the light gray text on the white background.",
+    "priority": "Medium",
+    "category": "ui_ux",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "I tried to upgrade to the Pro plan but the transaction failed with an 'Unknown Error'. My bank says the charge went through.",
+    "priority": "High",
+    "category": "billing",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Is there a way to export the activity log to Excel? We need it for our audit tmw morning.",
+    "priority": "Medium",
+    "category": "feature_request",
+    "sentiment": "neutral",
+    "urgency": "implicit"
+  },
+  {
+    "text": "The 'Delete Project' button is right next to the 'Edit' button and it doesn't have a confirmation prompt. I keep deleting stuff by mistake.",
+    "priority": "High",
+    "category": "ui_ux",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Our custom domain integration is broken. All our links are pointing to 404 pages. This is a critical issue for our brand.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "explicit"
+  },
+  {
+    "text": "The auto-save feature doesn't seem to work sometimes. I have to manually click save every minute to be safe.",
+    "priority": "Medium",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Would love to see a Gantt chart view for the project timeline.",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "it doesnt work sometimes... like the button click just ignores me. happens on the mobile web view mostly.",
+    "priority": "Medium",
+    "category": "bug",
+    "sentiment": "neutral",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Why did my monthly bill increase by $20 without any notification? I didn't change my plan.",
+    "priority": "Medium",
+    "category": "billing",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "The database migration has been stuck at 99% for the last 4 hours. We are unable to use the platform during this time.",
+    "priority": "High",
+    "category": "performance_issue",
+    "sentiment": "negative",
+    "urgency": "implicit"
+  },
+  {
+    "text": "Could you integrate with Google Calendar? It would make scheduling meetings so much easier.",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "positive",
+    "urgency": "none"
+  },
+  {
+    "text": "The font used in the headers is a bit hard to read. Is it possible to change it back to the old one?",
+    "priority": "Low",
+    "category": "ui_ux",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "The app keeps freezing whenever I try to upload a file larger than 10MB.",
+    "priority": "Medium",
+    "category": "performance_issue",
+    "sentiment": "negative",
+    "urgency": "none"
+  },
+  {
+    "text": "Can we get a way to export our data in JSON format? Currently it only supports CSV and PDF.",
+    "priority": "Low",
+    "category": "feature_request",
+    "sentiment": "neutral",
+    "urgency": "none"
+  },
+  {
+    "text": "EMERGENCY: The main database seems to be corrupted. All project titles have been replaced with random strings.",
+    "priority": "High",
+    "category": "bug",
+    "sentiment": "negative",
+    "urgency": "explicit"
+  }
+]

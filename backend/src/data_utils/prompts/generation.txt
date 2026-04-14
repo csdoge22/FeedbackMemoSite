@@ -1,0 +1,24 @@
+Using the following dataset plan:
+
+{PLAN_JSON}
+
+Generate {BATCH_SIZE} rows of synthetic feedback data.
+
+Output ONLY a JSON array of objects with this schema:
+{
+  "text": string,
+  "priority": "High" | "Medium" | "Low",
+  "category": "...",
+  "sentiment": "...",
+  "urgency": "..."
+}
+
+STRICT RULES:
+- Follow the distributions approximately
+- Ensure each row is unique
+- Ensure labels match the text logically
+- Use diverse domains (not just software)
+- Avoid repetitive phrasing
+
+DO NOT include explanations or extra text.
+ONLY output the JSON array.
